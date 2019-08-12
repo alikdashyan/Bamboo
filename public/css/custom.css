@@ -1,0 +1,19 @@
+/* Add here all your CSS customizations */
+.pagination{
+    color: aliceblue;
+}
+.pagination ul{
+    width: auto; 
+}
+.pagination a {
+    padding: 15px;
+    text-decoration:none;
+    border: 1px solid #CCC;
+    color: aliceblue;
+    font-weight: bold;
+    font-size:18px;
+}
+.pagination a:hover {
+    background-color: #CCC;
+    color: aliceblue;
+}
