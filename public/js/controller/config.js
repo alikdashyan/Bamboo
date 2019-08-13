@@ -27,7 +27,6 @@ app.config(['$routeProvider',function($routeProvider){
     })
     .otherwise({redirctTo:'/'})
 }]) 
-  
 app.controller('blogCtrl',function ($scope, postsFactory) {
     console.log('blogCtrl', postsFactory);
     $scope.posts = postsFactory
