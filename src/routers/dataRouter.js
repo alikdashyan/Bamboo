@@ -35,11 +35,11 @@ dataRouter.get('/verify', async (req, res) => {
     const code = req.query.code
     try{
         await getNewToken(code)
+        res.redirect('/')
     } catch(e) {
         console.log(e)
         res.status(500).send({error: e.message})
     }
-    res.redirect('/')
 })
 
 module.exports = dataRouter
