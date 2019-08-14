@@ -58,7 +58,7 @@
 
 </head>
 <body  ng-app='app' class="loading-overlay-showing body" data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 500}">
-		<div class="loading-overlay">
+		<div class="loading-overlay" >
             <div class="bounce-loader">
                 <div class="bounce1"></div>
                 <div class="bounce2"></div>
@@ -104,6 +104,7 @@
 				  <!--Davit angularjs-->
 				  <script src="lib/angular/angular.min.js"></script>
 				  <script src="lib/angular-route/angular-route.min.js"></script>
+				  <script> angular.module('app',['ngRoute','angularUtils.directives.dirPagination'])</script>
 				  <script src="lib/dir-pagination/dirPagination.js"></script>
 				  <script src="js/controller/config.js"></script>
 		
