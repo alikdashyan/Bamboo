@@ -29,7 +29,7 @@ userRouter.post('/signup', async (req, res) => {
         res.status(201).send({user, token})
     } catch(e) {
         console.log(e)
-        res.status(400).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -61,7 +61,7 @@ userRouter.get('/users/verify', async (req, res) => {
         res.redirect('/')
     } catch(e){
         console.log(e)
-        res.status(400).send(e)
+        res.status(400).send({error: e.message})
     }
 })
 
@@ -74,8 +74,7 @@ userRouter.post('/users/login', async (req, res) => {
         const token = await user.generateAuthToken()
         res.send({user, token})
     } catch (e){
-        console.log(e)
-        res.status(400).send(e)
+        res.status(401).send({error: e.message})
     }
 })
 
@@ -86,7 +85,7 @@ userRouter.post('/users/logout', auth, async (req, res) => {
         res.send()
     } catch(e){
         console.log(e)
-        res.status(400).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -96,7 +95,7 @@ userRouter.post('/users/logoutAll', auth, async (req, res) => {
         await req.user.save()
         res.status(200).send()
     } catch(e) {
-        res.status(400).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -109,7 +108,7 @@ userRouter.patch('/users/update', auth, async (req, res) => {
         await req.user.save()
         res.status(200).send()
     } catch (e){
-        res.status(400).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -140,27 +139,32 @@ userRouter.post('/users/recovery', async (req, res) => {
         res.status(200).send(url)
     } catch(e){
         console.log(e)
-        res.status(400).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
 userRouter.get('/users/recovery/callback', async (req, res) => {
-    if(!req.query.token){
-        return res.status(400).send({error: 'Invalid request'})
+    try{
+        if(!req.query.token){
+            return res.status(400).send({error: 'Invalid request'})
+        }
+        const token = req.query.token
+        const payload = jwt.verify(token, process.env.PASSWORD_TOKEN_KEY)
+        const user = await User.findOne({_id: payload.id})
+        if(!user){
+            return res.status(404).send({error: "User not found"})
+        }
+        const newDate = Date.now()
+        if((newDate-payload.date)>900000){
+            return res.send("Your token is expired.")
+        }
+        user.passwordChange = true
+        await user.save()
+        res.sendFile(path.join(__dirname, './password.html'))
+    } catch(e){
+        console.log(e)
+        res.status(500).send({error: e.message})
     }
-    const token = req.query.token
-    const payload = jwt.verify(token, process.env.PASSWORD_TOKEN_KEY)
-    const user = await User.findOne({_id: payload.id})
-    if(!user){
-        return res.status(404).send({error: "User not found"})
-    }
-    const newDate = Date.now()
-    if((newDate-payload.date)>900000){
-        return res.send("Your token is expired.")
-    }
-    user.passwordChange = true
-    await user.save()
-    res.sendFile(path.join(__dirname, './password.html'))
 })
 
 userRouter.post('/users/changePassword', async (req, res) => {
@@ -187,6 +191,7 @@ userRouter.post('/users/changePassword', async (req, res) => {
         return res.send("Password changed")
     } catch(e){
         console.log(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -201,7 +206,7 @@ userRouter.delete('/users/me', auth, async (req, res) => {
         await Order.deleteMany({ID: req.user.userID})
     } catch(e) {
         console.log(e)
-        res.status(400).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 

@@ -1,9 +1,7 @@
-const fs = require('fs')
 const express = require('express')
 const {google} = require('googleapis')
 const {OAuth2Client} = require('google-auth-library')
 const googleAuth = require('../middleware/googleAuth')
-const arrToJSON = require('../utils/arrayToJSON')
 const getNewToken = require('../utils/getNewToken')
 const auth = require('../middleware/userAuth')
 
@@ -22,7 +20,7 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
         res.send(fileList.data.files)
     } catch(e) {
         console.log(e)
-        res.status(400).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -38,9 +36,10 @@ dataRouter.get('/verify', async (req, res) => {
     try{
         await getNewToken(code)
     } catch(e) {
-        res.status(400).send(e)
+        console.log(e)
+        res.status(500).send({error: e.message})
     }
-    res.send()
+    res.redirect('/')
 })
 
 module.exports = dataRouter
