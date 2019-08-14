@@ -156,18 +156,18 @@
 											<div class="featured-box featured-box-primary text-left mt-5">
 												<div class="box-content">
 													<h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">I'm a Returning Customer</h4>
-													<form action="/" id="frmSignIn" method="post" class="needs-validation">
+													<form ng-submit="submit()" id="frmSignIn" class="needs-validation">
 														<div class="form-row">
 															<div class="form-group col">
 																<label class="font-weight-bold text-dark text-2">E-mail Address</label>
-																<input type="email" value="" class="form-control form-control-lg" required>
+																<input type="email" value="" ng-model="user.email" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
 															<div class="form-group col">
 																<a class="float-right" href="#">(Lost Password?)</a>
 																<label class="font-weight-bold text-dark text-2">Password</label>
-																<input type="password" value="" class="form-control form-control-lg" required>
+																<input type="password" value="" ng-model="user.password" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
@@ -181,9 +181,9 @@
 																<input type="submit" value="Login" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
 															</div>
 															<div class="form-group col-lg-4">
-																<div class="g-signin2 float-right" style="height: 43px;" data-onsuccess='onSignIn'></div>
-																<button  onclick='signOut()' class=" data btn btn-danger float-right" style="height: 43px; display: none;">Close</button>
-																	
+																<!-- <div class="g-signin2 float-right" style="height: 43px;" data-onsuccess='onSignIn'></div>
+																<button  onclick='' class=" data btn btn-danger float-right" style="height: 43px; display: none;">Close</button> -->
+																	<a href="https://hydralab-bamboo.herokuapp.com/auth/google">Google</a>
 															</div>
 														</div>
 													</form>

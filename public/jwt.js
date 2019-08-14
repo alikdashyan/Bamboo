@@ -48,8 +48,22 @@ myApp.controller('unauthorizedController',['$scope',function($scope) {
 myApp.factory('dataService',['$http','serviceBasePath',function ($http,serviceBasePath) {
   var fac = {};
   fac.GetAnonymousData = function () {
-    return $http.get(serviceBasePath + '/signup').then(function (response) {
-        return response.data;
+    let body = JSON.stringify({
+      email: 'hracho94@gmail.com',
+      password: 'hrachojan22'
     })
+    let config = {
+      method: 'POST',
+      url: '/users/login',
+      body
+    }
+    $http(config)
+          .then(
+            success => console.log(success),
+            innerError => console.log(innerError)
+          ).catch(error => console.log(error));
+    // return $http.get(serviceBasePath + '/signup').then(function (response) {
+    //     return response.data;
+    // })
   }
 }])
