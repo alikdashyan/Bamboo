@@ -20,21 +20,22 @@ router.get('/viewUser', (req, res) => {
 })
 
 router.post('/update', async (req, res) => {
-    if(!req.body.contactInfo){
-        return res.status(400).send({error: 'Provided data is invalid'})
-    }
-    console.log(req.body)
-    Object.assign(req.user, req.body)
-    try{
+    try{    
+        if(!req.body.contactInfo){
+            return res.status(400).send({error: 'Provided data is invalid'})
+        }
+        console.log(req.body)
+        Object.assign(req.user, req.body)
         await req.user.save()
         res.status(200).send(req.user)
     } catch(e){
         console.log(e)
+        res.status(500).send({error: e.message})
     }
 })
 
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    res.redirect('/auth/viewUser')
+    res.redirect('/')
 })
 
 module.exports = router
