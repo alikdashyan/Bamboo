@@ -106,6 +106,12 @@ userSchema.virtual('orders', {
     foreignField: 'ID'
 })
 
+userSchema.virtual('posts', {
+    ref: 'Post',
+    localField: '_id',
+    foreignField: 'createdBy'
+})
+
 userSchema.methods.toJSON = function() {
     const user = this
     const userObject = user.toObject()
