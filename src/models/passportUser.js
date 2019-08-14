@@ -12,6 +12,12 @@ const passportUserSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    kind: {
+        type: String,
+        required: true,
+        trim: true,
+        default: 'customer'
+    },
     email: {
         type: String,
         required: true,
@@ -64,6 +70,12 @@ passportUserSchema.virtual('orders', {
     ref: 'Order',
     localField: 'userID',
     foreignField: 'ID'
+})
+
+passportUserSchema.virtual('posts', {
+    ref: 'Post',
+    localField: '_id',
+    foreignField: 'createdBy'
 })
 
 const PassportUser = mongoose.model('PassportUser', passportUserSchema)
