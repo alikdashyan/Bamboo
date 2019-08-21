@@ -46,7 +46,7 @@ orderRouter.post('/order', auth, async (req, res) => {
         res.status(201).send(req.user.orders)
     } catch(e) {
         console.log(e)
-        res.status(400).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -56,7 +56,7 @@ orderRouter.get('/orders', auth, async (req, res) => {
         res.status(200).send(req.user.orders)
     } catch(e) {
         console.log(e)
-        res.status(400).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 

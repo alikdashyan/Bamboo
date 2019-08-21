@@ -28,10 +28,10 @@ async function getAuthClient(code){
         })
         const token = await client.getToken(code)
         client.setCredentials(token.tokens)
+        return client
     } catch (e){
         throw e
     }
-    return client
 }
 
 module.exports = getAuthClient

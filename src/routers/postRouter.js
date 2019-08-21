@@ -27,12 +27,12 @@ postRouter.post('/create', auth, async (req, res) => {
     }
     try{
         const post = new Post(req.body)
-        post.createdBy = req.user._id
+        //post.createdBy = req.user._id
         await post.save()
         res.status(201).send(post)
     } catch(e){
         console.log(e)
-        res.status(500).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -55,7 +55,7 @@ postRouter.post('/create/images', auth, upload.array('images', 12), async (req, 
         res.status(200).send(post)
     } catch(e){
         console.log(e)
-        res.status(500).send(e)
+        res.status(500).send({error: e.message})
     }     
 })
 
@@ -68,7 +68,7 @@ postRouter.get('/view/:id', async (req, res) => {
         res.send(post)
     } catch(e){
         console.log(e)
-        res.status(500).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -81,7 +81,7 @@ postRouter.get('/viewAll', auth, async (req, res) => {
         res.send(req.user.posts)
     } catch(e){
         console.log(e)
-        res.status(500).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -99,7 +99,7 @@ postRouter.patch('/update/:id', auth, async(req, res) => {
         res.send(post)
     } catch(e){
         console.log(e)
-        res.status(500).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 
@@ -114,7 +114,7 @@ postRouter.delete('/remove/:id', auth, async(req, res) => {
         }
     } catch(e){
         console.log(e)
-        res.status(500).send(e)
+        res.status(500).send({error: e.message})
     }
 })
 

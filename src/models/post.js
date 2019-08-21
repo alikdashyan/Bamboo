@@ -33,7 +33,7 @@ const postSchema = new mongoose.Schema({
         type: String,
         enum: ['User', 'PassportUser']
     }
-})
+}, {timestamps: true})
 
 const Post = new mongoose.model('Post', postSchema)
 
