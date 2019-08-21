@@ -1,4 +1,5 @@
 var app = angular.module('app',['ngRoute','angularUtils.directives.dirPagination']);
+
 app.config(['$routeProvider',function($routeProvider){
 
     $routeProvider
@@ -37,30 +38,21 @@ app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
     console.log($routeParams.postId);
     $scope.postId = $routeParams.postId
   })
+
+
 app.controller('authCtrl', function($scope, $http) {
-  $scope.user = {
-    name: null,
-    password: null
-  }
-  let body = JSON.stringify({
-    email: $scope.user.name,
-    password: $scope.user.password
+      $scope.submit = function(body){
+        $http.post('/users/login',JSON.stringify(body)).then(
+            success => {
+              console.log(body,'success');
+            },
+            innerError => {
+              console.log(body, 'error');
+            }
+            )
+            .catch(error => console.log(error));
+      }
   })
-  let config = {
-    method: 'POST',
-    url: '/users/login',
-    data: body 
-  }
-  $scope.submit = function() {
-    // e.preventDefault();
-    console.log(config);
-    $http(config)
-          .then(
-            success => console.log(success),
-            innerError => console.log(innerError)
-          ).catch(error => console.log(error));
-  }
-})
 
   app.factory('postsFactory', function () {
     return [
