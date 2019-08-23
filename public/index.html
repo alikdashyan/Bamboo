@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='app'>
+<html  ng-app='app'>
 <head>
-		
     <!-- Basic -->
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
@@ -43,35 +42,32 @@
 		<link rel="stylesheet" href="vendor/rs-plugin/css/navigation.css">
 		<link rel="stylesheet" href="vendor/circle-flip-slideshow/css/component.css">
 		<!-- Demo CSS -->
-
+		
 
 		<!-- Skin CSS -->
-
-		<!-- <link rel="stylesheet" href="css/skins/skin-corporate-16.css">  -->
 		<link rel="stylesheet" href="css/skins/default.css"> 
 		
 		<!-- Theme Custom CSS -->
 		<link rel="stylesheet" href="css/custom.css">
 
+		<link rel="stylesheet" href="index.css">
 		<!-- Head Libs -->
 		<script src="vendor/modernizr/modernizr.min.js"></script>
-			
 		<!--Davit angularjs-->
-		
-		<script src="lib/angular/angular.min.js"></script>
-	
-		<script src="lib/angular-route/angular-route.min.js"></script>
-			
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script> 
+		<script src="https://code.angularjs.org/1.7.8/angular-resource.min.js"></script>
+		<script src="https://code.angularjs.org/1.7.8/angular-route.min.js"></script>
 		<script src="lib/dir-pagination/dirPagination.js"></script>
-		
 		<script src="js/controller/config.js"></script>
 		
 	
 	
 	
+	
+	
 
 </head>
-<body   class="loading-overlay-showing body" data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 500}">
+<body   class="loading-overlay-showing body " data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 500}">
 		<div class="loading-overlay" >
             <div class="bounce-loader">
                 <div class="bounce1"></div>
@@ -87,7 +83,7 @@
 								<div class="header-row">
 									<div class="header-logo">
 										<a href="#!/">
-											<img alt="Porto" width="200" height="90" data-sticky-width="120" data-sticky-height="60" src="img/bamboo-logo.png">
+											<img alt="Porto" width="300" height="120" data-sticky-width="300" data-sticky-height="120" src="img/bamboo-logo.png">
 										</a>
 									</div>
 								</div>
@@ -145,15 +141,15 @@
 					</div>
 				</div>
 			</header>
-
-	
+			
                 
                         
-       
+			<ng-view class="ng-cloak"></ng-view>
         
  
 		<!-- Vendor -->
-		 <script src="vendor/jquery/jquery.min.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+		<script src="vendor/jquery/jquery.min.js"></script>
 		<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
 		<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
 		<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
@@ -168,81 +164,33 @@
 		<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
 		<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 		<script src="vendor/vide/jquery.vide.min.js"></script>
-		<script src="vendor/vivus/vivus.min.js"></script>
+		<script src="vendor/vivus/vivus.min.js"></script> -->
 		
 		
 		<!-- Theme Base, Components and Settings -->
 		<script src="js/theme.js"></script>
 
 		<!-- Current Page Vendor and Views -->
+		<!-- <script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+		<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+		<script src="vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script> -->
+		<script src="js/views/view.home.js"></script>
+		<!-- Current Page Vendor and Views -->
 		<script src="js/views/view.contact.js"></script>
-		
-		<!-- Current Page Vendor and Views
-		<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-		<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script> -->
-		
 		<!-- Theme Custom -->
 		<script src="js/custom.js"></script>
 		
 		<!-- Theme Initialization Files -->
 		<script src="js/theme.init.js"></script>
 		
-		<!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script> -->
-		<!-- <script>
-			/*
-			Map Settings
+		<!-- Examples -->
+		<script src="js/examples/examples.demos.js"></script>
 
-				Find the Latitude and Longitude of your address:
-					- https://www.latlong.net/
-					- http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
-
-			*/
-
-			// Map Markers
-			var mapMarkers = [{
-				address: "New York, NY 10017",
-				html: "<strong>New York Office</strong><br>New York, NY 10017",
-				icon: {
-					image: "img/pin.png",
-					iconsize: [26, 46],
-					iconanchor: [12, 46]
-				},
-				popup: true
-			}];
-
-			// Map Initial Location
-			var initLatitude = 40.75198;
-			var initLongitude = -73.96978;
-
-			// Map Extended Settings
-			var mapSettings = {
-				controls: {
-					draggable: (($.browser.mobile) ? false : true),
-					panControl: true,
-					zoomControl: true,
-					mapTypeControl: true,
-					scaleControl: true,
-					streetViewControl: true,
-					overviewMapControl: true
-				},
-				scrollwheel: false,
-				markers: mapMarkers,
-				latitude: initLatitude,
-				longitude: initLongitude,
-				zoom: 11
-			};
-
-			var map = $('#googlemaps').gMap(mapSettings);
-
-			// Map text-center At
-			var mapCenterAt = function(options, e) {
-				e.preventDefault();
-				$('#googlemaps').gMap("centerAt", options);
-			}
-
-		</script> -->
+		
+	
+		
 					
-		<ng-view></ng-view>
+	
 		
 </body>
 </html>

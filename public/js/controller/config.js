@@ -1,4 +1,13 @@
 var app = angular.module('app',['ngRoute','angularUtils.directives.dirPagination']);
+app.run(['$templateCache',function($templateCache){
+  $templateCache.put('view/home.html')
+  $templateCache.put('view/page-services.html'),
+  $templateCache.put('view/blog-grid-3-columns.html'),
+  $templateCache.put('view/about-us-advanced.html'),
+  $templateCache.put('view/contact-us.html'),
+  $templateCache.put('view/page-login.html'),
+  $templateCache.put('view/blog-post.html')
+}])
 
 app.config(['$routeProvider',function($routeProvider){
 
@@ -14,7 +23,8 @@ app.config(['$routeProvider',function($routeProvider){
         controller: 'blogCtrl' 
     }) 
     .when('/about',{
-        templateUrl:'view/about-us-advanced.html',    
+        templateUrl:'view/about-us-advanced.html', 
+        controller: "aboutCtrl"   
     })
     .when('/contact',{
         templateUrl:'view/contact-us.html',    
@@ -29,6 +39,18 @@ app.config(['$routeProvider',function($routeProvider){
     })
     .otherwise({redirctTo:'/'})
 }]) 
+app.controller('aboutCtrl',function($scope){
+  let animations = document.getElementsByClassName('appear-animation');
+
+  for (let index = 0; index < animations.length; index++) {
+    const element = animations[index];
+    const opacity =  element.style.opacity;
+    if(opacity != '1')
+      element.style.opacity = '1';
+    // console.log(element);
+    
+  }
+})
 app.controller('blogCtrl',function ($scope, postsFactory) {
     console.log('blogCtrl', postsFactory);
     $scope.posts = postsFactory
