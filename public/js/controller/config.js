@@ -13,10 +13,12 @@ app.config(['$routeProvider',function($routeProvider){
 
     $routeProvider
     .when('/',{
-    templateUrl:'view/home.html',  
+        templateUrl:'view/home.html',
+        controller: 'homeCtrl'
     })
     .when('/services',{
-        templateUrl:'view/page-services.html',    
+        templateUrl:'view/page-services.html',
+        controller: 'pageCtrl'
     })
     .when('/blog',{
         templateUrl:'view/blog-grid-3-columns.html',   
@@ -27,7 +29,8 @@ app.config(['$routeProvider',function($routeProvider){
         controller: "aboutCtrl"   
     })
     .when('/contact',{
-        templateUrl:'view/contact-us.html',    
+        templateUrl:'view/contact-us.html',
+        controller: 'contactCtrl'
     })   
     .when('/login',{
         templateUrl:'view/page-login.html',    
@@ -38,7 +41,50 @@ app.config(['$routeProvider',function($routeProvider){
         controller: 'postCtrl',
     })
     .otherwise({redirctTo:'/'})
-}]) 
+}])
+app.controller('homeCtrl', function ($scope) {
+
+    let animations = document.getElementsByClassName('appear-animation');
+
+    for (let index = 0; index < animations.length; index++) {
+        const element = animations[index];
+        const opacity =  element.style.opacity;
+        if(opacity != '1')
+            element.style.opacity = '1';
+        // console.log(element);
+
+    }
+})
+app.controller('pageCtrl', function ($scope) {
+
+    let animations = document.getElementsByClassName('appear-animation');
+
+    for (let index = 0; index < animations.length; index++) {
+        const element = animations[index];
+        const opacity =  element.style.opacity;
+        if(opacity != '1')
+            element.style.opacity = '1';
+        // console.log(element);
+
+    }
+
+})
+app.controller('blogCtrl',function ($scope, postsFactory) {
+    console.log('blogCtrl', postsFactory);
+    $scope.posts = postsFactory
+    console.log($scope.posts);
+
+    let animations = document.getElementsByClassName('appear-animation');
+
+    for (let index = 0; index < animations.length; index++) {
+        const element = animations[index];
+        const opacity =  element.style.opacity;
+        if(opacity != '1')
+            element.style.opacity = '1';
+        // console.log(element);
+
+    }
+})
 app.controller('aboutCtrl',function($scope){
   let animations = document.getElementsByClassName('appear-animation');
 
@@ -51,15 +97,20 @@ app.controller('aboutCtrl',function($scope){
     
   }
 })
-app.controller('blogCtrl',function ($scope, postsFactory) {
-    console.log('blogCtrl', postsFactory);
-    $scope.posts = postsFactory
-    console.log($scope.posts);
+app.controller('contactCtrl', function ($scope) {
+
+    let animations = document.getElementsByClassName('appear-animation');
+
+    for (let index = 0; index < animations.length; index++) {
+        const element = animations[index];
+        const opacity =  element.style.opacity;
+        if(opacity != '1')
+            element.style.opacity = '1';
+        // console.log(element);
+
+    }
 })
-app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
-    console.log($routeParams.postId);
-    $scope.postId = $routeParams.postId
-  })
+
 
 
 app.controller('authCtrl', function($scope, $http) {
@@ -74,7 +125,33 @@ app.controller('authCtrl', function($scope, $http) {
             )
             .catch(error => console.log(error));
       }
+
+    let animations = document.getElementsByClassName('appear-animation');
+
+    for (let index = 0; index < animations.length; index++) {
+        const element = animations[index];
+        const opacity =  element.style.opacity;
+        if(opacity != '1')
+            element.style.opacity = '1';
+        // console.log(element);
+
+    }
   })
+app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
+    console.log($routeParams.postId);
+    $scope.postId = $routeParams.postId
+
+    let animations = document.getElementsByClassName('appear-animation');
+
+    for (let index = 0; index < animations.length; index++) {
+        const element = animations[index];
+        const opacity =  element.style.opacity;
+        if(opacity != '1')
+            element.style.opacity = '1';
+        // console.log(element);
+
+    }
+})
 
   app.factory('postsFactory', function () {
     return [
