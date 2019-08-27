@@ -33,7 +33,7 @@ userRouter.post('/signup', async (req, res) => {
     }
 })
 
-userRouter.post('/users/admin', auth, async (req, res) => {
+userRouter.post('/admin', auth, async (req, res) => {
     if(!req.body.adminCode || (req.body.newKind !== 'admin' && req.body.newKind !== 'customer')){
         return res.status(400).send({error: 'Invalid request'})
     }
@@ -45,7 +45,7 @@ userRouter.post('/users/admin', auth, async (req, res) => {
     res.status(400).send({error: 'Admin code is invalid'})
 })
 
-userRouter.get('/users/verify', async (req, res) => {
+userRouter.get('/verify', async (req, res) => {
     const token = req.query.data
     if(!token){
         return res.status(400).send({error: "Invalid request"})
@@ -65,7 +65,7 @@ userRouter.get('/users/verify', async (req, res) => {
     }
 })
 
-userRouter.post('/users/login', async (req, res) => {
+userRouter.post('/login', async (req, res) => {
     try{
         const user = await User.findByCredentials(req.body.email, req.body.password)
         if(!user){
@@ -78,7 +78,7 @@ userRouter.post('/users/login', async (req, res) => {
     }
 })
 
-userRouter.post('/users/logout', auth, async (req, res) => {
+userRouter.post('/logout', auth, async (req, res) => {
     try{
         req.user.tokens = req.user.tokens.filter((token) => {return token.token !== req.token})
         await req.user.save()
@@ -89,7 +89,7 @@ userRouter.post('/users/logout', auth, async (req, res) => {
     }
 })
 
-userRouter.post('/users/logoutAll', auth, async (req, res) => {
+userRouter.post('/logoutAll', auth, async (req, res) => {
     try{
         req.user.tokens = []
         await req.user.save()
@@ -99,7 +99,7 @@ userRouter.post('/users/logoutAll', auth, async (req, res) => {
     }
 })
 
-userRouter.patch('/users/update', auth, async (req, res) => {
+userRouter.patch('/update', auth, async (req, res) => {
     try{
         if(!(req.body.name || req.body.lastName || req.body.email || req.body.password)) {
             return res.status(400).send({message: 'Provided data is invalid. Nothing changed'})
@@ -112,7 +112,7 @@ userRouter.patch('/users/update', auth, async (req, res) => {
     }
 })
 
-userRouter.post('/users/recovery', async (req, res) => {
+userRouter.post('/recovery', async (req, res) => {
     if(!req.body.email){
         return res.status(400).send({error: 'Invalid request'})
     }
@@ -143,7 +143,7 @@ userRouter.post('/users/recovery', async (req, res) => {
     }
 })
 
-userRouter.get('/users/recovery/callback', async (req, res) => {
+userRouter.get('/recovery/callback', async (req, res) => {
     try{
         if(!req.query.token){
             return res.status(400).send({error: 'Invalid request'})
@@ -167,7 +167,7 @@ userRouter.get('/users/recovery/callback', async (req, res) => {
     }
 })
 
-userRouter.post('/users/changePassword', async (req, res) => {
+userRouter.post('/changePassword', async (req, res) => {
     try{
         if(!req.body.newPass || !req.body.paswdToken){
             return res.status(400).send({error: 'Invalid data'})
@@ -195,11 +195,11 @@ userRouter.post('/users/changePassword', async (req, res) => {
     }
 })
 
-userRouter.get('/users/me', auth, (req, res) => {
+userRouter.get('/me', auth, (req, res) => {
     res.send(req.user)
 })
 
-userRouter.delete('/users/me', auth, async (req, res) => {
+userRouter.delete('/me', auth, async (req, res) => {
     try{
         await req.user.remove()
         res.status(200).send()

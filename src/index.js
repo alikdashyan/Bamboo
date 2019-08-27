@@ -32,7 +32,7 @@ app.use(passport.session())
 
 app.use(express.static(publicDirectory))
 app.use(dataRouter)
-app.use(userRouter)
+app.use('/users', userRouter)
 app.use(orderRouter)
 app.use('/auth', authRouter)
 app.use('/post', postRouter)

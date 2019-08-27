@@ -15,7 +15,7 @@ orderRouter.post('/order', auth, async (req, res) => {
     }
     const order = new Order(req.body)
     order.ID = req.user.userID
-    if(!req.user.contactInfo){
+    if(!req.user.contactInfo || req.user.contactInfo == {}){
         return res.status(400).send({error: "Contact info is not provided"})
     }
     order.userContactInfo = req.user.contactInfo

@@ -33,7 +33,6 @@ const userSchema = new mongoose.Schema({
     contactInfo: {
         emailForRefunds: {
             type: String,
-            required: true,
             trim: true,
             validate(value){
                 if(!validator.isEmail(value)){
@@ -47,7 +46,6 @@ const userSchema = new mongoose.Schema({
         },
         facebookLink: {
             type: String,
-            required: true,
             trim: true,
             validate(value){
                 if(!(validator.isURL(value) && value.includes('facebook.com'))){
