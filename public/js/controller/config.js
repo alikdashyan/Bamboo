@@ -1,20 +1,11 @@
 var app = angular.module('app',['ngRoute','angularUtils.directives.dirPagination']);
-app.run(['$templateCache',function($templateCache){
-  $templateCache.put('view/home.html')
-  $templateCache.put('view/page-services.html'),
-  $templateCache.put('view/blog-grid-3-columns.html'),
-  $templateCache.put('view/about-us-advanced.html'),
-  $templateCache.put('view/contact-us.html'),
-  $templateCache.put('view/page-login.html'),
-  $templateCache.put('view/blog-post.html')
-}])
-
 app.config(['$routeProvider',function($routeProvider){
 
     $routeProvider
     .when('/',{
         templateUrl:'view/home.html',
         controller: 'homeCtrl'
+    
     })
     .when('/services',{
         templateUrl:'view/page-services.html',
@@ -39,6 +30,10 @@ app.config(['$routeProvider',function($routeProvider){
     .when('/blog/:postId',{
         templateUrl: 'view/blog-post.html',
         controller: 'postCtrl',
+    })
+    .when('/formsUserProfile',{
+      templateUrl: 'view/forms-user-profile.html',
+      controller: 'formCntrl'
     })
     .otherwise({redirctTo:'/'})
 }])
@@ -110,20 +105,51 @@ app.controller('contactCtrl', function ($scope) {
 
     }
 })
-
-
-
 app.controller('authCtrl', function($scope, $http) {
-      $scope.submit = function(body){
+    $scope.submit = function(){
+        let email = $scope.email;
+        let password = $scope.password;
+        let body = {
+          email,
+          password
+        }
         $http.post('/users/login',JSON.stringify(body)).then(
             success => {
-              console.log(body,'success');
+              console.log(success);
+              let token = success.data.token;
+              if(token){
+                localStorage.setItem('token', token);
+              }
             },
             innerError => {
               console.log(body, 'error');
             }
             )
             .catch(error => console.log(error));
+      }
+      $scope.registerSubmit = function() {
+        let name = $scope.regName;
+        let lastName = $scope.regLastName;
+        let email = $scope.regEmail;
+        let password = $scope.regPassword;
+        let regBody = {
+          name,
+          lastName,
+          email,
+          password,
+        }
+        let stringifiedBody = JSON.stringify(regBody);
+        $http.post('/users/signup',stringifiedBody).then(
+          success => {
+            let token = success.data.token;
+            if(token){
+              localStorage.setItem('token', token);
+            }
+
+          },
+          innerError => {
+            console.log('error');
+          })      
       }
 
     let animations = document.getElementsByClassName('appear-animation');
@@ -151,6 +177,36 @@ app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
         // console.log(element);
 
     }
+})
+
+app.controller('formCntrl', function($scope, $http) {
+  $scope.submit = function(){
+    let productLink = $scope.productLink;
+    let buyingsPerDay = $scope.buyingsPerDay;
+    let itemPrice = $scope.itemPrice;
+    let totalBuyingSummary = $scope.totalBuyingSummary;
+    let additionalInfo = $scope.additionalInfo;
+    let body = {
+      productLink,
+      buyingsPerDay,
+      itemPrice,
+      totalBuyingSummary,
+      additionalInfo,
+    }
+    let stringifiedBody = JSON.stringify(body);
+    $http.post('/order',stringifiedBody).then(
+      success => {
+        console.log(body)
+      },
+      innerError => {
+        console.log(error)
+      }
+    )
+  }
+  let token = localStorage.token;
+  if(!token){
+    window.location.href = 'http://localhost:3000/#!/login';
+  }
 })
 
   app.factory('postsFactory', function () {

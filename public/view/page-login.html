@@ -31,18 +31,18 @@
 											<div class="featured-box featured-box-primary text-left mt-5">
 												<div class="box-content">
 													<h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">I'm a Returning Customer</h4>
-													<form action="/" id="frmSignIn" method="post" class="needs-validation">
+													<form  ng-submit='submit()'  id="frmSignIn" class="needs-validation">
 														<div class="form-row">
 															<div class="form-group col">
 																<label class="font-weight-bold text-dark text-2">E-mail Address</label>
-																<input type="email" value="" class="form-control form-control-lg" required>
+																<input ng-model='email' type="email" value="" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
 															<div class="form-group col">
 																<a class="float-right" href="#">(Lost Password?)</a>
 																<label class="font-weight-bold text-dark text-2">Password</label>
-																<input type="password" value="" class="form-control form-control-lg" required>
+																<input ng-model='password' type="password" value="" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
@@ -56,9 +56,8 @@
 																<input type="submit" value="Login" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
 															</div>
 															<div class="form-group col-lg-4">
-																<div class="g-signin2 float-right" style="height: 43px;" data-onsuccess='onSignIn'></div>
+																<div class="g-signin2 float-right" style="height: 43px;" data-onsuccess='submit'></div>
 																<button  onclick='signOut()' class=" data btn btn-danger float-right" style="height: 43px; display: none;">Close</button>
-																	
 															</div>
 														</div>
 													</form>
@@ -69,33 +68,33 @@
 											<div class="featured-box featured-box-primary text-left mt-5">
 												<div class="box-content">
 													<h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Register An Account</h4>
-													<form action="/" id="frmSignUp" method="post" class="needs-validation">
+													<form ng-submit='registerSubmit()' id="frmSignUp" class="needs-validation">
 														<div class="form-row">
 															<div class="form-group col">
-																<label class="font-weight-bold text-dark text-2">Frstname</label>
-																<input type="text" value="" class="form-control form-control-lg" required>
+																<label class="font-weight-bold text-dark text-2">Firstname</label>
+																<input ng-model="regName" type="text" value="" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
 															<div class="form-group col">
 																<label class="font-weight-bold text-dark text-2">Lastname</label>
-																<input type="text" value="" class="form-control form-control-lg" required>
+																<input ng-model="regLastName" type="text" value="" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
 															<div class="form-group col">
 																<label class="font-weight-bold text-dark text-2">E-mail Address</label>
-																<input type="email" value="" class="form-control form-control-lg" required>
+																<input ng-model="regEmail" type="email" value="" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
 															<div class="form-group col-lg-6">
 																<label class="font-weight-bold text-dark text-2">Password</label>
-																<input type="password" value="" class="form-control form-control-lg" required>
+																<input ng-model="regPassword" type="password" value="" class="form-control form-control-lg" required>
 															</div>
 															<div class="form-group col-lg-6">
 																<label class="font-weight-bold text-dark text-2">Re-enter Password</label>
-																<input type="password" value="" class="form-control form-control-lg" required>
+																<input ng-model="regPassword" type="password" value="" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
