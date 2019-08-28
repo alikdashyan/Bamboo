@@ -31,35 +31,35 @@
 								<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 							</div>
 
-							<form ng-submit="submit()" role="form" class="needs-validation">
+							<form ng-submit="submitOrder()" role="form" class="needs-validation">
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Product link</label>
 							        <div class="col-lg-9">
-							            <input ng-model="productLink" class="form-control" required type="text" value="Link">
+							            <input ng-model="productLink" class="form-control" required type="url" value="Link">
 							        </div>
 							    </div>
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">buyingsPerDay</label>
 							        <div class="col-lg-9">
-							            <input ng-model="buyingsPerDay"  class="form-control" required type="text" value="buyingsPerDay">
+							            <input ng-model="buyingsPerDay"  class="form-control" required type="number" value="buyingsPerDay">
 							        </div>
 							    </div>
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">itemPrice</label>
 							        <div class="col-lg-9">
-							            <input ng-model="itemPrice" class="form-control" required type="email" value="itemPrice">
+							            <input ng-model="itemPrice" class="form-control" required type="number" value="itemPrice">
 							        </div>
 							    </div>
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">totalBuyingSummary</label>
 							        <div class="col-lg-9">
-							            <input ng-model="totalBuyingSummary" class="form-control" type="text" value="">
+							            <input ng-model="totalBuyingSummary" class="form-control" type="number" value="">
 							        </div>
 							    </div>
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">additionalInfo</label>
 							        <div class="col-lg-9">
-							            <input ng-model="additionalInfo" class="form-control" type="url" value="">
+							            <input ng-model="additionalInfo" class="form-control" type="text" value="">
 							        </div>
 							    </div>
 							    

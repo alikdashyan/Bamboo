@@ -180,7 +180,7 @@ app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
 })
 
 app.controller('formCntrl', function($scope, $http) {
-  $scope.submit = function(){
+  $scope.submitOrder = function(){
     let productLink = $scope.productLink;
     let buyingsPerDay = $scope.buyingsPerDay;
     let itemPrice = $scope.itemPrice;
@@ -194,19 +194,16 @@ app.controller('formCntrl', function($scope, $http) {
       additionalInfo,
     }
     let stringifiedBody = JSON.stringify(body);
-    $http.post('/order',stringifiedBody).then(
+    $http.post('/order',stringifiedBody,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
       success => {
-        console.log(body)
+        console.log(success);
       },
       innerError => {
-        console.log(error)
+        console.log(error);
       }
     )
   }
-  let token = localStorage.token;
-  if(!token){
-    window.location.href = 'http://localhost:3000/#!/login';
-  }
+ 
 })
 
   app.factory('postsFactory', function () {
