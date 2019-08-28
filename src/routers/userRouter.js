@@ -18,7 +18,7 @@ userRouter.post('/signup', async (req, res) => {
         const token = await user.generateAuthToken()
         const mailVerifyToken = jwt.sign({id: user._id.toString()}, process.env.PASSWORD_TOKEN_KEY)
         const url = `${process.env.APP_URL}/users/verify?data=${mailVerifyToken}`
-        sg.send({
+        await sg.send({
             to: user.email,
             from: process.env.SENDER_EMAIL_ADDRESS,
             subject: `Bamboo.am Email Verification`,
@@ -29,6 +29,9 @@ userRouter.post('/signup', async (req, res) => {
         res.status(201).send({user, token})
     } catch(e) {
         console.log(e)
+        if(e.code == 11000){
+            return res.status(500).send({error: "Email already taken"})
+        }
         res.status(500).send({error: e.message})
     }
 })
