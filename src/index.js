@@ -9,7 +9,6 @@ const orderRouter = require('./routers/orderRouter')
 const postRouter = require('./routers/postRouter')
 const authRouter = require('./routers/authRoutes')
 require('./utils/passport-setup')
-const cors = require('cors')
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -22,9 +21,13 @@ const port = process.env.PORT || 3000
 const app = express()
 
 app.use(express.json())
+app.use(function(req, res, next){
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    next()
+});
 
 //Initialize passport
-app.use(cors())
 app.use(cookieSession({
     maxAge: 24*60*60*1000,
     keys: [process.env.COOKIE_ENCRYPT_KEY]
