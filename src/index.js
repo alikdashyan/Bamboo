@@ -9,6 +9,7 @@ const orderRouter = require('./routers/orderRouter')
 const postRouter = require('./routers/postRouter')
 const authRouter = require('./routers/authRoutes')
 require('./utils/passport-setup')
+const cors = require('cors')
 
 mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
@@ -23,13 +24,13 @@ const app = express()
 app.use(express.json())
 
 //Initialize passport
+app.use(cors())
 app.use(cookieSession({
     maxAge: 24*60*60*1000,
     keys: [process.env.COOKIE_ENCRYPT_KEY]
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-
 app.use(express.static(publicDirectory))
 app.use(dataRouter)
 app.use('/users', userRouter)
