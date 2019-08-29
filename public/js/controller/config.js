@@ -35,6 +35,10 @@ app.config(['$routeProvider',function($routeProvider){
       templateUrl: 'view/forms-user-profile.html',
       controller: 'formCntrl'
     })
+    .when('/profile', {
+      templateUrl: 'view/profile.html',
+      controller: 'profileCntrl'
+    })
     .otherwise({redirctTo:'/'})
 }])
 app.controller('homeCtrl', function ($scope) {
@@ -46,7 +50,7 @@ app.controller('homeCtrl', function ($scope) {
         const opacity =  element.style.opacity;
         if(opacity != '1')
             element.style.opacity = '1';
-        // console.log(element);
+
 
     }
 })
@@ -59,7 +63,7 @@ app.controller('pageCtrl', function ($scope) {
         const opacity =  element.style.opacity;
         if(opacity != '1')
             element.style.opacity = '1';
-        // console.log(element);
+
 
     }
 
@@ -76,7 +80,7 @@ app.controller('blogCtrl',function ($scope, postsFactory) {
         const opacity =  element.style.opacity;
         if(opacity != '1')
             element.style.opacity = '1';
-        // console.log(element);
+
 
     }
 })
@@ -105,33 +109,52 @@ app.controller('contactCtrl', function ($scope) {
 
     }
 })
-app.controller('authCtrl', function($scope, $http) {
+app.controller('authCtrl', function($scope, $http, $location) {
     $scope.submit = function(){
+      const httpOptions = {
+        header: {
+          'Access-Control-Allow-Origin': '*',
+           withCredentials: true
+        }
+      }
         let email = $scope.email;
         let password = $scope.password;
-        let body = {
+        let body = JSON.stringify({
           email,
           password
-        }
-        $http.post('/users/login',JSON.stringify(body)).then(
+        });
+        $http.post('http://www.amzbamboo.com/users/login', body, httpOptions).then(
             success => {
               console.log(success);
               let token = success.data.token;
               if(token){
                 localStorage.setItem('token', token);
+                $location.path('/profile').replace();
               }
             },
             innerError => {
-              console.log(body, 'error');
+              if(innerError.data){
+                $scope.loginError = innerError.data.error;
+              }
             }
             )
             .catch(error => console.log(error));
       }
       $scope.registerSubmit = function() {
+        $scope.authError = '';
+        $scope.passwordError = '';
         let name = $scope.regName;
         let lastName = $scope.regLastName;
         let email = $scope.regEmail;
-        let password = $scope.regPassword;
+        let password = $scope.regPassword === $scope.regPasswordRepeat ? $scope.regPassword : $scope.passwordError = 'Password didnt match';
+        
+        const httpOptions = {
+          header: {
+            'Access-Control-Allow-Origin': '*',
+             withCredentials: true
+          }
+        }
+
         let regBody = {
           name,
           lastName,
@@ -139,17 +162,30 @@ app.controller('authCtrl', function($scope, $http) {
           password,
         }
         let stringifiedBody = JSON.stringify(regBody);
-        $http.post('/users/signup',stringifiedBody).then(
-          success => {
-            let token = success.data.token;
-            if(token){
-              localStorage.setItem('token', token);
-            }
+        let checked = document.querySelector('label[for="terms"]');
+        let submitBUtton = document.querySelector('input[disabled="disabled"]');
 
-          },
-          innerError => {
-            console.log('error');
-          })      
+        if(checked)
+
+        if(password != $scope.passwordError ){
+          regRequest();
+        }
+        function regRequest() {
+          $http.post('http://www.amzbamboo.com/users/signup',stringifiedBody, httpOptions).then(
+            success => {
+              let token = success.data.token;
+              if(token){
+                localStorage.setItem('token', token);
+                $location.path('/profile').replace();
+              }
+            },
+            innerError => {
+              if(innerError){
+                $scope.authError = innerError.data.error;
+                console.log(innerError);
+              }
+            })      
+        }
       }
 
     let animations = document.getElementsByClassName('appear-animation');
@@ -159,8 +195,6 @@ app.controller('authCtrl', function($scope, $http) {
         const opacity =  element.style.opacity;
         if(opacity != '1')
             element.style.opacity = '1';
-        // console.log(element);
-
     }
   })
 app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
@@ -174,8 +208,6 @@ app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
         const opacity =  element.style.opacity;
         if(opacity != '1')
             element.style.opacity = '1';
-        // console.log(element);
-
     }
 })
 
@@ -206,6 +238,45 @@ app.controller('formCntrl', function($scope, $http) {
  
 })
 
+app.controller('profileCntrl', function($scope, $location){
+  if(!localStorage.token){
+    $location.path('/').replcae();
+  }
+  let firstName =$scope.firstName;
+  let lastName = $scope.lastName;
+  let email = $scope.email;
+  let company  = $scope.company;
+  let website = $scope.website;
+  let adress = {
+    street : $scope.street,
+    city : $scope.city,
+    state : $scope.state
+  }
+  let timeZone = {
+
+  }
+  let userName = $scope.userName;
+  let password = $scope.password;
+  let confirmPassword = $scope.confirmPassword;
+
+  let profileBody = {
+    firstName,
+    lastName,
+    email,
+    company,
+    website,
+    adress: {
+      state,
+      city,
+      state
+    },
+    timeZone:{},
+    userName,
+    password,
+    confirmPassword
+  }
+  
+})
   app.factory('postsFactory', function () {
     return [
       {
