@@ -39,6 +39,10 @@ app.config(['$routeProvider',function($routeProvider){
       templateUrl: 'view/profile.html',
       controller: 'profileCntrl'
     })
+    .when('/userTable',{
+      templateUrl: 'view/user-tables.html',
+      controller: 'tableCtrl'
+    })
     .otherwise({redirctTo:'/'})
 }])
 app.controller('homeCtrl', function ($scope) {
@@ -125,7 +129,6 @@ app.controller('authCtrl', function($scope, $http, $location) {
         });
         $http.post('http://www.amzbamboo.com/users/login', body, httpOptions).then(
             success => {
-              console.log(success);
               let token = success.data.token;
               if(token){
                 localStorage.setItem('token', token);
@@ -136,6 +139,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
               if(innerError.data){
                 $scope.loginError = innerError.data.error;
               }
+              $location.path('/authCtrl').replace();
             }
             )
             .catch(error => console.log(error));
@@ -211,13 +215,23 @@ app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
     }
 })
 
-app.controller('formCntrl', function($scope, $http) {
+app.controller('formCntrl', function($scope, $http,$location) {
   $scope.submitOrder = function(){
     let productLink = $scope.productLink;
     let buyingsPerDay = $scope.buyingsPerDay;
     let itemPrice = $scope.itemPrice;
     let totalBuyingSummary = $scope.totalBuyingSummary;
     let additionalInfo = $scope.additionalInfo;
+
+
+    const httpOptions = {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+           withCredentials: true,
+          'Authorization': `Bearer ${localStorage.token}`
+        }
+    }
+    
     let body = {
       productLink,
       buyingsPerDay,
@@ -226,18 +240,34 @@ app.controller('formCntrl', function($scope, $http) {
       additionalInfo,
     }
     let stringifiedBody = JSON.stringify(body);
-    $http.post('/order',stringifiedBody,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+    $http.post('http://www.amzbamboo.com/orders',stringifiedBody,httpOptions).then(
       success => {
+        let token = success.data.token;
+              if(token){
+                localStorage.setItem('token', token);
+                $location.path('/profile').replace();
+              }
         console.log(success);
       },
       innerError => {
-        console.log(error);
+        if(innerError.data){
+          $scope.orderError = innerError.error;
+        }
       }
     )
   }
  
 })
-
+app.controller('tableCtrl', function($scope,$http){
+  $http.get('http://www.amzbamboo.com/orders').then(
+    success => {
+      console.log(success);
+    },
+    innerError => {
+      console.log(innerError);
+    }
+  )
+})
 app.controller('profileCntrl', function($scope, $location){
   if(!localStorage.token){
     $location.path('/').replcae();

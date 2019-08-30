@@ -1,87 +1,83 @@
 		<div class="body">
+		
+
 			<div role="main" class="main">
 
-				<section class="page-header page-header-modern page-header-background page-header-background-sm overlay overlay-color-primary overlay-show overlay-op-8 mb-5" style="background-image: url(img/page-header/page-header-elements.jpg);">
+				<section class="page-header page-header-classic">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-12 align-self-center p-static order-2 text-center">
-								<h1>Forms</h1>
-
-							</div>
-							<div class="col-md-12 align-self-center order-1">
-								<ul class="breadcrumb breadcrumb-light d-block text-center">
+							<div class="col">
+								<ul class="breadcrumb">
 									<li><a href="#">Home</a></li>
-									<li class="active">Elements</li>
+									<li class="active">Features</li>
 								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col p-static">
+								<h1 data-title-border>Tables Responsive</h1>
+
 							</div>
 						</div>
 					</div>
 				</section>
+				
 
-				<div class="container py-2">
-
-					<div class="row">
+				<div class="container">
+				
 					
-						<div class="col-lg-12 order-1 order-lg-2">
-							
-							<div class="overflow-hidden mb-1">
-								<h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">User</strong> Profile</h2>
-							</div>
-							<div class="overflow-hidden mb-4 pb-3">
-								<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-
-							<form ng-submit="submitOrder()" role="form" class="needs-validation">
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Product link</label>
-							        <div class="col-lg-9">
-							            <input ng-model="productLink" class="form-control" required type="url" value="Link">
-							        </div>
-							    </div>
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">buyingsPerDay</label>
-							        <div class="col-lg-9">
-							            <input ng-model="buyingsPerDay"  class="form-control" required type="number" value="buyingsPerDay">
-							        </div>
-							    </div>
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">itemPrice</label>
-							        <div class="col-lg-9">
-							            <input ng-model="itemPrice" class="form-control" required type="number" value="itemPrice">
-							        </div>
-							    </div>
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">totalBuyingSummary</label>
-							        <div class="col-lg-9">
-							            <input ng-model="totalBuyingSummary" class="form-control" type="number" value="">
-							        </div>
-							    </div>
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">additionalInfo</label>
-							        <div class="col-lg-9">
-							            <input ng-model="additionalInfo" class="form-control" type="text" value="">
-							        </div>
-							    </div>
-							    
-							    <div class="form-group row">
-									<div class="form-group col-lg-9" style="text-align: center">
-										<p>{{ orderError ? orderError : 'success' }}</p>
+					
+					
+					<div class="row">
+						<div class="col">
+							<section class="card card-admin">
+								<header class="card-header">
+									<div class="card-actions">
+										<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+										<a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
 									</div>
-									<div class="form-group col-lg-3">
-										<input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
-									</div>
-							    </div>
-							</form>
-
+					
+									<h2 class="card-title">No More Tables</h2>
+								</header>
+								<div class="card-body">
+									<table class="table table-no-more table-bordered table-striped mb-0">
+										<thead>
+											<tr>
+												
+												<th class="text-right">Product Link</th>
+												<th class="text-right">Buyings Per Day</th>
+												<th class="text-right ">Item Price</th>
+												<th class="text-right">Total Buying Summary</th>
+												<th class="text-right">Additional Info</th>
+												<th class="text-right ">ID</th>
+												<th class="text-right ">Created At</th>
+												
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+											
+												<td data-title="Company" class="text-right">AUSTRALIAN AGRICULTURAL COMPANY LIMITED.</td>
+												<td data-title="Price" class="text-right">$1.38</td>
+												<td data-title="Change" class="text-right ">-0.01</td>
+												<td data-title="Change %" class="text-right">-0.36%</td>
+												<td data-title="Open" class="text-right">$1.39</td>
+												<td data-title="High" class="text-right ">$1.39</td>
+												<td data-title="Low" class="text-right ">$1.38</td>
+											
+											</tr>
+								
+										</tbody>
+									</table>
+								</div>
+							</section>
 						</div>
 					</div>
-
 				</div>
 
-				
 			</div>
- 
-			<footer id="footer" class="mt-0">
+
+			<footer id="footer">
 				<div class="container">
 					<div class="footer-ribbon">
 						<span>Get in Touch</span>
@@ -154,3 +150,4 @@
 				</div>
 			</footer>
 		</div>
+
