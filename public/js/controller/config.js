@@ -47,6 +47,8 @@ app.config(['$routeProvider',function($routeProvider){
 }])
 app.controller('homeCtrl', function ($scope) {
 
+    $('#revolutionSlider').show().revolution();
+
     let animations = document.getElementsByClassName('appear-animation');
 
     for (let index = 0; index < animations.length; index++) {
@@ -67,16 +69,12 @@ app.controller('pageCtrl', function ($scope) {
         const opacity =  element.style.opacity;
         if(opacity != '1')
             element.style.opacity = '1';
-
-
     }
 
 })
 app.controller('blogCtrl',function ($scope, postsFactory) {
-    console.log('blogCtrl', postsFactory);
-    $scope.posts = postsFactory
-    console.log($scope.posts);
 
+    $scope.posts = postsFactory;
     let animations = document.getElementsByClassName('appear-animation');
 
     for (let index = 0; index < animations.length; index++) {
@@ -84,11 +82,21 @@ app.controller('blogCtrl',function ($scope, postsFactory) {
         const opacity =  element.style.opacity;
         if(opacity != '1')
             element.style.opacity = '1';
-
-
     }
 })
 app.controller('aboutCtrl',function($scope){
+  $(function() {
+      $('[data-plugin-counter]:not(.manual), .counters [data-to]').each(function() {
+          var $this = $(this),
+              opts;
+
+          var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
+          if (pluginOptions)
+              opts = pluginOptions;
+
+          $this.themePluginCounter(opts);
+      });
+  });
   let animations = document.getElementsByClassName('appear-animation');
 
   for (let index = 0; index < animations.length; index++) {
@@ -96,8 +104,6 @@ app.controller('aboutCtrl',function($scope){
     const opacity =  element.style.opacity;
     if(opacity != '1')
       element.style.opacity = '1';
-    // console.log(element);
-    
   }
 })
 app.controller('contactCtrl', function ($scope) {
@@ -109,37 +115,34 @@ app.controller('contactCtrl', function ($scope) {
         const opacity =  element.style.opacity;
         if(opacity != '1')
             element.style.opacity = '1';
-        // console.log(element);
-
     }
 })
 app.controller('authCtrl', function($scope, $http, $location) {
+    if(localStorage.token){
+      $location.path('/profile').replace();
+    }
     $scope.submit = function(){
-      const httpOptions = {
-        header: {
-          'Access-Control-Allow-Origin': '*',
-           withCredentials: true
-        }
-      }
-        let email = $scope.email;
+
+      let email = $scope.email;
         let password = $scope.password;
         let body = JSON.stringify({
           email,
           password
         });
-        $http.post('http://www.amzbamboo.com/users/login', body, httpOptions).then(
+
+        $http.post('http://www.amzbamboo.com/users/login', body).then(
             success => {
               let token = success.data.token;
               if(token){
                 localStorage.setItem('token', token);
-                $location.path('/profile').replace();
+                window.location.reload();
               }
             },
             innerError => {
               if(innerError.data){
                 $scope.loginError = innerError.data.error;
               }
-              $location.path('/authCtrl').replace();
+              
             }
             )
             .catch(error => console.log(error));
@@ -151,13 +154,6 @@ app.controller('authCtrl', function($scope, $http, $location) {
         let lastName = $scope.regLastName;
         let email = $scope.regEmail;
         let password = $scope.regPassword === $scope.regPasswordRepeat ? $scope.regPassword : $scope.passwordError = 'Password didnt match';
-        
-        const httpOptions = {
-          header: {
-            'Access-Control-Allow-Origin': '*',
-             withCredentials: true
-          }
-        }
 
         let regBody = {
           name,
@@ -169,13 +165,11 @@ app.controller('authCtrl', function($scope, $http, $location) {
         let checked = document.querySelector('label[for="terms"]');
         let submitBUtton = document.querySelector('input[disabled="disabled"]');
 
-        if(checked)
-
         if(password != $scope.passwordError ){
           regRequest();
         }
         function regRequest() {
-          $http.post('http://www.amzbamboo.com/users/signup',stringifiedBody, httpOptions).then(
+          $http.post('http://www.amzbamboo.com/users/signup',stringifiedBody).then(
             success => {
               let token = success.data.token;
               if(token){
@@ -186,7 +180,6 @@ app.controller('authCtrl', function($scope, $http, $location) {
             innerError => {
               if(innerError){
                 $scope.authError = innerError.data.error;
-                console.log(innerError);
               }
             })      
         }
@@ -222,15 +215,6 @@ app.controller('formCntrl', function($scope, $http,$location) {
     let itemPrice = $scope.itemPrice;
     let totalBuyingSummary = $scope.totalBuyingSummary;
     let additionalInfo = $scope.additionalInfo;
-
-
-    const httpOptions = {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-           withCredentials: true,
-          'Authorization': `Bearer ${localStorage.token}`
-        }
-    }
     
     let body = {
       productLink,
@@ -240,7 +224,7 @@ app.controller('formCntrl', function($scope, $http,$location) {
       additionalInfo,
     }
     let stringifiedBody = JSON.stringify(body);
-    $http.post('http://www.amzbamboo.com/orders',stringifiedBody,httpOptions).then(
+    $http.post('http://www.amzbamboo.com/orders',stringifiedBody).then(
       success => {
         let token = success.data.token;
               if(token){
@@ -270,7 +254,7 @@ app.controller('tableCtrl', function($scope,$http){
 })
 app.controller('profileCntrl', function($scope, $location){
   if(!localStorage.token){
-    $location.path('/').replcae();
+    $location.path('/').replace();
   }
   let firstName =$scope.firstName;
   let lastName = $scope.lastName;
@@ -307,6 +291,22 @@ app.controller('profileCntrl', function($scope, $location){
   }
   
 })
+
+app.controller('HeaderCtrl', function($scope){
+      if(localStorage.token) $scope.token = localStorage.token;
+
+      // $scooe.checkLogAuth = function (token) {
+      //     return token ? 'profile' : 'login'
+      // }
+
+      $scope.logout = function(){
+        // event.preventDefault();
+        if(localStorage.token) localStorage.removeItem('token');
+        window.location.reload();
+      }
+});
+
+
   app.factory('postsFactory', function () {
     return [
       {
