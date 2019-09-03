@@ -2,13 +2,12 @@ const express = require('express')
 const User = require('../models/user')
 const auth = require('../middleware/userAuth')
 const jwt = require('jsonwebtoken')
-const sg = require('@sendgrid/mail')
+const mailTransport = require('../utils/nodemailer-setup')
 const path = require('path')
 const generateUniqueString = require('../utils/generateUniqueString')
 const Order = require('../models/order')
 
 const userRouter = new express.Router()
-sg.setApiKey(process.env.SENDGRID_API_KEY)
 
 userRouter.post('/signup', async (req, res) => {
     const user = new User(req.body)
@@ -18,13 +17,21 @@ userRouter.post('/signup', async (req, res) => {
         const token = await user.generateAuthToken()
         const mailVerifyToken = jwt.sign({id: user._id.toString()}, process.env.PASSWORD_TOKEN_KEY)
         const url = `${process.env.APP_URL}/users/verify?data=${mailVerifyToken}`
-        await sg.send({
+        const mailcfg = {
             to: user.email,
             from: process.env.SENDER_EMAIL_ADDRESS,
             subject: `Bamboo.am Email Verification`,
             text: 'Please verify your email by following this link',
             html: `<h2>Dear ${user.name} ${user.lastName}. Welcome to bamboo.am. Please verify your email.</h2>
                     <a href="${url}">Follow this link</a>`
+        }
+        mailTransport.sendMail(mailcfg, function (err, info) {
+            if(err){
+                console.log(err)
+                return res.status(500).send(err)
+            } else {
+                console.log(info)
+            }
         })
         res.status(201).send({user, token})
     } catch(e) {
@@ -133,12 +140,20 @@ userRouter.post('/recovery', async (req, res) => {
                 verificationLink: `${process.env.APP_URL}/users/verify?data=${token}`
             })
         }
-        sg.send({
+        const mailcfg = {
             from: process.env.SENDER_EMAIL_ADDRESS,
             to: user.email,
             subject: "Bamboo password recovery",
             text: "Password recovery link for Bamboo",
             html: `<a href="${url}">Follow this link for password recovery</a>`
+        }
+        mailTransport.sendMail(mailcfg, function (err, info) {
+            if(err){
+                console.log(err)
+                return res.status(500).send(err)
+            } else {
+                console.log(info)
+            }
         })
         res.status(200).send(url)
     } catch(e){

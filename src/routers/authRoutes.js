@@ -10,16 +10,16 @@ router.get('/google', passport.authenticate('google', {
     res.send('Autenticating with google')
 })
 
-router.get('/logout', (req, res) => {
+router.get('/logout', auth, (req, res) => {
     req.logout()
     res.redirect('/')
 })
 
-router.get('/viewUser', (req, res) => {
+router.get('/viewUser', auth, (req, res) => {
     res.send(req.user)
 })
 
-router.post('/update', async (req, res) => {
+router.post('/update', auth, async (req, res) => {
     try{    
         if(!req.body.contactInfo){
             return res.status(400).send({error: 'Provided data is invalid'})

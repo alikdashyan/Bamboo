@@ -1,10 +1,10 @@
 const Order = require('../models/order')
 const express = require('express')
 const auth = require('../middleware/userAuth')
-const sg = require('@sendgrid/mail')
+const mailTransport = require('../utils/nodemailer-setup')
 
 const orderRouter = new express.Router()
-sg.setApiKey(process.env.SENDGRID_API_KEY)
+
 
 orderRouter.post('/order', auth, async (req, res) => {
     if(!req.user.emailVerified){
@@ -22,7 +22,7 @@ orderRouter.post('/order', auth, async (req, res) => {
     try{
         await order.save()
         await req.user.populate('orders').execPopulate()
-        sg.send({
+        const mailcfg = {
             to: req.user.email,
             from: process.env.SENDER_EMAIL_ADDRESS,
             subject: `${req.user.name} ${req.user.lastName} has sent an order`,
@@ -42,7 +42,15 @@ orderRouter.post('/order', auth, async (req, res) => {
                         <li>Total buying summary: ${order.totalBuyingSummary}</li>
                         <li>Additional info: ${order.additionalInfo}</li>
                     </ul>`
-        })        
+        }
+        mailTransport.sendMail(mailcfg, function (err, info) {
+            if(err){
+                console.log(err)
+                return res.status(500).send(err)
+            } else {
+                console.log(info)
+            }
+        })
         res.status(201).send(req.user.orders)
     } catch(e) {
         console.log(e)
