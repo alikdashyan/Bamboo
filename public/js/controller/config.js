@@ -329,8 +329,9 @@ app.controller('HeaderCtrl', function($scope){
       $scope.logout = function(){
         // event.preventDefault();
         if(localStorage.token) localStorage.removeItem('token');
-        window.location.reload();
         $http.post('/users/logout',{headers:{'Authorization': `Bearer ${localStorage.token}`}})
+        .then(data => data ? window.location.reload(): console.log(data))
+        .catch(error => error ? console.log(error) : '')
       }
 });
 
