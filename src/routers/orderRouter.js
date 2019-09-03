@@ -9,13 +9,12 @@ const orderRouter = new express.Router()
 orderRouter.post('/order', auth, async (req, res) => {
     if(!req.user.emailVerified){
         return res.send({
-            error: 'Your email is not verified',
-            verificationLink: `${process.env.APP_URL}/users/verify?data=${token}`
+            error: 'Your email is not verified'
         })
     }
     const order = new Order(req.body)
     order.ID = req.user.userID
-    if(!req.user.contactInfo || req.user.contactInfo == {}){
+    if(!req.user.contactInfo || !req.user.contactInfo === {}){
         return res.status(400).send({error: "Contact info is not provided"})
     }
     order.userContactInfo = req.user.contactInfo
