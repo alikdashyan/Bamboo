@@ -23,7 +23,7 @@ orderRouter.post('/order', auth, async (req, res) => {
         await order.save()
         await req.user.populate('orders').execPopulate()
         const mailcfg = {
-            to: req.user.email,
+            to: process.env.SENDER_EMAIL_ADDRESS,
             from: process.env.SENDER_EMAIL_ADDRESS,
             subject: `${req.user.name} ${req.user.lastName} has sent an order`,
             text: `${req.user.name} ${req.user.lastName} has sent an order`,
