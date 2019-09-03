@@ -77,7 +77,8 @@ userRouter.post('/login', async (req, res) => {
         const token = await user.generateAuthToken()
         res.send({user, token})
     } catch (e){
-        res.status(401).send({error: e.message})
+        console.log(e)
+        res.status(400).send({error: e.message})
     }
 })
 
