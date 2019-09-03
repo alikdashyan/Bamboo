@@ -315,7 +315,7 @@ app.controller('profileCntrl', function($scope, $location){
   
 })
 
-app.controller('HeaderCtrl', function($scope){
+app.controller('HeaderCtrl', function($scope, $http){
       if(localStorage.token) $scope.token = localStorage.token;
 
       // $scooe.checkLogAuth = function (token) {
