@@ -130,7 +130,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
           password
       });
       const httpOptions = {
-        header: {
+        headers: {
           'Authorization': `Bearer ${localStorage.token}`
         }
       }
@@ -174,7 +174,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
           regRequest();
         }
         const httpOptions = {
-          header: {
+          headers: {
             'Authorization': `Bearer ${localStorage.token}`
           }
         }
@@ -223,9 +223,12 @@ app.controller('formCntrl', function($scope, $http,$location) {
     $location.path('/').replace();
   }
   const httpOptions = {
-    header: {
+    headers: {
       'Authorization': `Bearer ${localStorage.token}`
     }
+  }
+  $scope.btnSuccess = function(){
+      
   }
   $scope.submitOrder = function(){
     let productLink = $scope.productLink;
@@ -233,7 +236,6 @@ app.controller('formCntrl', function($scope, $http,$location) {
     let itemPrice = $scope.itemPrice;
     let totalBuyingSummary = $scope.totalBuyingSummary;
     let additionalInfo = $scope.additionalInfo;
-    
     let body = {
       productLink,
       buyingsPerDay,
@@ -265,7 +267,7 @@ app.controller('tableCtrl', function($scope,$http,$location){
     $location.path('/').replace();
   }
   const httpOptions = {
-    header: {
+    headers: {
       'Authorization': `Bearer ${localStorage.token}`
     }
   }
