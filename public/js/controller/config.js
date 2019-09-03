@@ -222,11 +222,11 @@ app.controller('formCntrl', function($scope, $http,$location) {
   if(!localStorage.token){
     $location.path('/').replace();
   }
-  const headers = new Headers()
-  headers.append('Authorization', `Bearer ${localStorage.token}`)
-  const httpOptions = {
-    header: headers
-  }
+  // const headers = new Headers()
+  // headers.append('Authorization', `Bearer ${localStorage.token}`)
+  // const httpOptions = {
+  //   header: headers
+  // }
   $scope.submitOrder = function(){
     let productLink = $scope.productLink;
     let buyingsPerDay = $scope.buyingsPerDay;
@@ -242,12 +242,11 @@ app.controller('formCntrl', function($scope, $http,$location) {
       additionalInfo,
     }
     let stringifiedBody = JSON.stringify(body);
-    $http.post('http://www.amzbamboo.com/order',stringifiedBody, httpOptions).then(
+    $http.post('http://www.amzbamboo.com/order',stringifiedBody, {headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
       success => {
         let token = success.data.token;
               if(token){
                 localStorage.setItem('token', token);
-                $location.path('/profile').replace();
               }
         console.log(success);
       },
