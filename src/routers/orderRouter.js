@@ -46,7 +46,6 @@ orderRouter.post('/order', auth, async (req, res) => {
         mailTransport.sendMail(mailcfg, function (err, info) {
             if(err){
                 console.log(err)
-                return res.status(500).send(err)
             } else {
                 console.log(info)
             }
