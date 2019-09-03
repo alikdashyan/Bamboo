@@ -14,8 +14,8 @@ orderRouter.post('/order', auth, async (req, res) => {
     }
     const order = new Order(req.body)
     order.ID = req.user.userID
-    if(!req.user.contactInfo || !req.user.contactInfo === {}){
-        return res.status(400).send({error: "Contact info is not provided"})
+    if(!req.user.contactInfo.emailForRefunds || !req.user.contactInfo.skypeViberWhatsApp || !req.user.contactInfo.facebookLink){
+        return res.status(400).send({error: "Contact info is not provided or has not filled correctly"})
     }
     order.userContactInfo = req.user.contactInfo
     try{
