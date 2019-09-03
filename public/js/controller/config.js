@@ -222,10 +222,10 @@ app.controller('formCntrl', function($scope, $http,$location) {
   if(!localStorage.token){
     $location.path('/').replace();
   }
+  const headers = new Headers()
+  headers.append('Authorization', `Bearer ${localStorage.token}`)
   const httpOptions = {
-    header: {
-      'Authorization': `Bearer ${localStorage.token}`
-    }
+    header: headers
   }
   $scope.submitOrder = function(){
     let productLink = $scope.productLink;
