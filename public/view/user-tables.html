@@ -55,14 +55,14 @@
 											</tr>
 										</thead>
 										<tbody>
-											<tr ngRepeat="data in viewData">
+											<tr ng-repeat="data in viewData">
 												<td data-title="Company" class="text-right">{{data.productLink}}</td>
 												<td data-title="Price" class="text-right">{{data.buyingsPerDay}}</td>
 												<td data-title="Change" class="text-right ">{{data.itemPrice}}</td>
 												<td data-title="Change %" class="text-right">{{data.totalBuyingSummary}}</td>
 												<td data-title="Open" class="text-right">{{data.additionalInfo}}</td>
-												<td data-title="High" class="text-right ">{{data.}}</td>
-												<td data-title="Low" class="text-right ">{{data.}}</td>
+												<td data-title="High" class="text-right ">{{data.ID}}</td>
+												<td data-title="Low" class="text-right ">{{data.createdAt}}</td>
 											
 											</tr>
 								

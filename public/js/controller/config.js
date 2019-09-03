@@ -288,7 +288,7 @@ app.controller('profileCntrl', function($scope, $location){
   let email = $scope.email;
   let company  = $scope.company;
   let website = $scope.website;
-  let adress = {
+  let address = {
     street : $scope.street,
     city : $scope.city,
     state : $scope.state
@@ -306,12 +306,8 @@ app.controller('profileCntrl', function($scope, $location){
     email,
     company,
     website,
-    adress: {
-      state,
-      city,
-      state
-    },
-    timeZone:{},
+    address,
+    timeZone,
     userName,
     password,
     confirmPassword
