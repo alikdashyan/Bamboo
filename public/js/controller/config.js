@@ -1,6 +1,6 @@
 var app = angular.module('app',['ngRoute','angularUtils.directives.dirPagination']);
-app.config(['$routeProvider',function($routeProvider){
-
+app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider){
+    $locationProvider.hashPrefix('');
     $routeProvider
     .when('/',{
         templateUrl:'view/home.html',
@@ -129,12 +129,8 @@ app.controller('authCtrl', function($scope, $http, $location) {
           email,
           password
       });
-      // const httpOptions = {
-      //   headers: {
-      //     'Authorization': `Bearer ${localStorage.token}`
-      //   }
-      // }
-        $http.post('http://www.amzbamboo.com/users/login', body,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+
+      $http.post('http://www.amzbamboo.com/users/login', body,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
             success => {
               let token = success.data.token;
               if(token){
@@ -173,18 +169,14 @@ app.controller('authCtrl', function($scope, $http, $location) {
         if(password != $scope.passwordError ){
           regRequest();
         }
-        // const httpOptions = {
-        //   headers: {
-        //     'Authorization': `Bearer ${localStorage.token}`
-        //   }
-        // }
+
         function regRequest() {
           $http.post('http://www.amzbamboo.com/users/signup',stringifiedBody,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
             success => {
               let token = success.data.token;
               if(token){
                 localStorage.setItem('token', token);
-                $location.path('/profile').replace();
+                window.location.reload();
               }
             },
             innerError => {
@@ -222,17 +214,21 @@ app.controller('formCntrl', function($scope, $http,$location) {
   if(!localStorage.token){
     $location.path('/').replace();
   }
-  // const headers = new Headers()
-  // headers.append('Authorization', `Bearer ${localStorage.token}`)
-  // const httpOptions = {
-  //   header: headers
-  // }
+
   $scope.submitOrder = function(){
     let productLink = $scope.productLink;
     let buyingsPerDay = $scope.buyingsPerDay;
     let itemPrice = $scope.itemPrice;
     let totalBuyingSummary = $scope.totalBuyingSummary;
     let additionalInfo = $scope.additionalInfo;
+    
+    let httpOptions = {
+      headers: {
+        'Authorization': `Bearer ${localStorage.token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+    
     let body = {
       productLink,
       buyingsPerDay,
@@ -241,13 +237,14 @@ app.controller('formCntrl', function($scope, $http,$location) {
       additionalInfo,
     }
     let stringifiedBody = JSON.stringify(body);
-    $http.post('http://www.amzbamboo.com/order',stringifiedBody, {headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+
+    $scope.success = '';
+    $http.post('http://www.amzbamboo.com/order',stringifiedBody, httpOptions).then(
       success => {
-        let token = success.data.token;
-              if(token){
-                localStorage.setItem('token', token);
-              }
-        console.log(success);
+        if(!success.data.error){
+          // console.log(success);
+          $location.path('/userTable');
+        }
       },
       innerError => {
         if(innerError.data){
@@ -262,11 +259,7 @@ app.controller('tableCtrl', function($scope,$http,$location){
   if(!localStorage.token){
     $location.path('/').replace();
   }
-  // const httpOptions = {
-  //   headers: {
-  //     'Authorization': `Bearer ${localStorage.token}`
-  //   }
-  // }
+
   $http.get('http://www.amzbamboo.com/orders', {headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
     success => {
       let bambooData = success.data;
@@ -279,38 +272,39 @@ app.controller('tableCtrl', function($scope,$http,$location){
     }
   )
 })
-app.controller('profileCntrl', function($scope, $location){
+app.controller('profileCntrl', function($scope, $location, $http){
   if(!localStorage.token){
     $location.path('/').replace();
   }
-  let firstName =$scope.firstName;
-  let lastName = $scope.lastName;
-  let email = $scope.email;
-  let company  = $scope.company;
-  let website = $scope.website;
-  let address = {
-    street : $scope.street,
-    city : $scope.city,
-    state : $scope.state
-  }
-  let timeZone = {
-
-  }
-  let userName = $scope.userName;
-  let password = $scope.password;
-  let confirmPassword = $scope.confirmPassword;
-
-  let profileBody = {
-    firstName,
-    lastName,
-    email,
-    company,
-    website,
-    address,
-    timeZone,
-    userName,
-    password,
-    confirmPassword
+  
+  $scope.editUser = function(){
+    let name = $scope.name;
+    let lastName = $scope.lastName;
+    let contactInfo = {
+      emailForRefunds: $scope.emailForRefunds,
+      skypeViberWhatsApp: $scope.skypeViberWhatsApp,
+      facebookLink: $scope.facebook
+    }
+    
+    const httpOptions = {
+      headers: {
+        'Authorization': `Bearer ${localStorage.token}`,
+        'Content-Type': 'application/json'
+      },
+    }
+  
+    let profileBody = JSON.stringify({
+      name,
+      lastName,
+      contactInfo
+    })
+    console.log(profileBody);
+    $http.patch('http://www.amzbamboo.com/users/update', profileBody, httpOptions)
+      .then(
+        innerSuccess => innerSuccess.statusText == "OK" ? $scope.success = 'User Successfully Edited' : $scope.error = 'Something went wrong',
+        innerError => console.log(innerError)
+      )
+      .catch(error => console.log(error))
   }
   
 })
@@ -318,16 +312,11 @@ app.controller('profileCntrl', function($scope, $location){
 app.controller('HeaderCtrl', function($scope, $http){
       if(localStorage.token) $scope.token = localStorage.token;
 
-      // $scooe.checkLogAuth = function (token) {
-      //     return token ? 'profile' : 'login'
-      // }
-
       $scope.logout = function(){
         // event.preventDefault();
         $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.token}`}})
-        .then(data => data ? window.location.reload(): console.log(data))
+        .then(data => localStorage.removeItem('token'))
         .catch(error => error ? console.log(error) : '')
-        if(localStorage.token) localStorage.removeItem('token');
       }
 });
 

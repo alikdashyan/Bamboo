@@ -21,6 +21,7 @@
 		<!-- Web Fonts  -->
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400" rel="stylesheet" type="text/css">
 
+		<!-- <base href="/"> -->
 		<!-- Vendor CSS -->
 		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
@@ -95,7 +96,7 @@
 							<div class="header-column">
 								<div class="header-row">
 									<div class="header-logo">
-										<a href="#!/">
+										<a href="/">
 											<img alt="Porto" width="300" height="120" data-sticky-width="300" data-sticky-height="120" src="img/bamboo-logo.png">
 										</a>
 									</div>
@@ -108,21 +109,21 @@
 												<nav class="collapse">
 														<ul class="nav nav-pills" id="mainNav">
 															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle " href="#!/services">Services</a>														
+																<a class="dropdown-item dropdown-toggle " href="#/services">Services</a>														
 															</li>
 															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle" href="#!/blog">
+																<a class="dropdown-item dropdown-toggle" href="#/blog">
 																	Blog
 																</a>	
 															</li>
 															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle "  href="#!/about">About Us</a>														
+																<a class="dropdown-item dropdown-toggle "  href="#/about">About Us</a>														
 															</li>
 															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle "  href="#!/contact">Contact Us</a>														
+																<a class="dropdown-item dropdown-toggle "  href="#/contact">Contact Us</a>														
 															</li>
 															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle " href="{{ token ? '#!/profile' : '#!/login' }}">{{ token ? 'Profile' : 'Login/Register' }}</a>															
+																<a class="dropdown-item dropdown-toggle " href="{{ token ? '#/profile' : '#/login' }}">{{ token ? 'Profile' : 'Login/Register' }}</a>															
 															</li>
 															<li class="dropdown" ng-show='token' ng-click='logout()'>
 																<a class="dropdown-item dropdown-toggle " href="#">Logout</a>															
@@ -208,7 +209,7 @@
 		<script src="js/theme.js"></script>
 
 		<!-- Admin Extension -->
-		<script src="admin/js/theme.admin.extension.js"></script>
+		<!-- <script src="js/theme.admin.extension.js"></script> -->
 
 		
 					

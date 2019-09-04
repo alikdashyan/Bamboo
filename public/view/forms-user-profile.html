@@ -35,25 +35,25 @@
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Product link</label>
 							        <div class="col-lg-9">
-							            <input ng-model="productLink" class="form-control" required type="url" value="Link">
+							            <input ng-model="productLink" class="form-control" required type="url" >
 							        </div>
 							    </div>
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">buyingsPerDay</label>
 							        <div class="col-lg-9">
-							            <input ng-model="buyingsPerDay"  class="form-control" required type="number" value="buyingsPerDay">
+							            <input ng-model="buyingsPerDay"  class="form-control" required type="number" >
 							        </div>
 							    </div>
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">itemPrice</label>
 							        <div class="col-lg-9">
-							            <input ng-model="itemPrice" class="form-control" required type="number" value="itemPrice">
+							            <input ng-model="itemPrice" class="form-control" required type="number" >
 							        </div>
 							    </div>
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">totalBuyingSummary</label>
 							        <div class="col-lg-9">
-							            <input ng-model="totalBuyingSummary" class="form-control" type="number" value="">
+							            <input ng-model="totalBuyingSummary" class="form-control" type="number" >
 							        </div>
 							    </div>
 							    <div class="form-group row">
@@ -65,7 +65,7 @@
 							    
 							    <div class="form-group row">
 									<div class="form-group col-lg-9" style="text-align: center">
-										<p>{{ orderError ? orderError : 'success'}}</p>
+										<p>{{ orderError ? orderError : success}}</p>
 									</div>
 									<div class="form-group col-lg-3">
 										<input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
