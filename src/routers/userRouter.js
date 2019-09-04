@@ -92,7 +92,7 @@ userRouter.post('/logout', auth, async (req, res) => {
     try{
         req.user.tokens = req.user.tokens.filter((token) => {return token.token !== req.token})
         await req.user.save()
-        res.send({message: 'Success'})
+        res.redirect('/')
     } catch(e){
         console.log(e)
         res.status(500).send({error: e.message})
@@ -103,7 +103,7 @@ userRouter.post('/logoutAll', auth, async (req, res) => {
     try{
         req.user.tokens = []
         await req.user.save()
-        res.status(200).send()
+        res.redirect('/')
     } catch(e) {
         res.status(500).send({error: e.message})
     }
@@ -111,7 +111,7 @@ userRouter.post('/logoutAll', auth, async (req, res) => {
 
 userRouter.patch('/update', auth, async (req, res) => {
     try{
-        if(!(req.body.name || req.body.lastName || req.body.email || req.body.password || req.body.contactInfo)) {
+        if(!(req.body.name || req.body.lastName || req.body.email || req.body.contactInfo)) {
             return res.status(400).send({message: 'Provided data is invalid. Nothing changed'})
         }
         Object.assign(req.user, req.body)
