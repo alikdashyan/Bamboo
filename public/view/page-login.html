@@ -40,18 +40,23 @@
 														</div>
 														<div class="form-row">
 															<div class="form-group col">
-																<a class="float-right" href="#">(Lost Password?)</a>
+																<!-- <a class="float-right" href="#">(Lost Password?)</a> -->
 																<label class="font-weight-bold text-dark text-2">Password</label>
-																<input ng-model='password' type="password" class="form-control form-control-lg" required>
+																<input ng-model='password' type="password" pattern="^(?=.*\d).{4,16}$" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
-															<div class="form-group col-lg-4">
+															<div class="form-group col-lg-12">
+																<p>{{ loginPasswordError?  loginPasswordError : loginError }}</p>
+															</div>
+															
+														</div>
+														<div class="form-row">
+															<div class="form-group col-lg-6">
 																<input type="submit" value="Login" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
 															</div>
-															<div class="form-group col-lg-4">
-																<div class="g-signin2 float-right" style="height: 43px;" data-onsuccess='submit'></div>
-																<button  onclick='signOut()' class=" data btn btn-danger float-right" style="height: 43px; display: none;">Close</button>
+															<div class="form-group col-lg-6" >
+																<input type="submit" value="Google" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
 															</div>
 														</div>
 													</form>
@@ -66,13 +71,13 @@
 														<div class="form-row">
 															<div class="form-group col">
 																<label class="font-weight-bold text-dark text-2">Firstname</label>
-																<input ng-model="regName" type="text" class="form-control form-control-lg" required>
+																<input ng-model="regName" type="text"  pattern="^[^\s]+(\s.*)?$"  class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
 															<div class="form-group col">
 																<label class="font-weight-bold text-dark text-2">Lastname</label>
-																<input ng-model="regLastName" type="text" class="form-control form-control-lg" required>
+																<input ng-model="regLastName" type="text"  class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<div class="form-row">
@@ -84,21 +89,21 @@
 														<div class="form-row">
 															<div class="form-group col-lg-6">
 																<label class="font-weight-bold text-dark text-2">Password</label>
-																<input ng-model="regPassword" type="password" class="form-control form-control-lg" required>
+																<input ng-model="regPassword" type="password" pattern="^(?=.*\d).{4,16}$" class="form-control form-control-lg" required>
 															</div>
 															<div class="form-group col-lg-6">
 																<label class="font-weight-bold text-dark text-2">Re-enter Password</label>
-																<input ng-model="regPasswordRepeat" type="password" class="form-control form-control-lg" required>
+																<input ng-model="regPasswordRepeat" type="password" pattern="^(?=.*\d).{4,16}$" class="form-control form-control-lg" required>
 															</div>
 														</div>
 														<p>{{ passwordError ? passwordError : authError }}</p>
 														<div class="form-row">
-															<!-- <div class="form-group col-lg-9">
-																<div class="custom-control custom-checkbox">
+															<div class="form-group col-lg-9">
+																<!-- <div class="custom-control custom-checkbox">
 																	<input type="checkbox" class="custom-control-input" id="terms">
 																	<label class="custom-control-label text-2" for="terms">I have read and agree to the <a href="#">terms of service</a></label>
-																</div>
-															</div> -->
+																</div> -->
+															</div>
 															<div class="form-group col-lg-3">
 																<input type="submit" value="Register" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
 																

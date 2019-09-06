@@ -122,9 +122,10 @@ app.controller('authCtrl', function($scope, $http, $location) {
       $location.path('/profile').replace();
     }
     $scope.submit = function(){
-
+      $scope.loginError = '';
+      $scope.loginPasswordError = '';
       let email = $scope.email;
-      let password = $scope.password;
+      let password = $scope.password ;
       let body = JSON.stringify({
           email,
           password
@@ -142,7 +143,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
               if(innerError.data){
                 $scope.loginError = innerError.data.error;
               }
-              
+              console.log(innerError)
             }
             )
             .catch(error => console.log(error));
@@ -183,7 +184,8 @@ app.controller('authCtrl', function($scope, $http, $location) {
               if(innerError){
                 $scope.authError = innerError.data.error;
               }
-            })      
+            })
+            .catch(error => console.log(error));      
         }
       }
 
@@ -241,13 +243,16 @@ app.controller('formCntrl', function($scope, $http,$location) {
     $scope.success = '';
     $http.post('http://www.amzbamboo.com/order',stringifiedBody, httpOptions).then(
       success => {
+        console.log(success);
         if(!success.data.error){
-          // console.log(success);
-          $location.path('/userTable');
+          $location.path('/userTable').replace();
+        }else{
+           $scope.orderError = success.data.error;
         }
       },
       innerError => {
-        if(innerError.data){
+        console.log(innerError);
+        if(innerError.error){
           $scope.orderError = innerError.error;
         }
       }
@@ -259,7 +264,6 @@ app.controller('tableCtrl', function($scope,$http,$location){
   if(!localStorage.token){
     $location.path('/').replace();
   }
-
   $http.get('http://www.amzbamboo.com/orders', {headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
     success => {
       let bambooData = success.data;
@@ -278,6 +282,7 @@ app.controller('profileCntrl', function($scope, $location, $http){
   }
   
   $scope.editUser = function(){
+    $scope.ubdateError = "";
     let name = $scope.name;
     let lastName = $scope.lastName;
     let contactInfo = {
@@ -302,21 +307,32 @@ app.controller('profileCntrl', function($scope, $location, $http){
     $http.patch('http://www.amzbamboo.com/users/update', profileBody, httpOptions)
       .then(
         innerSuccess => innerSuccess.statusText == "OK" ? $scope.success = 'User Successfully Edited' : $scope.error = 'Something went wrong',
-        innerError => console.log(innerError)
+
+        innerError => {
+          
+            $scope.ubdateError = innerError.data.error;
+            // console.log('text' , innerError)
+            // console.log('text' , innerError.data.error)
+        }
       )
       .catch(error => console.log(error))
   }
   
 })
 
-app.controller('HeaderCtrl', function($scope, $http){
-      if(localStorage.token) $scope.token = localStorage.token;
+app.controller('HeaderCtrl', function($scope, $http, $location){
+      if(localStorage.token) {
+        $scope.token = localStorage.token;
+      }
 
       $scope.logout = function(){
-        // event.preventDefault();
-        $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.token}`}})
-        .then(data => localStorage.removeItem('token'))
-        .catch(error => error ? console.log(error) : '')
+
+        localStorage.removeItem('token');
+        // $location.path('/').replace();
+        window.location.reload();
+        // $http.post('/users/logout', {test:'Test'}, {headers:{'Authorization': `Bearer ${localStorage.token}`}})
+        // .then(data => localStorage.removeItem('token'))
+        // .catch(error => error ? console.log(error) : '')
       }
 });
 
