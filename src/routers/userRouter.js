@@ -103,7 +103,7 @@ userRouter.post('/logoutAll', auth, async (req, res) => {
     try{
         req.user.tokens = []
         await req.user.save()
-        res.redirect('/')
+        res.status(301).redirect('/')
     } catch(e) {
         res.status(500).send({error: e.message})
     }
