@@ -327,12 +327,12 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
 
       $scope.logout = function(){
 
-        localStorage.removeItem('token');
+        // localStorage.removeItem('token');
         // $location.path('/').replace();
-        window.location.reload();
-        // $http.post('/users/logout', {test:'Test'}, {headers:{'Authorization': `Bearer ${localStorage.token}`}})
-        // .then(data => localStorage.removeItem('token'))
-        // .catch(error => error ? console.log(error) : '')
+        // window.location.reload();
+        $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.token}`}})
+        .then(data => localStorage.removeItem('token'))
+        .catch(error => error ? console.log(error) : '')
       }
 });
 
