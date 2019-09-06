@@ -22,8 +22,81 @@ userRouter.post('/signup', async (req, res) => {
             from: process.env.SENDER_EMAIL_ADDRESS,
             subject: `Bamboo.am Email Verification`,
             text: 'Please verify your email by following this link',
-            html: `<h2>Dear ${user.name} ${user.lastName}. Welcome to bamboo.am. Please verify your email.</h2>
-                    <a href="${url}">Follow this link</a>`
+            html: `<!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Order completed</title>
+                <style>
+                    @font-face {
+                        font-family: "Open Sans", Arial, sans-serif;
+                        src: url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400);
+                    }
+                    img {
+                        width: 100%;
+                    }
+                    a, :hover {
+                        text-decoration: none;
+                    }
+            
+                    body{
+                        font-family: "Open Sans", Arial, sans-serif;
+                    }
+            
+                    .mail-wrapper{
+                        display: flex;
+                        justify-content: center;
+                    }
+            
+                    .mail-wrapper .mail-container {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 15px;
+                        width: 70%;
+                    }
+            
+                    .mail-wrapper .mail-container div.single-section{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                    }
+            
+                    .mail-wrapper .mail-container div.single-section .logo{
+                        width: 30%;
+                    }
+            
+            
+            
+            
+                </style>
+            </head>
+            <body>
+                <div class="mail-wrapper">
+                    <div class="mail-container">
+                        <div class="single-section">
+                            <div class="mail-content logo">
+                                <img src="http://localhost:3001/img/bamboo-logo.png" alt="amzbamboo.com">
+                            </div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="single-section">
+                            <div class="mail-content">
+                                <h3>Dear ${user.name} ${user.lastName}. Welcome to bamboo.am. Please verify your email.</h3>
+                            </div>
+                            <div class="line"></div>
+                        </div>
+                        <div class="single-section">
+                            <div class="mail-content">
+                                <a href="${url}"><h4>Follow this link</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+            </html>`
         }
         mailTransport.sendMail(mailcfg, function (err, info) {
             if(err){
@@ -103,7 +176,7 @@ userRouter.post('/logoutAll', auth, async (req, res) => {
     try{
         req.user.tokens = []
         await req.user.save()
-        res.status(301).redirect('/')
+        res.redirect('/')
     } catch(e) {
         res.status(500).send({error: e.message})
     }
