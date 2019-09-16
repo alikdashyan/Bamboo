@@ -5,7 +5,11 @@
     "type": "git",
     "url": "https://github.com/start-angular/sb-admin-angular"
   },
-  "dependencies": {},
+  "dependencies": {
+    "gifsicle": "^4.0.1",
+    "jpegtran-bin": "^4.0.0",
+    "optipng-bin": "^6.0.0"
+  },
   "devDependencies": {
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",

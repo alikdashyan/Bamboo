@@ -8,6 +8,7 @@ const userRouter = require('./routers/userRouter')
 const orderRouter = require('./routers/orderRouter')
 const postRouter = require('./routers/postRouter')
 const authRouter = require('./routers/authRoutes')
+const textRouter = require('./routers/textRouter')
 const cors = require('cors')
 require('./utils/passport-setup')
 
@@ -18,7 +19,7 @@ mongoose.connect(process.env.MONGODB_URL, {
 })
 
 const publicDirectory = path.join(__dirname, '../public')
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 const app = express()
 
 app.use(express.json())
@@ -37,6 +38,7 @@ app.use('/users', userRouter)
 app.use(orderRouter)
 app.use('/auth', authRouter)
 app.use('/post', postRouter)
+app.use('/textData', textRouter)
 
 app.listen(port, () => {
     console.log('Server is up on port ' + port)
