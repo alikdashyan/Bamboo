@@ -131,7 +131,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
           password
       });
 
-      $http.post('http://www.amzbamboo.com/users/login', body,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+      $http.post('/users/login', body,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
             success => {
               let token = success.data.token;
               if(token){
@@ -172,7 +172,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
         }
 
         function regRequest() {
-          $http.post('http://www.amzbamboo.com/users/signup',stringifiedBody,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+          $http.post('/users/signup',stringifiedBody,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
             success => {
               let token = success.data.token;
               if(token){
@@ -241,7 +241,7 @@ app.controller('formCntrl', function($scope, $http,$location) {
     let stringifiedBody = JSON.stringify(body);
 
     $scope.success = '';
-    $http.post('http://www.amzbamboo.com/order',stringifiedBody, httpOptions).then(
+    $http.post('/order',stringifiedBody, httpOptions).then(
       success => {
         console.log(success);
         if(!success.data.error){
@@ -264,7 +264,7 @@ app.controller('tableCtrl', function($scope,$http,$location){
   if(!localStorage.token){
     $location.path('/').replace();
   }
-  $http.get('http://www.amzbamboo.com/orders', {headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+  $http.get('/orders', {headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
     success => {
       let bambooData = success.data;
       $scope.viewData = bambooData;
@@ -304,7 +304,7 @@ app.controller('profileCntrl', function($scope, $location, $http){
       contactInfo
     })
     console.log(profileBody);
-    $http.patch('http://www.amzbamboo.com/users/update', profileBody, httpOptions)
+    $http.patch('/users/update', profileBody, httpOptions)
       .then(
         innerSuccess => innerSuccess.statusText == "OK" ? $scope.success = 'User Successfully Edited' : $scope.error = 'Something went wrong',
 

@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 
 const router = express.Router()
-const textFilePath = path.join(__dirname, '..', '..', 'data', 'textData.json')
+const textFilePath = path.join(__dirname, '..', 'data', 'textData.json')
 
 router.post('/create', auth, (req, res) => {
     if(req.user.kind !== 'admin'){
@@ -13,7 +13,7 @@ router.post('/create', auth, (req, res) => {
     try{
         fs.access(textFilePath, fs.constants.F_OK, (err) => {
             if(err){
-                fs.writeFileSync(modelsFilePath, "[]")
+                fs.writeFileSync(textFilePath, "[]")
             }
         })
         const allData = JSON.parse(fs.readFileSync(textFilePath))
@@ -45,19 +45,20 @@ router.patch('/update/:id', auth, (req, res) => {
     }
     try{
         const data = JSON.parse(fs.readFileSync(textFilePath))
-        const updateData = data.filter((dataObject) => {
-            return req.params.id === dataObject.id
+        let elemFound = false
+        let updatedElement
+        data.map((elem) => {
+            if(elem.id === req.params.id){
+                Object.assign(elem, req.body)
+                elemFound = true
+                updatedElement = elem
+            }
         })
-        if(updateData[0]) {
-            data.map((elem) => {
-                if(elem.id === req.params.id){
-                    Object.assign(elem, req.body)
-                }
-            })
-            fs.writeFileSync(textFilePath, JSON.stringify(data))
-            return res.send(updateData)
+        if(!elemFound){
+            return res.status(404).send({error: "Requested element is not found"})
         }
-        res.status(404).send({error: "Data not found"})
+        fs.writeFileSync(textFilePath, JSON.stringify(data))
+        res.send(updatedElement)
     } catch(e) {
         console.log(e)
         res.status(500).send({error: e.message})
@@ -70,13 +71,9 @@ router.delete('/delete/:id', auth, (req, res) => {
     }
     try{
         const data = JSON.parse(fs.readFileSync(textFilePath))
-        data.map((elem) => {
-            if(req.params.id === elem.id){
-                elem = undefined
-            }
-        })
-        fs.writeFileSync(textFilePath, JSON.stringify(data))
-        res.send(data)
+        const newArray = data.filter((elem) => {return elem.id !== req.params.id})
+        fs.writeFileSync(textFilePath, JSON.stringify(newArray))
+        res.send(newArray)
     } catch(e) {
         console.log(e)
         res.status(500).send(e)
