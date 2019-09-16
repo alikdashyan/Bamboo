@@ -43,9 +43,36 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
       templateUrl: 'view/user-tables.html',
       controller: 'tableCtrl'
     })
+    .when('/demo',{
+      templateUrl: 'view/demo.html',
+      controller: 'demoCtrl'
+    })
     .otherwise({redirctTo:'/'})
 }])
-app.controller('homeCtrl', function ($scope) {
+app.controller('demoCtrl', function($scope,$http){
+  $scope.submit = function(){
+  let id = $scope.demoId;
+  let heding = $scope.demoHeding;
+  let descriotion = $scope.demoDescriotion;
+  let callToAction = $scope.demoCallToAction;
+  let additionalDescription = $scope.demoAdditionalDescription;
+  let demoBody = {
+      id,
+      heding,
+      descriotion,
+      callToAction,
+      additionalDescription,
+      
+    }
+    
+  
+  $http.post('/textData/create',JSON.stringify(demoBody),{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+    success => console.log(success),
+    innerError => console.log(innerError)
+    
+  ).catch(error => console.log(error))
+}})
+app.controller('homeCtrl', function ($scope,$http) {
 
     $('#revolutionSlider').show().revolution();
 
@@ -131,7 +158,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
           password
       });
 
-      $http.post('http://www.amzbamboo.com/users/login', body,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+      $http.post('/users/login', body,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
             success => {
               let token = success.data.token;
               if(token){
@@ -172,7 +199,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
         }
 
         function regRequest() {
-          $http.post('http://www.amzbamboo.com/users/signup',stringifiedBody,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+          $http.post('/users/signup',stringifiedBody,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
             success => {
               let token = success.data.token;
               if(token){
