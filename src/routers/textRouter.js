@@ -1,6 +1,7 @@
 const express = require('express')
 const auth = require('../middleware/userAuth')
 const fs = require('fs')
+const path = require('path')
 
 const router = express.Router()
 const textFilePath = path.join(__dirname, '..', '..', 'data', 'textData.json')
