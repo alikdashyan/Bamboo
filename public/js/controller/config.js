@@ -88,14 +88,11 @@ app.controller('homeCtrl', function ($scope,$http) {
         const opacity =  element.style.opacity;
         if(opacity != '1')
             element.style.opacity = '1';
-
-
     }
     $http.get('/textData/readAll').then(
       success => {
         let textData = success.data;
         $scope.textData = textData;
-        console.log(textData["homeSection1"])
       },
       innerError => {
         console.log(innerError);
