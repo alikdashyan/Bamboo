@@ -50,28 +50,32 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     .otherwise({redirctTo:'/'})
 }])
 app.controller('demoCtrl', function($scope,$http){
-  $scope.submit = function(){
-  let id = $scope.demoId;
-  let heding = $scope.demoHeding;
-  let descriotion = $scope.demoDescriotion;
-  let callToAction = $scope.demoCallToAction;
-  let additionalDescription = $scope.demoAdditionalDescription;
-  let demoBody = {
-      id,
-      heding,
-      descriotion,
-      callToAction,
-      additionalDescription,
+    $scope.submit = function(){
+      let id = $scope.demoId;
+      let hedingSpan = $scope.demoHedingSpan
+      let heding = $scope.demoHeding;
+      let descriotion = $scope.demoDescriotion;
+      let descriotionSpan = $scope.demoDescriotionSpan;
+      let callToAction = $scope.demoCallToAction;
+      let additionalDescription = $scope.demoAdditionalDescription;
+      let demoBody = {
+          id,
+          hedingSpan,
+          heding,
+          descriotion,
+          descriotionSpan,
+          callToAction,
+          additionalDescription,
+          
+        }
       
-    }
-    
-  
-  $http.post('/textData/create',JSON.stringify(demoBody),{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
-    success => console.log(success),
-    innerError => console.log(innerError)
-    
-  ).catch(error => console.log(error))
-}})
+      $http.post('/textData/create',JSON.stringify(demoBody),{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+        success => console.log(success),
+        innerError => console.log(innerError)
+        
+      ).catch(error => console.log(error))
+    } 
+})
 app.controller('homeCtrl', function ($scope,$http) {
 
     $('#revolutionSlider').show().revolution();
