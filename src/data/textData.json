@@ -1,286 +1,286 @@
-[{
-    "id": "homeSection1",
+{
+    "homeSection1":{
     "hedingSpan": "",
     "heding": "Welcome to our amazing office.",
     "descriotion": "Porto is a huge success, learn more about us.",
     "callToAction": "VIEW OUR SERVICES",
     "additionalDescription": ""
-}, {
-    "id": "homeSection2",
+    }, 
+    "homeSection2":{
     "hedingSpan": "What is Bamboo?",
     "heding": "Why you should trust us.",
     "descriotion": "Bamboo-is the most trusted partner in creating your name(business) on Amazon.com  \t\t\t\t\t\tWe will help you stand out among others and reach your goal quick and easy. We are proud of our two-year experience and we highly appreciate your trust.",
     "callToAction": "",
     "additionalDescription": "Over the past two years, we have provided guaranteed results for hundreds of sellers on Amazon.com.Our team are more than 6,000 real buyers; every day they create non-repeating reviews written individually for each product."
-}, {
-    "id": "homeSection3_1",
+}, 
+    "homeSection3_1":{
     "hedingSpan": "",
     "heding": "Our real buyers",
     "descriotion": "Our customers daily purchase various products for themselves and for us.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "homeSection3_2",
+}, 
+    "homeSection3_2":{
     "hedingSpan": "",
     "heding": "We provide real reviews",
     "descriotion": "Our customers leave their feedback on 20-30% of the items purchased by them.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "homeSection3_3",
+}, 
+    "homeSection3_3":{
     "hedingSpan": "",
     "heding": "The right approach to every request",
     "descriotion": "Due to our organic search system and the right selection of key words, we guarantee you the desired result in a short period of time.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "homeSection3_4",
+}, 
+    "homeSection3_4":{
     "hedingSpan": "",
     "heding": "The uniqueness of our reviews",
     "descriotion": "Customer profiles are verified and do not violate Amazon user agreements. Our customers are US citizens and native English speakers. All reviews are written individually for a specific product.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "homeSection3_5",
+}, 
+    "homeSection3_5":{
     "hedingSpan": "",
     "heding": "A wide selection of services:",
     "descriotion": "We provide the largest range of services for Amazon sellers. Competent selection of key words, the ability to leave more than 1000 reviews on one specific product (item)",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "homeSection4",
+}, 
+    "homeSection4":{
     "hedingSpan": "",
     "heding": "Lessons for successful project delivery",
     "descriotion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras volutpat id sapien ac varius. Fusce hendrerit ligula a consectetur ullamcorper. Vestibulum varius pharetra lorem.",
     "callToAction": "Learn about us",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection1",
+}, 
+    "servicesSection1":{
     "hedingSpan": "",
     "heding": "We Are Here To Help You",
     "descriotion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia iaculis nulla non metus. pulvinar. Sociis natoque penatibus et magnis dis parturient montes.",
     "callToAction": "get a quote!",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection2_1",
+}, 
+    "servicesSection2_1":{
     "hedingSpan": "",
     "heding": "Mobile Apps",
     "descriotion": "Lorem ipsum dolor sit amt, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection2_2",
+}, 
+    "servicesSection2_2":{
     "hedingSpan": "",
     "heding": "Creative Websites",
     "descriotion": "Lorem ipsum dolor sit amt, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection2_3",
+}, 
+    "servicesSection2_3":{
     "hedingSpan": "",
     "heding": "SEO Optimization",
     "descriotion": "Lorem ipsum dolor sit amt, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection2_4",
+}, 
+    "servicesSection2_4":{
     "hedingSpan": "",
     "heding": "Brand Solutions",
     "descriotion": "Lorem ipsum dolor sit amt, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection2_5",
+}, 
+    "servicesSection2_5":{
     "hedingSpan": "",
     "heding": "HTML5 / CSS3 / JS",
     "descriotion": "Lorem ipsum dolor sit amt, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection2_6",
+}, 
+    "servicesSection2_6":{
     "hedingSpan": "",
     "heding": "Buttons",
     "descriotion": "Lorem ipsum dolor sit amt, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection3",
+}, 
+    "servicesSection3":{
     "hedingSpan": "Layout",
     "heding": "Styles & Variants",
     "descriotion": "There are so many styles you can combine that is possible to create almost any kind of layout based on Porto Template, navigate in our preview and see the header variations, the colors, and the page content types that you will be able to use.",
     "callToAction": "",
     "additionalDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet hendrerit volutpat. Sed in nunc nec ligula consectetur mollis in vel justo. Vestibulum ante ipsum primis in faucibus orci."
-}, {
-    "id": "servicesSection4",
+}, 
+    "servicesSection4":{
     "hedingSpan": "Exclusive",
     "heding": "Style Switcher",
-    "descriotion": "With our exlusive Style Switcher you will be able to choose any color you want for your website, choose the layout style (wide / boxed), website type (one page / normal), then generate the css that will be compiled by a {less} proccessor.",
+    "descriotion": "With our exlusive Style Switcher you will be able to choose any color you want for your website, choose the layout style (wide / boxed), website type (one page / normal), then generate the css that will be compiled by a less} proccessor.",
     "callToAction": "",
     "additionalDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet hendrerit volutpat. Sed in nunc nec ligula consectetur mollis in vel justo. Vestibulum ante ipsum primis in faucibus orci."
-}, {
-    "id": "servicesSection5_1",
+}, 
+    "servicesSection5_1":{
     "hedingSpan": "",
     "heding": "Customer Support",
     "descriotion": "Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet. Quisque rutrum pellentesque imperdiet.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection5_2",
+}, 
+    "servicesSection5_2":{
     "hedingSpan": "",
     "heding": "Sliders",
     "descriotion": "Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet. Quisque rutrum pellentesque imperdiet.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection5_3",
+}, 
+    "servicesSection5_3":{
     "hedingSpan": "",
     "heding": "Winner",
     "descriotion": "Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet. Quisque rutrum pellentesque imperdiet.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection5_4",
+}, 
+    "servicesSection5_4":{
     "hedingSpan": "",
     "heding": "Customizable",
     "descriotion": "Lorem ipsum dolor sit amet, consectetur adipiscing metus elit. Quisque rutrum pellentesque imperdiet. Quisque rutrum pellentesque imperdiet.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection6",
+}, 
+    "servicesSection6":{
     "hedingSpan": "",
     "heding": "We're not the only ones  excited happy about Porto Template...",
     "descriotion": "30,000 CUSTOMERS IN 100 COUNTRIES USE PORTO TEMPLATE. MEET OUR CUSTOMERS.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "servicesSection7",
+}, 
+    "servicesSection7":{
     "hedingSpan": "",
     "heding": "Porto is everything you need to create an awesome website!",
     "descriotion": "The best HTML template for your new website.",
     "callToAction": "get started now",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection1",
+}, 
+    "aboutSection1":{
     "hedingSpan": "",
     "heding": "About Us",
     "descriotion": "The perfect choice for your next project",
     "callToAction": "",
     "additionalDescription": ""
 },
-{
-    "id": "aboutSection2",
+
+    "aboutSection2":{
     "hedingSpan": "",
     "heding": "What is Bamboo?  Why you should trust us BuildDevelop Solutions",
     "descriotion": "Bamboo-is the most trusted partner in creating your name(business) on Amazon.com We will help you stand out among others and reach your goal quick and easy. We are proud of our two-year experience and we highly appreciate your trust. Over the past two years, we have provided guaranteed results for hundreds of sellers on Amazon.com Our team are more than 6,000 real buyers; every day they create non-repeating reviews written individually for each product.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection3_1",
+}, 
+    "aboutSection3_1":{
     "hedingSpan": "",
     "heding": "1. OUR REAL BUYERS",
     "descriotion": "Our customers daily purchase various products for themselves and for us.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection3_2",
+}, 
+    "aboutSection3_2":{
     "hedingSpan": "",
     "heding": "2. WE PROVIDE REAL REVIEWS",
     "descriotion": "Our customers leave their feedback on 20-30% of the items purchased by them.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection3_3",
+}, 
+    "aboutSection3_3":{
     "hedingSpan": "",
     "heding": "3. THE UNIQUENESS OF OUR REVIEWS",
     "descriotion": "Customer profiles are verified and do not violate Amazon user agreements. Our customers are US citizens and native English speakers. All reviews are written individually for a specific product.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection3_4",
+}, 
+    "aboutSection3_4":{
     "hedingSpan": "",
     "heding": "4. THE RIGHT APPROACH TO EVERY REQUEST",
     "descriotion": "Due to our organic search system and the right selection of key words, we guarantee you the desired result in a short period of time",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection3_5",
+}, 
+    "aboutSection3_5":{
     "hedingSpan": "",
     "heding": "5. A WIDE SELECTION OF SERVICES",
     "descriotion": "We provide the largest range of services for Amazon sellers. Competent selection of key words, the ability to leave more than 1000 reviews on one specific product (item)",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection4_1",
+}, 
+    "aboutSection4_1":{
     "hedingSpan": "",
     "heding": "Happy Clients",
     "descriotion": "",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection4_2",
+}, 
+    "aboutSection4_2":{
     "hedingSpan": "",
     "heding": "Years In Business",
     "descriotion": "",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection4_3",
+}, 
+    "aboutSection4_3":{
     "hedingSpan": "",
     "heding": "High Score",
     "descriotion": "",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection4_4",
+}, 
+    "aboutSection4_4":{
     "hedingSpan": "",
     "heding": "Cups of Coffee",
     "descriotion": "",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "aboutSection5",
+}, 
+    "aboutSection5":{
     "hedingSpan": "We Are",
     "heding": "Who",
     "descriotion": "Our conditions for customers are favorable and we are always ready for productive cooperation with new sellers. We are always ready and glad to help you. On the remaining sections of our website you can find out more about the services that we provide.",
     "callToAction": "",
     "additionalDescription": "You can always send us your question that, and we will try to answer it as soon as possible (this is for reference to a future FAQ)"
-}, {
-    "id": "aboutSection6",
+}, 
+    "aboutSection6":{
     "hedingSpan": "Our Team",
     "heding": "Meet",
     "descriotion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit massa enim. Nullam id varius nunc.",
     "callToAction": "",
     "additionalDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc. Vivamus bibendum magna ex, et faucibus lacus venenatis eget."
-}, {
-    "id": "aboutSection7",
+}, 
+    "aboutSection7":{
     "hedingSpan": "Our Clients",
     "heding": "About",
     "descriotion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit massa enim. Nullam id varius nunc.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "contactSection1",
+}, 
+    "contactSection1":{
     "hedingSpan": "Contact",
     "heding": "Us",
     "descriotion": "Feel free to ask for details, don't save any questions!",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "contactSection2",
+}, 
+    "contactSection2":{
     "hedingSpan": "",
     "heding": "Get in Touch",
     "descriotion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget leo at velit imperdiet varius. In eu ipsum vitae velit congue iaculis vitae at risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "callToAction": "",
     "additionalDescription": ""
-}, {
-    "id": "contactSection3",
+}, 
+    "contactSection3":{
     "hedingSpan": "",
     "heding": "Porto is everything you need to create an awesome website!",
     "descriotion": "The Best HTML Site Template on ThemeForest",
     "callToAction": "get started now",
     "additionalDescription": ""
-}, {
-    "id": "contactSection4",
+}, 
+    "contactSection4":{
     "hedingSpan": "",
     "heding": "Our Office",
     "descriotion": "",
@@ -289,8 +289,8 @@
     "contactAdress": "1234 Street Name, City Name, United States",
     "contactPhone": "(123) 456-789",
     "contactEmail": " mail@example.com"
-}, {
-    "id": "contactSection5",
+}, 
+    "contactSection5":{
     "hedingSpan": "",
     "heding": "Business Hours",
     "descriotion": "Monday - Friday - 9am to 5pm",
@@ -300,4 +300,4 @@
     "additionalDescription": ""
 
 }
-]
+}

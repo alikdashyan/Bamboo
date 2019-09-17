@@ -26,10 +26,7 @@ router.post('/create', auth, (req, res) => {
     }
 })
 
-router.get('/readAll', auth, (req, res) => {
-    if(req.user.kind !== 'admin'){
-        return res.status(400).send({error: "You dont have admin privileges"})
-    }
+router.get('/readAll', (req, res) => {
     try{
         const data = JSON.parse(fs.readFileSync(textFilePath))
         res.send(data)
