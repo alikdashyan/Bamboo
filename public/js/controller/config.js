@@ -76,8 +76,9 @@ app.controller('demoCtrl', function($scope,$http){
       ).catch(error => console.log(error))
     } 
 })
-app.controller('homeCtrl', function ($scope,$http) {
 
+
+app.controller('homeCtrl', function ($scope,$http) {
     $('#revolutionSlider').show().revolution();
 
     let animations = document.getElementsByClassName('appear-animation');
@@ -90,6 +91,17 @@ app.controller('homeCtrl', function ($scope,$http) {
 
 
     }
+    $http.get('/textData/readAll').then(
+      success => {
+        let textData = success.data;
+        $scope.textData = textData;
+        console.log(textData["homeSection1"])
+      },
+      innerError => {
+        console.log(innerError);
+      }
+      
+    ).catch(error => console.log(error))
 })
 app.controller('pageCtrl', function ($scope) {
 
