@@ -13,23 +13,20 @@ router.post('/create', auth, (req, res) => {
     try{
         fs.access(textFilePath, fs.constants.F_OK, (err) => {
             if(err){
-                fs.writeFileSync(textFilePath, "[]")
+                fs.writeFileSync(textFilePath, "{}")
             }
         })
         const allData = JSON.parse(fs.readFileSync(textFilePath))
-        allData.push(req.body)
+        allData[req.body.id] = req.body.content
         fs.writeFileSync(textFilePath, JSON.stringify(allData))
-        res.status(201).send()
+        res.status(201).send(allData)
     } catch(e) {
         console.log(e)
         res.status(500).send({error: e.message})
     }
 })
 
-router.get('/readAll', auth, (req, res) => {
-    if(req.user.kind !== 'admin'){
-        return res.status(400).send({error: "You dont have admin privileges"})
-    }
+router.get('/readAll', (req, res) => {
     try{
         const data = JSON.parse(fs.readFileSync(textFilePath))
         res.send(data)
@@ -45,20 +42,13 @@ router.patch('/update/:id', auth, (req, res) => {
     }
     try{
         const data = JSON.parse(fs.readFileSync(textFilePath))
-        let elemFound = false
-        let updatedElement
-        data.map((elem) => {
-            if(elem.id === req.params.id){
-                Object.assign(elem, req.body)
-                elemFound = true
-                updatedElement = elem
-            }
-        })
-        if(!elemFound){
-            return res.status(404).send({error: "Requested element is not found"})
+        const item = data[req.params.id]
+        if(item){
+            Object.assign(item, req.body)
+            fs.writeFileSync(textFilePath, JSON.stringify(data))
+            return res.send(item)
         }
-        fs.writeFileSync(textFilePath, JSON.stringify(data))
-        res.send(updatedElement)
+        res.status(404).send({error: 'Text item not found'})
     } catch(e) {
         console.log(e)
         res.status(500).send({error: e.message})
