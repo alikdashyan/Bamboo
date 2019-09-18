@@ -47,8 +47,101 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
       templateUrl: 'view/demo.html',
       controller: 'demoCtrl'
     })
+    .when('/admin',{
+      templateUrl: 'view/admin/admin.html',
+      controller:'adminCtrl'
+    })
+    .when('/adminpanel',{
+      templateUrl: 'view/admin/adminview/adminpanel.html',
+    })
+    .when('/formAbout',{
+      templateUrl: 'view/admin/adminview/formAbout.html',
+    })
+    .when('/formContact',{
+      templateUrl: 'view/admin/adminview/formContact.html',
+    })
+    .when('/formFooter',{
+      templateUrl: 'view/admin/adminview/formFooter.html',
+    })
+    .when('/formHome',{
+      templateUrl: 'view/admin/adminview/formHome.html',
+      controller:'formHome'
+    })
+    .when('/formServices',{
+      templateUrl: 'view/admin/adminview/formServices.html',
+    })
     .otherwise({redirctTo:'/'})
 }])
+app.controller('adminCtrl',function($scope,$http,$location){
+  if(localStorage.adminToken){
+    $location.path('/adminpanel').replace();
+  }
+  $scope.submit = function(){
+      console.log("Davo exav")
+      $scope.loginError = '';
+      $scope.loginPasswordError = '';
+      let email = $scope.email;
+      let password = $scope.password ;
+      let body = JSON.stringify({
+          email,
+          password
+      });
+
+      $http.post('/users/login/admin', body).then(
+            success => {
+              let adminToken = success.data.adminToken;
+              if(adminToken){
+                localStorage.setItem('adminToken', adminToken);
+                window.location.reload();
+              }
+            },
+            innerError => {
+              if(innerError.data){
+                $scope.loginError = innerError.data.error;
+              }
+              console.log(innerError)
+            }
+            )
+            .catch(error => console.log(error));
+      }
+})
+app.controller('formHome',function($scope, $http){
+  $http.get('http://localhost:3001/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+      console.log(textData )
+    },
+    innerError => {
+      console.log(innerError);
+    }
+    
+  ).catch(error => console.log(error))
+  $scope.updateData = function (id) {
+    let heding = $scope.heding;
+    let hedingSpan = $scope.hedingSpan;
+    let descriotion = $scope.descriotion;
+    let additionalDescription = $scope.additionalDescription;
+    let callToAction = $scope.callToAction;
+    let body = JSON.stringify(
+      {
+        heding,
+        hedingSpan,
+        descriotion,
+        additionalDescription,
+        callToAction
+      }
+    )
+    $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+      success => {
+        console.log(success)
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch(error => console.log(error))
+  }
+})
 app.controller('demoCtrl', function($scope,$http){
     $scope.submit = function(){
       let id = $scope.demoId;
@@ -100,7 +193,7 @@ app.controller('homeCtrl', function ($scope,$http) {
       
     ).catch(error => console.log(error))
 })
-app.controller('pageCtrl', function ($scope) {
+app.controller('pageCtrl', function ($scope,$http) {
 
     let animations = document.getElementsByClassName('appear-animation');
 
@@ -110,6 +203,16 @@ app.controller('pageCtrl', function ($scope) {
         if(opacity != '1')
             element.style.opacity = '1';
     }
+    $http.get('/textData/readAll').then(
+      success => {
+        let textData = success.data;
+        $scope.textData = textData;
+      },
+      innerError => {
+        console.log(innerError);
+      }
+      
+    ).catch(error => console.log(error))
 
 })
 app.controller('blogCtrl',function ($scope, postsFactory) {
@@ -124,7 +227,7 @@ app.controller('blogCtrl',function ($scope, postsFactory) {
             element.style.opacity = '1';
     }
 })
-app.controller('aboutCtrl',function($scope){
+app.controller('aboutCtrl',function($scope, $http){
   $(function() {
       $('[data-plugin-counter]:not(.manual), .counters [data-to]').each(function() {
           var $this = $(this),
@@ -145,8 +248,18 @@ app.controller('aboutCtrl',function($scope){
     if(opacity != '1')
       element.style.opacity = '1';
   }
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+    },
+    innerError => {
+      console.log(innerError);
+    }
+    
+  ).catch(error => console.log(error))
 })
-app.controller('contactCtrl', function ($scope) {
+app.controller('contactCtrl', function ($scope,$http) {
 
     let animations = document.getElementsByClassName('appear-animation');
 
@@ -156,6 +269,16 @@ app.controller('contactCtrl', function ($scope) {
         if(opacity != '1')
             element.style.opacity = '1';
     }
+    $http.get('/textData/readAll').then(
+      success => {
+        let textData = success.data;
+        $scope.textData = textData;
+      },
+      innerError => {
+        console.log(innerError);
+      }
+      
+    ).catch(error => console.log(error))
 })
 app.controller('authCtrl', function($scope, $http, $location) {
     if(localStorage.token){
@@ -171,7 +294,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
           password
       });
 
-      $http.post('/users/login', body,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+      $http.post('/users/login', body).then(
             success => {
               let token = success.data.token;
               if(token){
