@@ -157,7 +157,21 @@ userRouter.post('/login', async (req, res) => {
         res.send({user, token})
     } catch (e){
         console.log(e)
-        res.status(400).send({error: e.message})
+        res.status(500).send({error: e.message})
+    }
+})
+
+userRouter.post('/login/admin', async (req, res) => {
+    try{
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        if(!user || user.kind !== 'admin'){
+            return res.status(404).send({error: 'User not found'})
+        }
+        const adminToken = await user.generateAuthToken()
+        res.send({user, adminToken})
+    } catch(e) {
+        console.log(e)
+        res.status(500).send({error: e.message})
     }
 })
 
