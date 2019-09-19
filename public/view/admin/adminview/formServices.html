@@ -9,52 +9,48 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
                     <div class="panel-heading">
-                      Slider Form Elements
+                        Services Section 1
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form role="form">
+                                <form role="form" ng-submit="updateData('servicesSection1')">
                                     <div class="form-group">
                                         <label>Heading</label>
-                                        <input class="form-control">
+                                        <input class="form-control" ng-model="heding" placeholder="{{textData['servicesSection1'].heding}}">
                                         <!-- <p class="help-block">Example block-level help text here.</p> -->
                                     </div>
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <input class="form-control" placeholder="Enter text">
+                                        <textarea class="form-control" rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection1'].descriotion}}"></textarea>
+                                    </div>
                                     </div>
                                     <div class="form-group">
                                         <label>Call to action</label>
-                                        <input class="form-control">
-                                    </div>
+                                        <input class="form-control"  ng-model="callToAction" placeholder="{{textData['servicesSection1'].callToAction}}">
                                     <button type="submit" class="btn btn-default">Submit Button</button>
                                     <button type="reset" class="btn btn-default">Reset Button</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-        </div>
+        </div> 
         <div class="panel panel-default">
                 <div class="panel-heading">
-                 Swction text one Form Elements
+                    Services Section 2_1
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form role="form">
+                            <form role="form" ng-submit="updateData('servicesSection2_1')">
                                 <div class="form-group">
                                     <label>Heading</label>
-                                    <input class="form-control">
+                                    <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection2_1'].heding}}">
                                     
                                 </div>
                                 <div class="form-group">
                                     <label>Additional description</label>
-                                    <textarea class="form-control" rows="3"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Additional description</label>
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection2_1'].descriotion}}"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-default">Submit Button</button>
                                 <button type="reset" class="btn btn-default">Reset Button</button>
@@ -65,107 +61,20 @@
         </div> 
         <div class="panel panel-default">
             <div class="panel-heading">
-                 Swction text one Form Elements
-            </div>
-            <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label>Heading</label>
-                                    <input class="form-control">
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <label>Additional description</label>
-                                    <textarea class="form-control" rows="3"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Additional description</label>
-                                    <textarea class="form-control" rows="3"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit Button</button>
-                                <button type="reset" class="btn btn-default">Reset Button</button>
-                            </form>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-                <div class="panel-heading">
-                  Slider Form Elements
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label>Heading</label>
-                                    <input class="form-control">
-                                    <!-- <p class="help-block">Example block-level help text here.</p> -->
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <input class="form-control" placeholder="Enter text">
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit Button</button>
-                                <button type="reset" class="btn btn-default">Reset Button</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-        </div> 
-    </div>
-    <div class="col-lg-6">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-             Swction text one Form Elements
+                Services Section 2_2
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-12">
-                        <form role="form">
+                        <form role="form" ng-submit="updateData('servicesSection2_2')">
                             <div class="form-group">
                                 <label>Heading</label>
-                                <input class="form-control">
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection2_2'].heding}}">
                                 
-                                <label>Additional description</label>
-                                <textarea class="form-control" rows="3"></textarea>
                             </div>
                             <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control">
-                                
                                 <label>Additional description</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control">
-                                
-                                <label>Additional description</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control">
-                                
-                                <label>Additional description</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control">
-                                
-                                <label>Additional description</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control">
-                                
-                                <label>Additional description</label>
-                                <textarea class="form-control" rows="3"></textarea>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection2_2'].descriotion}}"></textarea>
                             </div>
                             <button type="submit" class="btn btn-default">Submit Button</button>
                             <button type="reset" class="btn btn-default">Reset Button</button>
@@ -173,30 +82,316 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
         <div class="panel panel-default">
-                <div class="panel-heading">
-                  Slider Form Elements
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <form role="form">
-                                <div class="form-group">
-                                    <label>Heading</label>
-                                    <input class="form-control">
-                                    <!-- <p class="help-block">Example block-level help text here.</p> -->
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <input class="form-control" placeholder="Enter text">
-                                </div>
-                                <button type="submit" class="btn btn-default">Submit Button</button>
-                                <button type="reset" class="btn btn-default">Reset Button</button>
-                            </form>
-                        </div>
+            <div class="panel-heading">
+                Services Section 2_3
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection2_3')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection2_3'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection2_3'].descriotion}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
                     </div>
                 </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 2_4
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection2_4')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection2_4'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection2_4'].descriotion}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 2_5
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection2_5')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection2_5'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection2_5'].descriotion}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 2_6
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection2_6')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection2_6'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection2_6'].descriotion}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 3
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection3')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection3'].heding}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection3'].hedingSpan}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection3'].descriotion}}"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Additional Description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="additionalDescription" placeholder="{{textData['servicesSection3'].additionalDescription}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
+    </div> 
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 4
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection4')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection4'].heding}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection4'].hedingSpan}}">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection4'].descriotion}}"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Additional Description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="additionalDescription" placeholder="{{textData['servicesSection4'].additionalDescription}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 5_1
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection5_1')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection5_1'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection5_1'].descriotion}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 5_2
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection5_2')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection5_2'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection5_2'].descriotion}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 5_3
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection5_3')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection5_3'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection5_3'].descriotion}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 5_4
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection5_4')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection5_4'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection5_4'].descriotion}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 6
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection6')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection6'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection6'].descriotion}}"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Services Section 7
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form role="form" ng-submit="updateData('servicesSection7')">
+                            <div class="form-group">
+                                <label>Heading</label>
+                                <input class="form-control"  ng-model="heding" placeholder="{{textData['servicesSection7'].heding}}">
+                                
+                            </div>
+                            <div class="form-group">
+                                <label>Additional description</label>
+                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection7'].descriotion}}"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Call To Action</label>
+                                <input class="form-control"  ng-model="callToAction" placeholder="{{textData['servicesSection7'].callToAction}}">
+                                
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div> 
     </div>
 </div>

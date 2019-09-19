@@ -53,12 +53,15 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     })
     .when('/adminpanel',{
       templateUrl: 'view/admin/adminview/adminpanel.html',
+      controller: 'adminpanel'
     })
     .when('/formAbout',{
       templateUrl: 'view/admin/adminview/formAbout.html',
+      controller: 'formAbout'
     })
     .when('/formContact',{
       templateUrl: 'view/admin/adminview/formContact.html',
+      controller: 'formContact'
     })
     .when('/formFooter',{
       templateUrl: 'view/admin/adminview/formFooter.html',
@@ -69,6 +72,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     })
     .when('/formServices',{
       templateUrl: 'view/admin/adminview/formServices.html',
+      controller: 'formServices'
     })
     .otherwise({redirctTo:'/'})
 }])
@@ -105,8 +109,13 @@ app.controller('adminCtrl',function($scope,$http,$location){
             .catch(error => console.log(error));
       }
 })
+app.controller('adminpanel',function($location){
+  if(!localStorage.adminToken){
+    $location.path('/').replace();
+  }
+})
 app.controller('formHome',function($scope, $http){
-  $http.get('http://localhost:3001/textData/readAll').then(
+  $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -130,6 +139,123 @@ app.controller('formHome',function($scope, $http){
         descriotion,
         additionalDescription,
         callToAction
+      }
+    )
+    $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+      success => {
+        console.log(success)
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch(error => console.log(error))
+  }
+})
+app.controller('formServices',function($scope,$http){
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+      console.log(textData )
+    },
+    innerError => {
+      console.log(innerError);
+    }
+    
+  ).catch(error => console.log(error))
+  $scope.updateData = function (id) {
+    let heding = $scope.heding;
+    let hedingSpan = $scope.hedingSpan;
+    let descriotion = $scope.descriotion;
+    let additionalDescription = $scope.additionalDescription;
+    let callToAction = $scope.callToAction;
+    let body = JSON.stringify(
+      {
+        heding,
+        hedingSpan,
+        descriotion,
+        additionalDescription,
+        callToAction
+      }
+    )
+    $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+      success => {
+        console.log(success)
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch(error => console.log(error))
+  }
+})
+app.controller('formAbout',function($scope,$http){
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+      console.log(textData )
+    },
+    innerError => {
+      console.log(innerError);
+    }
+    
+  ).catch(error => console.log(error))
+  $scope.updateData = function (id) {
+    let heding = $scope.heding;
+    let hedingSpan = $scope.hedingSpan;
+    let descriotion = $scope.descriotion;
+    let additionalDescription = $scope.additionalDescription;
+    let callToAction = $scope.callToAction;
+    let body = JSON.stringify(
+      {
+        heding,
+        hedingSpan,
+        descriotion,
+        additionalDescription,
+        callToAction
+      }
+    )
+    $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+      success => {
+        console.log(success)
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch(error => console.log(error))
+  }
+})
+app.controller('formContact', function($scope,$http){
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+      console.log(textData )
+    },
+    innerError => {
+      console.log(innerError);
+    }
+    
+  ).catch(error => console.log(error))
+  $scope.updateData = function (id) {
+    let heding = $scope.heding;
+    let hedingSpan = $scope.hedingSpan;
+    let descriotion = $scope.descriotion;
+    let additionalDescription = $scope.additionalDescription;
+    let callToAction = $scope.callToAction;
+    let contactAdress = $scope.contactAdress;
+    let contactPhone = $scope.contactPhone;
+    let contactEmail = $scope.contactEmail;
+    let body = JSON.stringify(
+      {
+        heding,
+        hedingSpan,
+        descriotion,
+        additionalDescription,
+        callToAction,
+        contactAdress,
+        contactPhone,
+        contactEmail
       }
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
@@ -169,6 +295,7 @@ app.controller('demoCtrl', function($scope,$http){
       ).catch(error => console.log(error))
     } 
 })
+
 
 
 app.controller('homeCtrl', function ($scope,$http) {
@@ -501,7 +628,16 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
         .catch(error => error ? console.log(error) : '')
       }
 });
-
+app.controller('adminLogoutCtrl', function($scope, $http, $location){
+  $scope.adminLogout = function(){
+    $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.adminToken}`}})
+    .then(data => {
+      localStorage.removeItem('adminToken')
+      window.location.reload()
+    })
+    .catch(error => error ? console.log(error) : '')
+  }
+});
 
   app.factory('postsFactory', function () {
     return [
