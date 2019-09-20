@@ -1,3 +1,37 @@
+<div class="body">
+
+
+        <div role="main" class="main">
+
+            <section class="page-header page-header-classic">
+                <div class="container">
+                    <div class="row">
+                        <div class="col p-static">
+                            <h1 data-title-border>Admin Profile</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="container py-2">
+
+                <div class="row">
+                    <div class="col-lg-2 mt-4 mt-lg-0">
+
+                        <aside class="sidebar mt-2" id="sidebar">
+                            <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl' >
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHome">formHome</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark active" href="#/formServices">formServices</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formAbout">formAbout</a></li>
+                                <li class="nav-item"><a class="nav-link"   href="#/formContact">formContact</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHeader">formHeader</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formFooter">formFooter</a></li>
+                                <li class="nav-item" ng-click='adminLogout()'><a class="nav-link text-dark " href="">Logout</a></li>
+                            </ul>
+                        </aside>
+
+                    </div>
+                    <div class="col-lg-10">
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">Forms Services</h1>
@@ -8,7 +42,7 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="panel panel-default">
-                    <div class="panel-heading">
+                    <div class="panel-heading adminTextSayle">
                         Services Section 1
                     </div>
                     <div class="panel-body">
@@ -24,10 +58,11 @@
                                         <label>Description</label>
                                         <textarea class="form-control" rows="5"    ng-model="descriotion" placeholder="{{textData['servicesSection1'].descriotion}}"></textarea>
                                     </div>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label>Call to action</label>
                                         <input class="form-control"  ng-model="callToAction" placeholder="{{textData['servicesSection1'].callToAction}}">
+                                    </div>
                                     <button type="submit" class="btn btn-default">Submit Button</button>
                                     <button type="reset" class="btn btn-default">Reset Button</button>
                                 </form>
@@ -36,7 +71,7 @@
                     </div>
         </div> 
         <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading adminTextSayle">
                     Services Section 2_1
                 </div>
                 <div class="panel-body">
@@ -60,7 +95,7 @@
                 </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 2_2
             </div>
             <div class="panel-body">
@@ -84,7 +119,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 2_3
             </div>
             <div class="panel-body">
@@ -108,7 +143,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 2_4
             </div>
             <div class="panel-body">
@@ -132,7 +167,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 2_5
             </div>
             <div class="panel-body">
@@ -156,7 +191,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 2_6
             </div>
             <div class="panel-body">
@@ -180,7 +215,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 3
             </div>
             <div class="panel-body">
@@ -214,7 +249,7 @@
     </div> 
     <div class="col-lg-6">
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 4
             </div>
             <div class="panel-body">
@@ -245,7 +280,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 5_1
             </div>
             <div class="panel-body">
@@ -269,7 +304,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 5_2
             </div>
             <div class="panel-body">
@@ -293,7 +328,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 5_3
             </div>
             <div class="panel-body">
@@ -317,7 +352,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 5_4
             </div>
             <div class="panel-body">
@@ -341,7 +376,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 6
             </div>
             <div class="panel-body">
@@ -365,7 +400,7 @@
             </div>
         </div> 
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div class="panel-heading adminTextSayle">
                 Services Section 7
             </div>
             <div class="panel-body">
@@ -394,4 +429,11 @@
             </div>
         </div> 
     </div>
+</div>
+
+</div>
+</div>
+
+</div>
+
 </div>
