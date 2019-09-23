@@ -1,7 +1,7 @@
 const Order = require('../models/order')
 const express = require('express')
 const auth = require('../middleware/userAuth')
-const mailTransport = require('../utils/nodemailer-setup')
+const sgMail = require('../utils/sgmail')
 
 const orderRouter = new express.Router()
 
@@ -42,7 +42,7 @@ orderRouter.post('/order', auth, async (req, res) => {
                         <li>Additional info: ${order.additionalInfo}</li>
                     </ul>`
         }
-        mailTransport.sendMail(mailcfg, function (err, info) {
+        sgMail.send(mailcfg, function (err, info) {
             if(err){
                 console.log(err)
             } else {

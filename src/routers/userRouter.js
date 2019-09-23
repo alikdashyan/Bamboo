@@ -2,7 +2,7 @@ const express = require('express')
 const User = require('../models/user')
 const auth = require('../middleware/userAuth')
 const jwt = require('jsonwebtoken')
-const mailTransport = require('../utils/nodemailer-setup')
+const sgMail = require('../utils/sgmail')
 const path = require('path')
 const generateUniqueString = require('../utils/generateUniqueString')
 const Order = require('../models/order')
@@ -98,7 +98,7 @@ userRouter.post('/signup', async (req, res) => {
             </body>
             </html>`
         }
-        mailTransport.sendMail(mailcfg, function (err, info) {
+        sgMail.send(mailcfg, function (err, info) {
             if(err){
                 console.log(err)
             } else {
@@ -233,7 +233,7 @@ userRouter.post('/recovery', async (req, res) => {
             text: "Password recovery link for Bamboo",
             html: `<a href="${url}">Follow this link for password recovery</a>`
         }
-        mailTransport.sendMail(mailcfg, function (err, info) {
+        sgMail.send(mailcfg, function (err, info) {
             if(err){
                 console.log(err)
                 return res.status(500).send(err)
