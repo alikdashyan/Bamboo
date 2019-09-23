@@ -4916,9 +4916,10 @@ html.ie #header .header-column .header-extra-info .feature-box .feature-box-info
 .page-header {
 	background-color: #212529;
 	margin: 0 0 35px 0;
-	padding: 30px 0;
+	padding: 30px 0px 30px 20px;
 	position: relative;
 	text-align: left;
+	color: white;
 }
 
 .page-header .breadcrumb {

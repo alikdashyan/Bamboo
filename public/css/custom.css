@@ -26,3 +26,23 @@
     text-decoration: none;
     color: rgb(22, 204, 22);
 }
+.adminTextSayle {
+    font-size: 25px;
+    padding: 10px 0;
+    margin-top: 5px;
+    font-weight: bolder;
+}
+.adminBorderSayle {
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5%;
+    
+}
+.adminHomeHeader {
+    background-color: black;
+    margin: 0 0 35px 0;
+    padding: 30px 0px;
+    position: relative;
+	text-align: left;
+	color: white;
+}
