@@ -67,10 +67,6 @@ userRouter.post('/signup', async (req, res) => {
                     .mail-wrapper .mail-container div.single-section .logo{
                         width: 30%;
                     }
-            
-            
-            
-            
                 </style>
             </head>
             <body>
@@ -98,13 +94,7 @@ userRouter.post('/signup', async (req, res) => {
             </body>
             </html>`
         }
-        sgMail.send(mailcfg, function (err, info) {
-            if(err){
-                console.log(err)
-            } else {
-                console.log(info)
-            }
-        })
+        sgMail.send(mailcfg)
         res.status(201).send({user, token})
     } catch(e) {
         console.log(e)
@@ -233,14 +223,7 @@ userRouter.post('/recovery', async (req, res) => {
             text: "Password recovery link for Bamboo",
             html: `<a href="${url}">Follow this link for password recovery</a>`
         }
-        sgMail.send(mailcfg, function (err, info) {
-            if(err){
-                console.log(err)
-                return res.status(500).send(err)
-            } else {
-                console.log(info)
-            }
-        })
+        sgMail.send(mailcfg)
         res.status(200).send(url)
     } catch(e){
         console.log(e)

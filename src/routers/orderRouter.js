@@ -42,13 +42,7 @@ orderRouter.post('/order', auth, async (req, res) => {
                         <li>Additional info: ${order.additionalInfo}</li>
                     </ul>`
         }
-        sgMail.send(mailcfg, function (err, info) {
-            if(err){
-                console.log(err)
-            } else {
-                console.log(info)
-            }
-        })
+        sgMail.send(mailcfg)
         res.status(201).send(req.user.orders)
     } catch(e) {
         console.log(e)
