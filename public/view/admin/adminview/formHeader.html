@@ -1,8 +1,5 @@
 <div class="body">
-
-
         <div role="main" class="main">
-
             <section class="page-header page-header-classic">
                 <div class="container">
                     <div class="row">
@@ -12,12 +9,9 @@
                     </div>
                 </div>
             </section>
-
             <div class="container py-2">
-
                 <div class="row">
                     <div class="col-lg-2 mt-4 mt-lg-0">
-
                         <aside class="sidebar mt-2" id="sidebar">
                             <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl' >
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/formHome">formHome</a></li>
@@ -27,139 +21,76 @@
                                 <li class="nav-item"><a class="nav-link text-dark active" href="#/formHeader">formHeader</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/formFooter">formFooter</a></li>
                                 <li class="nav-item" ng-click='adminLogout()'><a class="nav-link text-dark " href="">Logout</a></li>
-                                
                             </ul>
                         </aside>
-
                     </div>
                     <div class="col-lg-10">
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header" >Forms Header</h1>
-    </div>  
-    <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-    <div class="col-lg-6">
-            <div class="panel panel-default">
-                    <div class="panel-heading adminTextSayle">
-                            Header Section 1
-                    </div>
-                    <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form role="form" ng-submit="updateData('headerSection1')">
-                                    <div class="form-group">
-                                        <label>Heading</label>
-                                        <input class="form-control" ng-model="heding" placeholder="{{textData['headerSection1'].heding}}" >
-                                    </div>
-                                    
-                                  
-                                    <button type="submit" class="btn btn-default">Submit Button</button>
-                                    <button type="reset" class="btn btn-default">Reset Button</button>
-                                </form>
+                                <h1 class="page-header" >Forms Header</h1>
                             </div>
+                            <!-- /.col-lg-12 -->
                         </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                        <div class="panel-heading adminTextSayle">
-                                Header Section 2
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form role="form" ng-submit="updateData('headerSection2')">
-                                        <div class="form-group">
-                                            <label>Heading</label>
-                                            <input class="form-control" ng-model="heding" placeholder="{{textData['headerSection2'].heding}}" >
-                                        </div>
-                                        
-                                      
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                            <div class="panel-heading adminTextSayle">
-                                    Header Section 3
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <form role="form" ng-submit="updateData('headerSection3')">
-                                            <div class="form-group">
-                                                <label>Heading</label>
-                                                <input class="form-control" ng-model="heding" placeholder="{{textData['headerSection3'].heding}}" >
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <form role="form" ng-submit="updateData('header')">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 1
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingHeaderSection1" placeholder="{{textData['header'].headingHeaderSection1}}" >
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 2
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingHeaderSection2" placeholder="{{textData['header'].headingHeaderSection2}}" >
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 3
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingHeaderSection3" placeholder="{{textData['header'].headingHeaderSection3}}" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 4
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingHeaderSection4" placeholder="{{textData['header'].headingHeaderSection4}}" >
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 5
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingHeaderSection5" placeholder="{{textData['header'].headingHeaderSection5}}" >
+                                                            </div>
+                                                            <button type="submit" class="btn btn-success ">Submit Button</button>
+                                                            <button type="reset" class="btn btn-default">Reset Button</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            
-                                          
-                                            <button type="submit" class="btn btn-default">Submit Button</button>
-                                            <button type="reset" class="btn btn-default">Reset Button</button>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-        
-    </div>
-    <div class="col-lg-6">
-            <div class="panel panel-default">
-                    <div class="panel-heading adminTextSayle">
-                            Header Section 4
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <form role="form" ng-submit="updateData('headerSection4')">
-                                    <div class="form-group">
-                                        <label>Heading</label>
-                                        <input class="form-control" ng-model="heding" placeholder="{{textData['headerSection4'].heding}}" >
-                                    </div>
-                                    
-                                  
-                                    <button type="submit" class="btn btn-default">Submit Button</button>
-                                    <button type="reset" class="btn btn-default">Reset Button</button>
-                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                        <div class="panel-heading adminTextSayle">
-                                Header Section 5
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form role="form" ng-submit="updateData('headerSection5')">
-                                        <div class="form-group">
-                                            <label>Heading</label>
-                                            <input class="form-control" ng-model="heding" placeholder="{{textData['headerSection5'].heding}}" >
-                                        </div>
-                                        
-                                      
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-    </div>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-
+            </div>
+        </div>
 </div>

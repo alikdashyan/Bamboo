@@ -61,6 +61,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     })
     .when('/formFooter',{
       templateUrl: 'view/admin/adminview/formFooter.html',
+      controller: 'footerCntrl'
     })
     .when('/formHome',{
       templateUrl: 'view/admin/adminview/formHome.html',
@@ -72,6 +73,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     })
     .when('/formHeader',{
       templateUrl: 'view/admin/adminview/formHeader.html',
+      controller: 'HeaderCtrl'
       
     })
 
@@ -127,18 +129,48 @@ app.controller('formHome',function($scope, $http,$location){
     
   ).catch(error => console.log(error))
   $scope.updateData = function (id) {
-    let heding = $scope.heding;
-    let hedingSpan = $scope.hedingSpan;
-    let descriotion = $scope.descriotion;
-    let additionalDescription = $scope.additionalDescription;
-    let callToAction = $scope.callToAction;
+    let headingHomeSection1 = $scope.headingHomeSection1;
+    let descriptionHomeSection1 = $scope.descriptionHomeSection1;
+    let callToActionHomeSection1 = $scope.callToActionHomeSection1;
+    let headingHomeSection2 = $scope.headingHomeSection2;
+    let headingSpanHomeSection2 = $scope.headingSpanHomeSection2;
+    let descriptionHomeSection2 = $scope.descriptionHomeSection2;
+    let additionalDescriptionHomeSection2 = $scope.additionalDescriptionHomeSection2;
+    let headingHomeSection3_1 = $scope.headingHomeSection3_1;
+    let descriptionHomeSection3_1 = $scope.descriptionHomeSection3_1;
+    let headingHomeSection3_2 = $scope.headingHomeSection3_2;
+    let descriptionHomeSection3_2 = $scope.descriptionHomeSection3_2;
+    let headingHomeSection3_3 = $scope.headingHomeSection3_3;
+    let descriptionHomeSection3_3 = $scope.descriptionHomeSection3_3;
+    let headingHomeSection3_4 = $scope.headingHomeSection3_4;
+    let descriptionHomeSection3_4 = $scope.descriptionHomeSection3_4;
+    let headingHomeSection3_5 = $scope.headingHomeSection3_5;
+    let descriptionHomeSection3_5 = $scope.descriptionHomeSection3_5;
+    let headingHomeSection4 = $scope.headingHomeSection4;
+    let descriptionHomeSection4 = $scope.descriptionHomeSection4;
+    let callToActionHomeSection4 = $scope.callToActionHomeSection4;
     let body = JSON.stringify(
       {
-        heding,
-        hedingSpan,
-        descriotion,
-        additionalDescription,
-        callToAction
+        headingHomeSection1,
+        descriptionHomeSection1,
+        callToActionHomeSection1,
+        headingHomeSection2,
+        headingSpanHomeSection2,
+        descriptionHomeSection2 ,
+        additionalDescriptionHomeSection2,
+        headingHomeSection3_1,
+        descriptionHomeSection3_1,
+        headingHomeSection3_2,
+        descriptionHomeSection3_2,
+        headingHomeSection3_3,
+        descriptionHomeSection3_3,
+        headingHomeSection3_4,
+        descriptionHomeSection3_4,
+        headingHomeSection3_5,
+        descriptionHomeSection3_5,
+        headingHomeSection4,
+        descriptionHomeSection4,
+        callToActionHomeSection4
       }
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
@@ -167,18 +199,80 @@ app.controller('formServices',function($scope,$http,$location){
     
   ).catch(error => console.log(error))
   $scope.updateData = function (id) {
-    let heding = $scope.heding;
-    let hedingSpan = $scope.hedingSpan;
-    let descriotion = $scope.descriotion;
-    let additionalDescription = $scope.additionalDescription;
-    let callToAction = $scope.callToAction;
+    let headingServicesSection1 = $scope.headingServicesSection1;
+    let descriptionServicesSection1 = $scope.descriptionServicesSection1;
+    let callToActionServicesSection1 = $scope.callToActionServicesSection1;
+    let headingServicesSection2_1 = $scope.headingServicesSection2_1;
+    let descriptionServicesSection2_1 = $scope.descriptionServicesSection2_1;
+    let headingServicesSection2_2 = $scope.headingServicesSection2_2;
+    let descriptionServicesSection2_2 = $scope.descriptionServicesSection2_2;
+    let headingServicesSection2_3 = $scope.headingServicesSection2_3;
+    let descriptionServicesSection2_3 = $scope.descriptionServicesSection2_3;
+    let headingServicesSection2_4 = $scope.headingServicesSection2_4;
+    let descriptionServicesSection2_4 = $scope.descriptionServicesSection2_4;
+    let headingServicesSection2_5 = $scope.headingServicesSection2_5;
+    let descriptionServicesSection2_5 = $scope.descriptionServicesSection2_5;
+    let headingServicesSection2_6 = $scope.headingServicesSection2_6;
+    let descriptionServicesSection2_6 = $scope.descriptionServicesSection2_6;
+    let headingSpanServicesSection3 = $scope.headingSpanServicesSection3;
+    let headingServicesSection3 = $scope.headingServicesSection3;
+    let descriptionServicesSection3 = $scope.descriptionServicesSection3;
+    let additionalDescriptionServicesSection3 = $scope.additionalDescriptionServicesSection3;
+    let headingSpanServicesSection4 = $scope.headingSpanServicesSection4;
+    let headingServicesSection4 = $scope.headingServicesSection4;
+    let descriptionServicesSection4 = $scope.descriptionServicesSection4;
+    let additionalDescriptionServicesSection4 = $scope.additionalDescriptionServicesSection4;
+    let headingServicesSection5_1 = $scope.headingServicesSection5_1;
+    let descriptionServicesSection5_1 = $scope.descriptionServicesSection5_1;
+    let headingServicesSection5_2 = $scope.headingServicesSection5_2;
+    let descriptionServicesSection5_2 = $scope.descriptionServicesSection5_2;
+    let headingServicesSection5_3 = $scope.headingServicesSection5_3;
+    let descriptionServicesSection5_3 = $scope.descriptionServicesSection5_3;
+    let headingServicesSection5_4 = $scope.headingServicesSection5_4;
+    let descriptionServicesSection5_4 = $scope.descriptionServicesSection5_4;
+    let headingServicesSection6 = $scope.headingServicesSection6;
+    let descriptionServicesSection6 = $scope.descriptionServicesSection6;
+    let headingServicesSection7 = $scope.headingServicesSection7;
+    let descriptionServicesSection7 = $scope.descriptionServicesSection7;
+    let callToActionServicesSection7 = $scope.callToActionServicesSection7;
     let body = JSON.stringify(
       {
-        heding,
-        hedingSpan,
-        descriotion,
-        additionalDescription,
-        callToAction
+        headingServicesSection1,
+        descriptionServicesSection1,
+        callToActionServicesSection1,
+        headingServicesSection2_1,
+        descriptionServicesSection2_1,
+        headingServicesSection2_2,
+        descriptionServicesSection2_2,
+        headingServicesSection2_3,
+        descriptionServicesSection2_3,
+        headingServicesSection2_4,
+        descriptionServicesSection2_4,
+        headingServicesSection2_5,
+        descriptionServicesSection2_5,
+        headingServicesSection2_6,
+        descriptionServicesSection2_6,
+        headingSpanServicesSection3,
+        headingServicesSection3,
+        descriptionServicesSection3,
+        additionalDescriptionServicesSection3,
+        headingSpanServicesSection4,
+        headingServicesSection4,
+        descriptionServicesSection4,
+        additionalDescriptionServicesSection4,
+        headingServicesSection5_1,
+        descriptionServicesSection5_1,
+        headingServicesSection5_2,
+        descriptionServicesSection5_2,
+        headingServicesSection5_3,
+        descriptionServicesSection5_3,
+        headingServicesSection5_4,
+        descriptionServicesSection5_4,
+        headingServicesSection6,
+        descriptionServicesSection6,
+        headingServicesSection7,
+        descriptionServicesSection7,
+        callToActionServicesSection7
       }
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
@@ -207,18 +301,67 @@ app.controller('formAbout',function($scope,$http,$location){
     
   ).catch(error => console.log(error))
   $scope.updateData = function (id) {
-    let heding = $scope.heding;
-    let hedingSpan = $scope.hedingSpan;
-    let descriotion = $scope.descriotion;
-    let additionalDescription = $scope.additionalDescription;
-    let callToAction = $scope.callToAction;
+    let headingAboutSection1 = $scope.headingAboutSection1;
+    let descriptionAboutSection1 = $scope.descriptionAboutSection1;
+    let headingAboutSection2 = $scope.headingAboutSection2 ;
+    let descriptionAboutSection2 = $scope.descriptionAboutSection2;
+    let headingAboutSection3_1 = $scope.headingAboutSection3_1;
+    let descriptionAboutSection3_1 = $scope.descriptionAboutSection3_1;
+    let headingAboutSection3_2 = $scope.headingAboutSection3_2;
+    let descriptionAboutSection3_2 = $scope.descriptionAboutSection3_2;
+    let headingAboutSection3_3 = $scope.headingAboutSection3_3 ;
+    let descriptionAboutSection3_3 = $scope.descriptionAboutSection3_3;
+    let headingAboutSection3_4 = $scope.headingAboutSection3_4;
+    let descriptionAboutSection3_4 = $scope.descriptionAboutSection3_4;
+    let headingAboutSection3_5 =$scope.headingAboutSection3_5;
+    let descriptionAboutSection3_5 = $scope.descriptionAboutSection3_5;
+    let headingAboutSection4_1 = $scope.headingAboutSection4_1;
+    let headingAboutSection4_2 = $scope.headingAboutSection4_2;
+    let headingAboutSection4_3 = $scope.headingAboutSection4_3;
+    let headingAboutSection4_4 = $scope.headingAboutSection4_4;
+    let headingSpanAboutSection5 = $scope.headingSpanAboutSection5;
+    let headingAboutSection5 = $scope.headingAboutSection5;
+    let descriptionAboutSection5 = $scope.descriptionAboutSection5;
+    let ditionalDescriptionAboutSection5 = $scope.ditionalDescriptionAboutSection5;
+    let headingSpanAboutSection6 = $scope.headingSpanAboutSection6;
+    let headingAboutSection6 = $scope.headingAboutSection6;
+    let descriptionAboutSection6 = $scope.descriptionAboutSection6;
+    let ditionalDescriptionAboutSection6 = $scope.ditionalDescriptionAboutSection6;
+    let headingSpanAboutSection7 = $scope.headingSpanAboutSection7;
+    let headingAboutSection7 = $scope.headingAboutSection7;
+    let descriptionAboutSection7 = $scope.descriptionAboutSection7;
+      
     let body = JSON.stringify(
       {
-        heding,
-        hedingSpan,
-        descriotion,
-        additionalDescription,
-        callToAction
+        headingAboutSection1,
+        descriptionAboutSection1,
+        headingAboutSection2 ,
+        descriptionAboutSection2,
+        headingAboutSection3_1,
+        descriptionAboutSection3_1,
+        headingAboutSection3_2,
+        descriptionAboutSection3_2,
+        headingAboutSection3_3,
+        descriptionAboutSection3_3,
+        headingAboutSection3_4,
+        descriptionAboutSection3_4,
+        headingAboutSection3_5 ,
+        descriptionAboutSection3_5,
+        headingAboutSection4_1,
+        headingAboutSection4_2,
+        headingAboutSection4_3,
+        headingAboutSection4_4,
+        headingSpanAboutSection5,
+        headingAboutSection5,
+        descriptionAboutSection5,
+        ditionalDescriptionAboutSection5 ,
+        headingSpanAboutSection6,
+        headingAboutSection6,
+        descriptionAboutSection6,
+        ditionalDescriptionAboutSection6,
+        headingSpanAboutSection7,
+        headingAboutSection7,
+        descriptionAboutSection7 
       }
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
@@ -247,24 +390,44 @@ app.controller('formContact', function($scope,$http,$location){
     
   ).catch(error => console.log(error))
   $scope.updateData = function (id) {
-    let heding = $scope.heding;
-    let hedingSpan = $scope.hedingSpan;
-    let descriotion = $scope.descriotion;
-    let additionalDescription = $scope.additionalDescription;
-    let callToAction = $scope.callToAction;
-    let contactAdress = $scope.contactAdress;
-    let contactPhone = $scope.contactPhone;
-    let contactEmail = $scope.contactEmail;
+    let headingSpanContactSection1 = $scope.headingSpanContactSection1;
+    let headingContactSection1 = $scope.headingContactSection1;
+    let descriptionContactSection1 = $scope.descriptionContactSection1;
+    let headingContactSection2 = $scope.headingContactSection2;
+    let headingSpanContactSection2 = $scope.headingSpanContactSection2;
+    let descriptionContactSection2 = $scope.descriptionContactSection2;
+    let headingContactSection3 = $scope.headingContactSection3;
+    let descriptionContactSection3 = $scope.descriptionContactSection3;
+    let callToActionContactSection3 = $scope.callToActionContactSection3;
+    let headingContactSection4 = $scope.headingContactSection4;
+    let contactAdressSection = $scope.contactAdressSection;
+    let contactPhoneSection = $scope.contactPhoneSection;
+    let contactEmailSection = $scope.contactEmailSection;
+    let headingContactSection5 = $scope.headingContactSection5;
+    let headingSpanContactSection5 = $scope.headingSpanContactSection5;
+    let descriptionContactSection5_1 = $scope.descriptionContactSection5_1;
+    let descriptionContactSection5_2 = $scope.descriptionContactSection5_2;
+    let descriptionContactSection5_3 = $scope.descriptionContactSection5_3
     let body = JSON.stringify(
       {
-        heding,
-        hedingSpan,
-        descriotion,
-        additionalDescription,
-        callToAction,
-        contactAdress,
-        contactPhone,
-        contactEmail
+        headingSpanContactSection1,
+        headingContactSection1,
+        descriptionContactSection1,
+        headingContactSection2,
+        headingSpanContactSection2,
+        descriptionContactSection2,
+        headingContactSection3,
+        descriptionContactSection3,
+        callToActionContactSection3,
+        headingContactSection4,
+        contactAdressSection,
+        contactPhoneSection,
+        contactEmailSection,
+        headingContactSection5,
+        headingSpanContactSection5,
+        descriptionContactSection5_1 ,
+        descriptionContactSection5_2,
+        descriptionContactSection5_3
       }
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
@@ -293,24 +456,28 @@ innerError => {
 
 ).catch(error => console.log(error))
 $scope.updateData = function (id) {
-let heding = $scope.heding;
-let hedingSpan = $scope.hedingSpan;
-let descriotion = $scope.descriotion;
-let additionalDescription = $scope.additionalDescription;
-let callToAction = $scope.callToAction;
-let contactAdress = $scope.contactAdress;
+let headingFooterSection1 = $scope.headingFooterSection1;
+let descriptionFooterSection1 = $scope.descriptionFooterSection1;
+let headingFooterSection2 = $scope.headingFooterSection2;
+let descriptionFooterSection2 = $scope.descriptionFooterSection2;
+let headingFooterSection3 = $scope.headingFooterSection3;
+let contactAdres = $scope.contactAdres;
 let contactPhone = $scope.contactPhone;
 let contactEmail = $scope.contactEmail;
+let headingFooterSection4 = $scope.headingFooterSection4;
+let headingFooterSection5 = $scope.headingFooterSection5;
 let body = JSON.stringify(
   {
-    heding,
-    hedingSpan,
-    descriotion,
-    additionalDescription,
-    callToAction,
-    contactAdress ,
+    headingFooterSection1,
+    descriptionFooterSection1,
+    headingFooterSection2,
+    descriptionFooterSection2,
+    headingFooterSection3,
+    contactAdres ,
 		contactPhone,
-		contactEmail
+    contactEmail,
+    headingFooterSection4,
+    headingFooterSection5
   }
 )
 $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
@@ -381,6 +548,12 @@ app.controller('homeCtrl', function ($scope,$http) {
       success => {
         let textData = success.data;
         $scope.textData = textData;
+        let slider_heading = document.querySelectorAll('div#revolutionSlider h1')[0];
+        slider_heading.textContent = textData["home"].headingHomeSection1;
+        let slider_descriotion = document.querySelectorAll('div#revolutionSlider div.tp-caption')[1];
+        slider_descriotion.textContent = textData["home"].descriptionHomeSection1;
+        let slider_callToAction= document.querySelectorAll('div#revolutionSlider a')[0];
+        slider_callToAction.textContent = textData["home"].callToActionHomeSection1;
       },
       innerError => {
         console.log(innerError);
@@ -710,18 +883,18 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
     
     ).catch(error => console.log(error))
     $scope.updateData = function (id) {
-    let heding = $scope.heding;
-    let hedingSpan = $scope.hedingSpan;
-    let descriotion = $scope.descriotion;
-    let additionalDescription = $scope.additionalDescription;
-    let callToAction = $scope.callToAction;
+    let headingHeaderSection1= $scope.headingHeaderSection1;
+    let headingHeaderSection2 = $scope.headingHeaderSection2;
+    let headingHeaderSection3 = $scope.headingHeaderSection3;
+    let headingHeaderSection4 = $scope.headingHeaderSection4;
+    let headingHeaderSection5 = $scope.headingHeaderSection5;
     let body = JSON.stringify(
       {
-        heding,
-        hedingSpan,
-        descriotion,
-        additionalDescription,
-        callToAction
+        headingHeaderSection1,
+        headingHeaderSection2,
+        headingHeaderSection3,
+        headingHeaderSection4,
+        headingHeaderSection5
       }
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
