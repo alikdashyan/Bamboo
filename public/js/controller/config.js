@@ -119,14 +119,14 @@ app.controller('formHome',function($scope, $http,$location){
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      console.log(textData )
     },
     innerError => {
       console.log(innerError);
     }
     
   ).catch(error => console.log(error))
-  $scope.updateData = function (id) {
+  $scope.updateData = function (id, data) {
+    console.log(data);
     let heding = $scope.heding;
     let hedingSpan = $scope.hedingSpan;
     let descriotion = $scope.descriotion;
@@ -285,7 +285,6 @@ $http.get('/textData/readAll').then(
 success => {
   let textData = success.data;
   $scope.textData = textData;
-  console.log(textData )
 },
 innerError => {
   console.log(innerError);
@@ -710,6 +709,7 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
     
     ).catch(error => console.log(error))
     $scope.updateData = function (id) {
+  
     let heding = $scope.heding;
     let hedingSpan = $scope.hedingSpan;
     let descriotion = $scope.descriotion;
