@@ -1,8 +1,5 @@
 <div class="body">
-
-
         <div role="main" class="main">
-
             <section class="page-header page-header-classic">
                 <div class="container">
                     <div class="row">
@@ -12,12 +9,9 @@
                     </div>
                 </div>
             </section>
-
             <div class="container py-2">
-
                 <div class="row">
                     <div class="col-lg-2 mt-4 mt-lg-0">
-
                         <aside class="sidebar mt-2" id="sidebar">
                             <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl' >
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/formHome">formHome</a></li>
@@ -27,158 +21,101 @@
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/formHeader">formHeader</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark active" href="#/formFooter">formFooter</a></li>
                                 <li class="nav-item" ng-click='adminLogout()'><a class="nav-link text-dark " href="">Logout</a></li>
-                                
                             </ul>
                         </aside>
-
                     </div>
                     <div class="col-lg-10">
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header" >Forms Header</h1>
-    </div>  
-    <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-    <div class="col-lg-6">
-           
-            <div class="panel panel-default">
-                    <div class="panel-heading adminTextSayle">
-                            Header Section 1
-                    </div>
-                    <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form role="form" ng-submit="updateData('footerSection1')">
-                                    <div class="form-group">
-                                        <label>Heading</label>
-                                        <input class="form-control" ng-model="heding" placeholder="{{textData['footerSection1'].heding}}" >
-                                    </div>
-                                    <div class="form-group">
-                                            <label>Heading</label>
-                                            <input class="form-control" ng-model="descriotion" placeholder="{{textData['footerSection1'].descriotion}}" >
-                                        </div>
-                                        
-                                  
-                                    <button type="submit" class="btn btn-default">Submit Button</button>
-                                    <button type="reset" class="btn btn-default">Reset Button</button>
-                                </form>
+                                <h1 class="page-header" >Forms Header</h1>
                             </div>
+                            <!-- /.col-lg-12 -->
                         </div>
-                    </div>
-            </div>
-            <div class="panel panel-default">
-                    <div class="panel-heading adminTextSayle">
-                            Header Section 2
-                    </div>
-                    <div class="panel-body">
+                        <!-- /.row -->
                         <div class="row">
                             <div class="col-lg-12">
-                                <form role="form" ng-submit="updateData('footerSection2')">
-                                    <div class="form-group">
-                                        <label>Heading</label>
-                                        <input class="form-control" ng-model="heding" placeholder="{{textData['footerSection2'].heding}}" >
-                                    </div>
-                                    <div class="form-group">
-                                            <label>Heading</label>
-                                            <input class="form-control" ng-model="descriotion" placeholder="{{textData['footerSection2'].descriotion}}" >
-                                        </div>
-                                        
-                                  
-                                    <button type="submit" class="btn btn-default">Submit Button</button>
-                                    <button type="reset" class="btn btn-default">Reset Button</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                        <div class="panel-heading adminTextSayle">
-                                Header Section 3
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form role="form" ng-submit="updateData('footerSection3')">
-                                        <div class="form-group">
-                                            <label>Heading</label>
-                                            <input class="form-control" ng-model="heding" placeholder="{{textData['footerSection3'].heding}}" >
-                                        </div>
-                                        <div class="form-group">
-                                                <label>Contact Adress</label>
-                                                <input class="form-control" ng-model="contactAdress" placeholder="{{textData['footerSection3'].contactAdress}}" >
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                    <label>cContact Phone</label>
-                                                    <input class="form-control" ng-model="contactPhone" placeholder="{{textData['footerSection3'].contactPhone}}" >
-                                                </div>
-                                                <div class="form-group">
-                                                        <label>Contact Email</label>
-                                                        <input class="form-control" ng-model="contactEmail" placeholder="{{textData['footerSection3'].contactEmail}}" >
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <form role="form" ng-submit="updateData('footer')">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 1
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingFooterSection1" placeholder="{{textData['footer'].headingFooterSection1}}" >
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="descriptionFooterSection1" placeholder="{{textData['footer'].descriptionFooterSection1}}" >
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 2
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingFooterSection2" placeholder="{{textData['footer'].headingFooterSection2}}" >
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="descriptionFooterSection2" placeholder="{{textData['footer'].descriptionFooterSection2}}" >
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 3
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingFooterSection3" placeholder="{{textData['footer'].headingFooterSection3}}" >
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Contact Adress</label>
+                                                                <input class="form-control" ng-model="contactAdress" placeholder="{{textData['footer'].contactAdress}}" >
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>cContact Phone</label>
+                                                                <input class="form-control" ng-model="contactPhone" placeholder="{{textData['footer'].contactPhone}}" >
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Contact Email</label>
+                                                                <input class="form-control" ng-model="contactEmail" placeholder="{{textData['footer'].contactEmail}}" >
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 4
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingFooterSection4" placeholder="{{textData['footer'].headingFooterSection4}}" >
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                Header Section 5
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control" ng-model="headingFooterSection5" placeholder="{{textData['footer'].headingFooterSection5}}" >
+                                                            </div>
+                                                            <div class="form-group">
+                                                                {{ congratsText }}
+                                                             </div>
+                                                            <button type="submit" class="btn btn-success">Submit Button</button>
+                                                            <button type="reset" class="btn btn-default">Reset Button</button>
+                                                        </div>
                                                     </div>
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-        
-    </div>
-    <div class="col-lg-6">
-            <div class="panel panel-default">
-                    <div class="panel-heading adminTextSayle">
-                            Header Section 4
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <form role="form" ng-submit="updateData('footerSection5')">
-                                    <div class="form-group">
-                                        <label>Heading</label>
-                                        <input class="form-control" ng-model="heding" placeholder="{{textData['footerSection5'].heding}}" >
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
-                                  
-                                  
-                                    <button type="submit" class="btn btn-default">Submit Button</button>
-                                    <button type="reset" class="btn btn-default">Reset Button</button>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                        <div class="panel-heading adminTextSayle">
-                                Header Section 5
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form role="form" ng-submit="updateData('footerSection5')">
-                                        <div class="form-group">
-                                            <label>Heading</label>
-                                            <input class="form-control" ng-model="heding" placeholder="{{textData['footerSection5'].heding}}" >
-                                        </div>
-                                    
-                                      
-                                        <button type="submit" class="btn btn-default">Submit Button</button>
-                                        <button type="reset" class="btn btn-default">Reset Button</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-
-</div>
+    </div>
+    </div>

@@ -1,12 +1,7 @@
-
 <div class="body">
-
-
         <div role="main" class="main">
-
             <section class="page-header page-header-classic">
                 <div class="container">
-                  
                     <div class="row">
                         <div class="col p-static">
                             <h1 data-title-border>Admin Profile</h1>
@@ -14,12 +9,9 @@
                     </div>
                 </div>
             </section>
-
             <div class="container py-2">
-
                 <div class="row">
                     <div class="col-lg-2 mt-4 mt-lg-0">
-
                         <aside class="sidebar mt-2" id="sidebar">
                             <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl' >
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/formHome">formHome</a></li>
@@ -31,349 +23,200 @@
                                 <li class="nav-item" ng-click='adminLogout()'><a class="nav-link text-dark " href="">Logout</a></li>
                             </ul>
                         </aside>
-
                     </div>
                     <div class="col-lg-10">
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">Forms About</h1>
-    </div>  
-    <!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-         
-     <div class="col-lg-6">
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 1
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection1')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection1'].heding}}">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header">Forms About</h1>
                             </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection1'].descriotion}}"></textarea>
-                            </div>                           
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 2
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection2')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection2'].heding}}">
+                            <!-- /.col-lg-12 -->
+                        </div>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <form role="form" ng-submit="updateData('about')">
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 1
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection1" placeholder="{{textData['about'].headingAboutSection1}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="descriptionAboutSection1" placeholder="{{textData['about'].descriptionAboutSection1}}"></textarea>
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 2
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input type="text" class="form-control"  ng-model="headingAboutSection2" placeholder="{{textData['about'].headingAboutSection2}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="descriptionAboutSection2" placeholder="{{textData['about'].descriptionAboutSection2}}"></textarea>
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 3_1
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection3_1" placeholder="{{textData['about'].headingAboutSection3_1}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="descriptionAboutSection3_1" placeholder="{{textData['about'].descriptionAboutSection3_1}}"></textarea>
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 3_2
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection3_2" placeholder="{{textData['about'].headingAboutSection3_2}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="descriptionAboutSection3_2" placeholder="{{textData['about'].descriptionAboutSection3_2}}"></textarea>
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 3_3
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection3_3" placeholder="{{textData['about'].headingAboutSection3_3}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="descriptionAboutSection3_3" placeholder="{{textData['about'].descriptionAboutSection3_3}}"></textarea>
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 3_4
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection3_4" placeholder="{{textData['about'].headingAboutSection3_4}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="descriptionAboutSection3_4" placeholder="{{textData['about'].descriptionAboutSection3_4}}"></textarea>
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 3_5
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection3_5" placeholder="{{textData['about'].headingAboutSection3_5}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="descriptionAboutSection3_5" placeholder="{{textData['about'].descriptionAboutSection3_5}}"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 4_1
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection4_1" placeholder="{{textData['about'].headingAboutSection4_1}}">
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 4_2
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection4_2" placeholder="{{textData['about'].headingAboutSection4_2}}">
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 4_3
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection4_3" placeholder="{{textData['about'].headingAboutSection4_3}}">
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 4_4
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection4_4" placeholder="{{textData['about'].headingAboutSection4_4}}">
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 5
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection5" placeholder="{{textData['about'].headingAboutSection5}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label>Heading</label>
+                                                                    <input class="form-control"  ng-model="headingSpanAboutSection5" placeholder="{{textData['about'].headingSpanAboutSection5}}">
+                                                                </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="descriptionAboutSection5" placeholder="{{textData['about'].descriptionAboutSection5}}"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Additional Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="ditionalDescriptionAboutSection5" placeholder="{{textData['about'].ditionalDescriptionAboutSection5}}"></textarea>
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 6
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection6" placeholder="{{textData['about'].headingAboutSection6}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading Span</label>
+                                                                <input class="form-control"  ng-model="headingSpanAboutSection6" placeholder="{{textData['about'].headingSpanAboutSection6}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="descriptionAboutSection6" placeholder="{{textData['about'].descriptionAboutSection6}}"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Additional Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="ditionalDescriptionAboutSection6" placeholder="{{textData['about'].ditionalDescriptionAboutSection6}}"></textarea>
+                                                            </div>
+                                                            <div class="panel-heading adminTextSayle">
+                                                                About Section 7
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading</label>
+                                                                <input class="form-control"  ng-model="headingAboutSection7" placeholder="{{textData['about'].headingAboutSection7}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Heading Span</label>
+                                                                <input class="form-control"  ng-model="headingSpanAboutSection7" placeholder="{{textData['about'].headingSpanAboutSection7}}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>Description</label>
+                                                                <textarea class="form-control"  rows="5"    ng-model="ddescriptionAboutSection7escriotion" placeholder="{{textData['about'].descriptionAboutSection7}}"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                               {{ congratsText }}
+                                                            </div>
+                                                            <button type="submit" class="btn btn-success">Submit Button</button>
+                                                            <button type="reset" class="btn btn-default">Reset Button</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection2'].descriotion}}"></textarea>
-                            </div>                           
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> 
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 3_1
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection3_1')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection3_1'].heding}}">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection3_1'].descriotion}}"></textarea>
-                            </div>                           
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 3_2
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection3_2')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection3_2'].heding}}">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection3_2'].descriotion}}"></textarea>
-                            </div>                           
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 3_3
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection3_3')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection3_3'].heding}}">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection3_3'].descriotion}}"></textarea>
-                            </div>                           
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 3_4
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection3_4')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection3_4'].heding}}">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection3_4'].descriotion}}"></textarea>
-                            </div>                           
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> 
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 3_5
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection3_5')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection3_5'].heding}}">
-                            </div>
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection3_5'].descriotion}}"></textarea>
-                            </div>                           
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div> 
-      </div>   
-    <div class="col-lg-6">
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 4_1
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection4_1')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection4_1'].heding}}">
-                            </div>                       
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>   
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 4_2
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection4_2')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection4_2'].heding}}">
-                            </div>                       
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>   
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 4_3
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection4_3')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection4_3'].heding}}">
-                            </div>                       
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>   
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 4_4
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection4_4')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection4_4'].heding}}">
-                            </div>                       
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>   
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 5
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection5')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection5'].heding}}">
-                            </div>           
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection5'].descriotion}}"></textarea>
-                            </div>  
-                            <div class="form-group">
-                                <label>Additional Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="additionalDescription" placeholder="{{textData['aboutSection5'].additionalDescription}}"></textarea>
-                            </div>              
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>   
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 6
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection6')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection6'].heding}}">
-                            </div> 
-                            <div class="form-group">
-                                <label>Heading Span</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection6'].hedingSpan}}">
-                            </div>           
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection6'].descriotion}}"></textarea>
-                            </div>  
-                            <div class="form-group">
-                                <label>Additional Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="additionalDescription" placeholder="{{textData['aboutSection6'].additionalDescription}}"></textarea>
-                            </div>              
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>   
-        <div class="panel panel-default">
-            <div class="panel-heading adminTextSayle">
-                About Section 7
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form role="form" ng-submit="updateData('aboutSection7')">
-                            <div class="form-group">
-                                <label>Heading</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection7'].heding}}">
-                            </div> 
-                            <div class="form-group">
-                                <label>Heading Span</label>
-                                <input class="form-control"  ng-model="heding" placeholder="{{textData['aboutSection7'].hedingSpan}}">
-                            </div>           
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control"  rows="5"    ng-model="descriotion" placeholder="{{textData['aboutSection7'].descriotion}}"></textarea>
-                            </div>               
-                            <button type="submit" class="btn btn-default">Submit Button</button>
-                            <button type="reset" class="btn btn-default">Reset Button</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>  
+        </div>
     </div>
-</div>
-
-</div>
-</div>
-
-</div>
-
-</div>

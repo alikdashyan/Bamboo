@@ -106,24 +106,24 @@
 												<nav class="collapse">
 														<ul class="nav nav-pills" id="mainNav">
 															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle " href="#/services">{{textData["headerSection1"].heding}}</a>														
+																<a class="dropdown-item dropdown-toggle " href="#/services">{{textData["header"].headingHeaderSection1}}</a>														
 															</li>
 															<li class="dropdown">
 																<a class="dropdown-item dropdown-toggle" href="#/blog">
-																	{{textData["headerSection2"].heding}}
+																	{{textData["header"].headingHeaderSection2}}
 																</a>	
 															</li>
 															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle "  href="#/about">{{textData["headerSection3"].heding}}</a>														
+																<a class="dropdown-item dropdown-toggle "  href="#/about">{{textData["header"].headingHeaderSection3}}</a>														
 															</li>
 															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle "  href="#/contact">{{textData["headerSection4"].heding}}</a>														
+																<a class="dropdown-item dropdown-toggle "  href="#/contact">{{textData["header"].headingHeaderSection4}}</a>														
 															</li>
 															<li class="dropdown">
 																<a class="dropdown-item dropdown-toggle " href="{{ token ? '#/profile' : '#/login' }}">{{ token ? 'Profile' : 'Login/Register' }}</a>															
 															</li>
 															<li class="dropdown" ng-show='token' ng-click='logout()'>
-																<a class="dropdown-item dropdown-toggle " href="#">{{textData["headerSection5"].heding}}</a>															
+																<a class="dropdown-item dropdown-toggle " href="#">{{textData["header"].headingHeaderSection5}}</a>															
 															</li>
 														</ul>
 													</nav>
@@ -168,8 +168,8 @@
 							</div>
 							<div class="row py-5 my-4">
 								<div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-									<h5 class="text-3 mb-3">{{textData["footerSection1"].heding}}</h5>
-									<p class="pr-1">{{textData["footerSection1"].descriotion}}</p>
+									<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection1}}</h5>
+									<p class="pr-1">{{textData["footer"].descriptionFooterSection1}}</p>
 									<div class="alert alert-success d-none" id="newsletterSuccess">
 										<strong>Success!</strong> You've been added to our email list.
 									</div>
@@ -184,23 +184,23 @@
 									</form>
 								</div>
 								<div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-									<h5 class="text-3 mb-3">{{textData["footerSection2"].heding}}</h5>
+									<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection2}}</h5>
 									<div id="tweet" class="twitter" data-plugin-tweets data-plugin-options="{'username': 'oklerthemes', 'count': 2}">
-										<p>{{textData["footerSection2"].descriotion}}</p>
+										<p>{{textData["footer"].descriptionFooterSection2}}</p>
 									</div>
 								</div>
 								<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 									<div class="contact-details">
-										<h5 class="text-3 mb-3">{{textData["footerSection3"].heding}}</h5>
+										<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection3}}</h5>
 										<ul class="list list-icons list-icons-lg">
-											<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i><p class="m-0">{{textData["footerSection3"].contactAdress}}</p></li>
-											<li class="mb-1"><i class="fab fa-whatsapp text-color-primary"></i><p class="m-0"><a href="tel:8001234567">{{textData["footerSection3"].contactPhone}}</a></p></li>
-											<li class="mb-1"><i class="far fa-envelope text-color-primary"></i><p class="m-0"><a href="mailto:mail@example.com">{{textData["footerSection3"].contactEmail}}</a></p></li>
+											<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i><p class="m-0">{{textData["footer"].contactAdres}}</p></li>
+											<li class="mb-1"><i class="fab fa-whatsapp text-color-primary"></i><p class="m-0"><a href="tel:8001234567">{{textData["footer"].contactPhone}}</a></p></li>
+											<li class="mb-1"><i class="far fa-envelope text-color-primary"></i><p class="m-0"><a href="mailto:mail@example.com">{{textData["footer"].contactEmail}}</a></p></li>
 										</ul>
 									</div>
 								</div>
 								<div class="col-md-6 col-lg-2">
-									<h5 class="text-3 mb-3">{{textData["footerSection4"].heding}}</h5>
+									<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection4}}</h5>
 									<ul class="social-icons">
 										<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
 										<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
@@ -218,7 +218,7 @@
 										</a>
 									</div>
 									<div class="col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
-										<p>{{textData["footerSection5"].heding}}.</p>
+										<p>{{textData["footer"].headingFooterSection5}}.</p>
 									</div>
 									<div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
 										<nav id="sub-menu">
