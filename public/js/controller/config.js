@@ -894,20 +894,11 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
     
     ).catch(error => console.log(error))
     $scope.updateData = function (id) {
-<<<<<<< HEAD
-  
-    let heding = $scope.heding;
-    let hedingSpan = $scope.hedingSpan;
-    let descriotion = $scope.descriotion;
-    let additionalDescription = $scope.additionalDescription;
-    let callToAction = $scope.callToAction;
-=======
     let headingHeaderSection1= $scope.headingHeaderSection1;
     let headingHeaderSection2 = $scope.headingHeaderSection2;
     let headingHeaderSection3 = $scope.headingHeaderSection3;
     let headingHeaderSection4 = $scope.headingHeaderSection4;
     let headingHeaderSection5 = $scope.headingHeaderSection5;
->>>>>>> dddf6e71204765f7867348192b20789a9401a901
     let body = JSON.stringify(
       {
         headingHeaderSection1,
