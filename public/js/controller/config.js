@@ -175,7 +175,9 @@ app.controller('formHome',function($scope, $http,$location){
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
       success => {
-        console.log(success)
+        if(success.data){
+          $scope.congratsText = 'Data is updated succesfully';
+        }
       },
       innerError => {
         console.log(innerError)
@@ -277,7 +279,9 @@ app.controller('formServices',function($scope,$http,$location){
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
       success => {
-        console.log(success)
+        if(success.data){
+          $scope.congratsText = 'Data is updated succesfully';
+        }
       },
       innerError => {
         console.log(innerError)
@@ -289,13 +293,16 @@ app.controller('formAbout',function($scope,$http,$location){
   if(!localStorage.adminToken){
     $location.path('/').replace();
    }
+ 
   $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
       console.log(textData )
+      
     },
     innerError => {
+      
       console.log(innerError);
     }
     
@@ -366,7 +373,9 @@ app.controller('formAbout',function($scope,$http,$location){
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
       success => {
-        console.log(success)
+        if(success.data){
+          $scope.congratsText = 'Data is updated succesfully';
+        }
       },
       innerError => {
         console.log(innerError)
@@ -432,7 +441,9 @@ app.controller('formContact', function($scope,$http,$location){
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
       success => {
-        console.log(success)
+        if(success.data){
+          $scope.congratsText = 'Data is updated succesfully';
+        }
       },
       innerError => {
         console.log(innerError)
@@ -482,7 +493,9 @@ let body = JSON.stringify(
 )
 $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
   success => {
-    console.log(success)
+    if(success.data){
+      $scope.congratsText = 'Data is updated succesfully';
+    }
   },
   innerError => {
     console.log(innerError)
