@@ -127,15 +127,6 @@ app.controller('formHome',function($scope, $http,$location){
     }
     
   ).catch(error => console.log(error))
-<<<<<<< HEAD
-  $scope.updateData = function (id, data) {
-    console.log(data);
-    let heding = $scope.heding;
-    let hedingSpan = $scope.hedingSpan;
-    let descriotion = $scope.descriotion;
-    let additionalDescription = $scope.additionalDescription;
-    let callToAction = $scope.callToAction;
-=======
   $scope.updateData = function (id) {
     let headingHomeSection1 = $scope.headingHomeSection1;
     let descriptionHomeSection1 = $scope.descriptionHomeSection1;
@@ -157,7 +148,6 @@ app.controller('formHome',function($scope, $http,$location){
     let headingHomeSection4 = $scope.headingHomeSection4;
     let descriptionHomeSection4 = $scope.descriptionHomeSection4;
     let callToActionHomeSection4 = $scope.callToActionHomeSection4;
->>>>>>> dddf6e71204765f7867348192b20789a9401a901
     let body = JSON.stringify(
       {
         headingHomeSection1,
