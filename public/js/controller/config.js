@@ -121,7 +121,6 @@ app.controller('formHome',function($scope, $http,$location){
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      console.log(textData )
     },
     innerError => {
       console.log(innerError);
@@ -459,7 +458,6 @@ $http.get('/textData/readAll').then(
 success => {
   let textData = success.data;
   $scope.textData = textData;
-  console.log(textData )
 },
 innerError => {
   console.log(innerError);
