@@ -827,8 +827,6 @@ app.controller('profileCntrl', function($scope, $location, $http){
   
   $scope.editUser = function(){
     $scope.ubdateError = "";
-    let name = $scope.name;
-    let lastName = $scope.lastName;
     let contactInfo = {
       emailForRefunds: $scope.emailForRefunds,
       skypeViberWhatsApp: $scope.skypeViberWhatsApp,
@@ -843,8 +841,6 @@ app.controller('profileCntrl', function($scope, $location, $http){
     }
   
     let profileBody = JSON.stringify({
-      name,
-      lastName,
       contactInfo
     })
     console.log(profileBody);
@@ -912,7 +908,9 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
     )
     $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
       success => {
-        console.log(success)
+        if(success.data){
+          $scope.congratsText = 'Data is updated succesfully';
+        }
       },
       innerError => {
         console.log(innerError)
