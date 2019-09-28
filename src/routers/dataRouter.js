@@ -27,10 +27,10 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
                 auth: req.oAuth2Client
             }, (err, response) => {
                 if(err){return console.log(err)}
-                console.log(response)
+                sheetsData.push(response)
             })
         })
-        res.send(fileList.data.files)
+        res.send(sheetsData)
     } catch(e) {
         console.log(e)
         res.status(500).send({error: e.message})
