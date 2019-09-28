@@ -20,7 +20,7 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
             spaces: 'drive',
         })
         const sheetsData = []
-        fileList.data.map((file) => {
+        fileList.data.files.map((file) => {
             sheets.spreadsheets.values.get({
                 spreadsheetId: file.id,
                 range: '',
