@@ -4,6 +4,7 @@ const {OAuth2Client} = require('google-auth-library')
 const googleAuth = require('../middleware/googleAuth')
 const getNewToken = require('../utils/getNewToken')
 const auth = require('../middleware/userAuth')
+const arrayToJSON = require('../utils/arrayToJSON')
 
 const dataRouter = new express.Router()
 
@@ -12,10 +13,22 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
         version: 'v3',
         auth: req.oAuth2Client
     })
+    const sheets = google.sheets('v4')
     try{
         const fileList = await drive.files.list({
             q: `mimeType='application/vnd.google-apps.spreadsheet' and name contains '${req.user.userID}' and trashed=false`,
             spaces: 'drive',
+        })
+        const sheetsData = []
+        fileList.map((file) => {
+            sheets.spreadsheets.values.get({
+                spreadsheetId: file.id,
+                range: '',
+                auth: req.oAuth2Client
+            }, (err, response) => {
+                if(err){return console.log(err)}
+                console.log(response)
+            })
         })
         res.send(fileList.data.files)
     } catch(e) {
