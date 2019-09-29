@@ -23,7 +23,6 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
         fileList.data.files.map((file) => {
             sheets.spreadsheets.values.get({
                 spreadsheetId: file.id,
-                range: 'Mayis',
                 auth: req.oAuth2Client
             }, (err, response) => {
                 if(err){return console.log(err)}
