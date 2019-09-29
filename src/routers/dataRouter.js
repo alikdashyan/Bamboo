@@ -21,12 +21,14 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
         })
         const sheetsData = []
         fileList.data.files.map((file) => {
-            const arrayData = await sheets.spreadsheets.values.get({
+            sheets.spreadsheets.values.get({
                 spreadsheetId: file.id,
                 range: '',
                 auth: req.oAuth2Client
+            }, (err, response) => {
+                if(err){return console.log(err)}
+                sheetsData.push(response)
             })
-            sheetsData.push(arrayData)
         })
         res.send(sheetsData)
     } catch(e) {
