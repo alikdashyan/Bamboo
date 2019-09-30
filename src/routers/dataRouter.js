@@ -4,6 +4,7 @@ const {OAuth2Client} = require('google-auth-library')
 const googleAuth = require('../middleware/googleAuth')
 const getNewToken = require('../utils/getNewToken')
 const auth = require('../middleware/userAuth')
+const arrayToJSON = require('../utils/arrayToJSON')
 
 const dataRouter = new express.Router()
 
@@ -18,6 +19,7 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
             q: `mimeType='application/vnd.google-apps.spreadsheet' and name contains '${req.user.userID}' and trashed=false`,
             spaces: 'drive',
         })
+<<<<<<< HEAD
         fileList.data.files.map((spsheet) => {
             sheets.spreadsheets.get({
                 spreadsheetId: spsheet.id,
@@ -38,6 +40,19 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
             })
         })
         res.send(fileList.data.files)
+=======
+        const sheetsData = []
+        fileList.data.files.map((file) => {
+            sheets.spreadsheets.values.get({
+                spreadsheetId: file.id,
+                auth: req.oAuth2Client
+            }, (err, response) => {
+                if(err){return console.log(err)}
+                sheetsData.push(response)
+            })
+        })
+        res.send(sheetsData)
+>>>>>>> 0d3b4c10e62550d6ed74b0fc2c89575272561540
     } catch(e) {
         console.log(e)
         res.status(500).send({error: e.message})
