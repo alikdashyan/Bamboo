@@ -26,8 +26,9 @@
 									<aside class="sidebar mt-2" id="sidebar">
 										<ul class="nav nav-list flex-column mb-5">
 											<li class="nav-item"><a class="nav-link text-dark" href="#/profile">My Profile</a></li>
-											<li class="nav-item"><a class="nav-link  active" href="#/formsUserProfile">Make Order</a></li>
-											<li class="nav-item"><a class="nav-link" href="#/userTable">My Orders</a></li>
+											<li class="nav-item"><a class="nav-link text-dark active" href="#/formsUserProfile">Make Order</a></li>
+											<li class="nav-item"><a class="nav-link text-dark" href="#/userTable">My Orders</a></li>
+											<li class="nav-item"><a class="nav-link text-dark" href="#/reportsTable">My Reports</a></li>
 										</ul>
 									</aside>
 		
@@ -43,6 +44,12 @@
 							</div>
 
 							<form ng-submit="submitOrder()" role="form" class="needs-validation">
+									<div class="form-group row">
+											<label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email For Refunds</label>
+											<div class="col-lg-9">
+												<input ng-model="emailForRefunds" class="form-control" required type="email">
+											</div>
+											</div>	
 							    <div class="form-group row">
 							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Product link</label>
 							        <div class="col-lg-9">
@@ -50,30 +57,35 @@
 							        </div>
 							    </div>
 							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">buyingsPerDay</label>
+							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Buyings Per Day</label>
 							        <div class="col-lg-9">
 							            <input ng-model="buyingsPerDay"  class="form-control" required type="number" >
 							        </div>
 							    </div>
 							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">itemPrice</label>
+							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Item Price</label>
 							        <div class="col-lg-9">
 							            <input ng-model="itemPrice" class="form-control" required type="number" >
 							        </div>
 							    </div>
 							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">totalBuyingSummary</label>
+							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Total Buying Summary</label>
 							        <div class="col-lg-9">
 							            <input ng-model="totalBuyingSummary" class="form-control" type="number" >
 							        </div>
 							    </div>
 							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2">additionalInfo</label>
+							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Add Itional Info</label>
 							        <div class="col-lg-9">
 							            <input ng-model="additionalInfo" class="form-control" type="text" >
 							        </div>
 							    </div>
-							    
+								<div class="form-group row">
+							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Keywords</label>
+							        <div class="col-lg-9">
+							            <input ng-model="keywords" class="form-control" type="text" >
+							        </div>
+							    </div>
 							    <div class="form-group row">
 									<div class="form-group col-lg-9" style="text-align: center">
 										<p>{{ orderError ? orderError : success}}</p>

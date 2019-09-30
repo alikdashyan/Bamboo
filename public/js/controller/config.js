@@ -43,6 +43,10 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
       templateUrl: 'view/user-tables.html',
       controller: 'tableCtrl'
     })
+    .when('/reportsTable',{
+      templateUrl: 'view/reports.html',
+  
+    })
     .when('/demo',{
       templateUrl: 'view/demo.html',
       controller: 'demoCtrl'
@@ -77,7 +81,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
       
     })
 
-    .otherwise({redirctTo:'/'})
+    .otherwise({templateUrl:'view/page-404.html'})
 }])
 //Admin Panel
 app.controller('adminCtrl',function($scope,$http,$location){
@@ -765,6 +769,8 @@ app.controller('formCntrl', function($scope, $http,$location) {
     let itemPrice = $scope.itemPrice;
     let totalBuyingSummary = $scope.totalBuyingSummary;
     let additionalInfo = $scope.additionalInfo;
+    let emailForRefunds = $scope.emailForRefunds;
+    let keywords = $scope.keywords;
     
     let httpOptions = {
       headers: {
@@ -779,6 +785,8 @@ app.controller('formCntrl', function($scope, $http,$location) {
       itemPrice,
       totalBuyingSummary,
       additionalInfo,
+      emailForRefunds,
+      keywords
     }
     let stringifiedBody = JSON.stringify(body);
 
@@ -826,7 +834,7 @@ app.controller('profileCntrl', function($scope, $location, $http){
   $scope.editUser = function(){
     $scope.ubdateError = "";
     let contactInfo = {
-      emailForRefunds: $scope.emailForRefunds,
+      
       skypeViberWhatsApp: $scope.skypeViberWhatsApp,
       facebookLink: $scope.facebook
     }
