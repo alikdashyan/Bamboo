@@ -19,7 +19,9 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
             q: `mimeType='application/vnd.google-apps.spreadsheet' and name contains '${req.user.userID}' and trashed=false`,
             spaces: 'drive',
         })
+        const allData = {}
         fileList.data.files.map((spsheet) => {
+            allData[spsheet.name] = []
             sheets.spreadsheets.get({
                 spreadsheetId: spsheet.id,
                 auth: req.oAuth2Client
@@ -28,17 +30,21 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
                 spreadsheet.data.sheets.map((sh) => {
                    names.push(sh.properties.title)
                 })
-                // sheets.spreadsheets.values.batchGet({
-                //     spreadsheetId: spsheet.id,
-                //     auth: req.oAuth2Client,
-                //     ranges: names
-                // }).then((data) => {console.log(data)}).catch(e => console.log(e))
-                console.log(names)
+                sheets.spreadsheets.values.batchGet({
+                    spreadsheetId: spsheet.id,
+                    auth: req.oAuth2Client,
+                    ranges: names
+                }).then((data) => {
+                    data.data.valueRanges.map((ssData) => {
+                        allData[spsheet.name].push(arrayToJSON(ssData.values))
+                    })
+                }).catch(e => console.log(e))
             }).catch((e) => {
                 console.log(e)
             })
         })
-        res.send(fileList.data.files)
+        setTimeout(() => {console.log(allData)}, 2000)
+        res.send(allData)
     } catch(e) {
         console.log(e)
         res.status(500).send({error: e.message})
