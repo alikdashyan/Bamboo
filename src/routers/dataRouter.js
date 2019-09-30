@@ -12,10 +12,30 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
         version: 'v3',
         auth: req.oAuth2Client
     })
+    const sheets = google.sheets('v4')
     try{
         const fileList = await drive.files.list({
             q: `mimeType='application/vnd.google-apps.spreadsheet' and name contains '${req.user.userID}' and trashed=false`,
             spaces: 'drive',
+        })
+        fileList.data.files.map((spsheet) => {
+            sheets.spreadsheets.get({
+                spreadsheetId: spsheet.id,
+                auth: req.oAuth2Client
+            }).then((spreadsheet) => {
+                const names = []
+                spreadsheet.data.sheets.map((sh) => {
+                   names.push(sh.properties.title)
+                })
+                // sheets.spreadsheets.values.batchGet({
+                //     spreadsheetId: spsheet.id,
+                //     auth: req.oAuth2Client,
+                //     ranges: names
+                // }).then((data) => {console.log(data)}).catch(e => console.log(e))
+                console.log(names)
+            }).catch((e) => {
+                console.log(e)
+            })
         })
         res.send(fileList.data.files)
     } catch(e) {
