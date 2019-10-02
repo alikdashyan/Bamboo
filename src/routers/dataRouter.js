@@ -20,27 +20,23 @@ dataRouter.get('/data', auth, googleAuth, async (req, res) => {
             spaces: 'drive',
         })
         const allData = {}
-        fileList.data.files.map((spsheet) => {
+        fileList.data.files.map(async (spsheet) => {
             allData[spsheet.name] = []
-            sheets.spreadsheets.get({
+            const spreadsheet = await sheets.spreadsheets.get({
                 spreadsheetId: spsheet.id,
                 auth: req.oAuth2Client
-            }).then((spreadsheet) => {
-                const names = []
-                spreadsheet.data.sheets.map((sh) => {
-                   names.push(sh.properties.title)
-                })
-                sheets.spreadsheets.values.batchGet({
-                    spreadsheetId: spsheet.id,
-                    auth: req.oAuth2Client,
-                    ranges: names
-                }).then((data) => {
-                    data.data.valueRanges.map((ssData) => {
-                        allData[spsheet.name].push(arrayToJSON(ssData.values))
-                    })
-                }).catch(e => console.log(e))
-            }).catch((e) => {
-                console.log(e)
+            })
+            const names = []
+            spreadsheet.data.sheets.map((sh) => {
+               names.push(sh.properties.title)
+            })
+            const data = await sheets.spreadsheets.values.batchGet({
+                spreadsheetId: spsheet.id,
+                auth: req.oAuth2Client,
+                ranges: names
+            })
+            data.data.valueRanges.map((ssData) => {
+                allData[spsheet.name].push(arrayToJSON(ssData.values))
             })
         })
         setTimeout(() => {console.log(allData)}, 2000)
