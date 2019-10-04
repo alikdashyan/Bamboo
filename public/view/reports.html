@@ -40,31 +40,39 @@
 				
 								<h2 class="card-title">My Reports Data</h2>
 							</header>
-							<div class="card-body">
-								<table class="table table-responsive-lg table-bordered table-striped table-sm mb-0">
-										<thead>
-												<tr>								
-													<th class="text-center align-middle">Product Link</th>
-													<th class="text-center align-middle">Buyings Per Day</th>
-													<th class="text-center align-middle">Item Price</th>
-													<th class="text-center align-middle">Total Buying Summary</th>
-													<th class="text-center align-middle">Additional Info</th>
-													<th class="text-center align-middle">ID</th>
-													<th class="text-center align-middle">Created At</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr ng-repeat="data in viewData">
-													<td class="text-center align-middle ordersHrefStyle"><a href="{{data.productLink}}">Open Orders Link</a></td>
-													<td class="text-center align-middle">{{data.buyingsPerDay}}</td>
-													<td class="text-center align-middle">{{data.itemPrice}}</td>
-													<td class="text-center align-middle">{{data.totalBuyingSummary}}</td>
-													<td class="text-center align-middle">{{data.additionalInfo}}</td>
-													<td class="text-center align-middle">{{data.ID}}</td>
-													<td class="text-center align-middle">{{data.createdAt}}</td>									
-												</tr>
-											</tbody>
-										</table>
+
+							<div class="card-body" ng-repeat="data in viewData">
+								<div  ng-repeat="newData in data">
+									<div ng-repeat="myData in newData">
+										
+												<table class="table table-responsive-lg table-bordered table-striped table-sm mb-0" >
+														<thead >
+																<tr>								
+																	<th class="text-center align-middle">Timestamp</th>
+																	<th class="text-center align-middle">Title of chat- This is not your name</th>
+																	<th class="text-center align-middle">Order Number</th>
+																	<th class="text-center align-middle">Price of item do Not include tax</th>
+																	<th class="text-center align-middle">Paypal Email</th>
+																	<th class="text-center align-middle">	Date of order</th>
+																	
+																</tr>
+															</thead>
+															<tbody ng-repeat="reports in myData" >
+																<tr >
+																	<td class="text-center align-middle">{{reports["Timestamp"]}}</td>
+																	<td class="text-center align-middle">{{reports["Title of chat- This is not your name"]}}</td>
+																	<td class="text-center align-middle">{{reports["Order Number"]}}</td>
+																	<td class="text-center align-middle">{{reports["Price of item do Not include tax"]}}</td>
+																	<td class="text-center align-middle">{{reports["Paypal Email"]}}</td>
+																	<td class="text-center align-middle">{{reports["Date of order"]}}</td>
+																</tr>
+															</tbody>
+														</table>
+										
+
+									</div>
+								</div>
+								
 									
 							</div>
 						</section>

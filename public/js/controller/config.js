@@ -45,7 +45,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     })
     .when('/reportsTable',{
       templateUrl: 'view/reports.html',
-  
+      controller:'reportsCtrl'
     })
     .when('/demo',{
       templateUrl: 'view/demo.html',
@@ -80,7 +80,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
       controller: 'HeaderCtrl'
       
     })
-
+    
     .otherwise({templateUrl:'view/page-404.html'})
 }])
 //Admin Panel
@@ -818,11 +818,28 @@ app.controller('tableCtrl', function($scope,$http,$location){
     success => {
       let bambooData = success.data;
       $scope.viewData = bambooData;
-      console.log(bambooData);
+      // console.log(bambooData);
       
     },
     innerError => {
       console.log(innerError);
+    }
+  )
+})
+app.controller('reportsCtrl',function($scope, $http, $location){
+  if(!localStorage.token){
+    $location.path('/').replace();
+  }
+  $http.get('http://www.amzbamboo.com/data',{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+    success => {
+      let bambooData = success.data;
+      $scope.viewData = bambooData;
+      let logout = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif';
+      console.log(bambooData)
+      
+    },
+    innerError => {
+      console.log(innerError)
     }
   )
 })
