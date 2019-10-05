@@ -37,6 +37,10 @@ const orderSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    keywords: {
+        type: String,
+        trim: true
+    },
     externalModels: {
         type: String,
         enum: ['User', 'PassportUser']
