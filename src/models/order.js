@@ -7,6 +7,12 @@ const orderSchema = new mongoose.Schema({
         required: true,
         refPath: 'externalModels'
     },
+    status:{
+        type: String,
+        required: true,
+        trim: true,
+        default: "pending"
+    },
     userContactInfo: {
         type: Object,
         required: true
