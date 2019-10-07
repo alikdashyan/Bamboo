@@ -771,7 +771,11 @@ app.controller('formCntrl', function($scope, $http,$location) {
     let additionalInfo = $scope.additionalInfo;
     let emailForRefunds = $scope.emailForRefunds;
     let keywords = $scope.keywords;
-    
+    let  paymentRadio1 = $scope.paymentRadio1 ;
+    let  paymentRadio2 = $scope.paymentRadio2 ;
+    let  paymentRadio3 = $scope.paymentRadio3 ;
+    let transferRadio1 = $scope.transferRadio1;
+    let transferRadio2 = $scope.transferRadio2;
     let httpOptions = {
       headers: {
         'Authorization': `Bearer ${localStorage.token}`,
@@ -786,7 +790,12 @@ app.controller('formCntrl', function($scope, $http,$location) {
       totalBuyingSummary,
       additionalInfo,
       emailForRefunds,
-      keywords
+      keywords,
+      paymentRadio1,
+      paymentRadio2,
+      paymentRadio3,
+      transferRadio1,
+      transferRadio2
     }
     let stringifiedBody = JSON.stringify(body);
 
@@ -814,12 +823,20 @@ app.controller('tableCtrl', function($scope,$http,$location){
   if(!localStorage.token){
     $location.path('/').replace();
   }
+  $scope.$on('LOAD',function(){
+    $scope.loading=true;
+  })
+  $scope.$on('UNLOAD',function(){
+   $scope.loading=false;
+ })
+ $scope.loadingGif = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'
+ $scope.$emit("LOAD")
   $http.get('/orders', {headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
     success => {
       let bambooData = success.data;
       $scope.viewData = bambooData;
       // console.log(bambooData);
-      
+      $scope.$emit("UNLOAD")
     },
     innerError => {
       console.log(innerError);
@@ -830,11 +847,20 @@ app.controller('reportsCtrl',function($scope, $http, $location){
   if(!localStorage.token){
     $location.path('/').replace();
   }
+   $scope.$on('LOAD',function(){
+     $scope.loading=true;
+   })
+   $scope.$on('UNLOAD',function(){
+    $scope.loading=false;
+  })
+  $scope.loadingGif = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'
+  $scope.$emit("LOAD")
   $http.get('http://www.amzbamboo.com/data',{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
     success => {
       let bambooData = success.data;
       $scope.viewData = bambooData;
-      let logout = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif';
+      
+      $scope.$emit("UNLOAD")
       console.log(bambooData)
       
     },

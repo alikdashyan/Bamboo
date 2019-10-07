@@ -31,7 +31,7 @@
 					</aside>
 				</div>
 				<div class="col">
-						<section class="card card-admin">
+						<section class="card card-admin" >
 							<header class="card-header">
 								<div class="card-actions">
 									<a href="#" class="card-action card-action-toggle" data-card-toggle></a>
@@ -40,7 +40,7 @@
 				
 								<h2 class="card-title">My Reports Data</h2>
 							</header>
-
+							<div class="text-center " ng-show="loading"><img src="{{loadingGif}}" alt="loading"></div>
 							<div class="card-body" ng-repeat="data in viewData">
 								<div  ng-repeat="newData in data">
 									<div ng-repeat="myData in newData">
