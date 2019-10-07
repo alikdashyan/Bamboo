@@ -788,16 +788,16 @@ app.controller('formCntrl', function($scope, $http,$location) {
     }
     
     let body = {
-      productLink,
-      buyingsPerDay,
-      itemPrice,
-      totalBuyingSummary,
-      additionalInfo,
-      emailForRefunds,
-      keywords,
-      paymentRadio,
-      transferRadio,
-      transferWay,
+        orderInfo: {
+        productLink,
+        buyingsPerDay,
+        itemPrice,
+        totalBuyingSummary,
+        additionalInfo,
+        emailForRefunds,
+        keywords,
+        transferWay,
+      },
       paymentInfo
     }
     let stringifiedBody = JSON.stringify(body);
@@ -806,7 +806,7 @@ app.controller('formCntrl', function($scope, $http,$location) {
     $http.post('/order',stringifiedBody, httpOptions).then(
       success => {
         if(!success.data.error){
-           $location.path('/userTable').replace();
+           window.location.href = success.data.formUrl;
         }else{
            $scope.orderError = success.data.error;
         }

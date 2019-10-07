@@ -47,7 +47,7 @@ orderRouter.post('/order', auth, async (req, res) => {
         //             </ul>`
         // }
         // sgMail.send(mailcfg)
-        res.redirect(data.formUrl)
+        res.send(data)
     } catch(e) {
         console.log(e)
         res.status(500).send({error: e.message})
