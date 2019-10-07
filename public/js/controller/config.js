@@ -764,6 +764,7 @@ app.controller('formCntrl', function($scope, $http,$location) {
   }
 
   $scope.submitOrder = function(){
+
     let productLink = $scope.productLink;
     let buyingsPerDay = $scope.buyingsPerDay;
     let itemPrice = $scope.itemPrice;
@@ -771,11 +772,14 @@ app.controller('formCntrl', function($scope, $http,$location) {
     let additionalInfo = $scope.additionalInfo;
     let emailForRefunds = $scope.emailForRefunds;
     let keywords = $scope.keywords;
-    let  paymentRadio1 = $scope.paymentRadio1 ;
-    let  paymentRadio2 = $scope.paymentRadio2 ;
-    let  paymentRadio3 = $scope.paymentRadio3 ;
-    let transferRadio1 = $scope.transferRadio1;
-    let transferRadio2 = $scope.transferRadio2;
+    let amount = $scope.paymentRadio.paymentOption;
+    let transferWay = $scope.transferRadio.option;
+
+    let paymentInfo = {
+      amount
+    } 
+
+
     let httpOptions = {
       headers: {
         'Authorization': `Bearer ${localStorage.token}`,
@@ -791,26 +795,23 @@ app.controller('formCntrl', function($scope, $http,$location) {
       additionalInfo,
       emailForRefunds,
       keywords,
-      paymentRadio1,
-      paymentRadio2,
-      paymentRadio3,
-      transferRadio1,
-      transferRadio2
+      paymentRadio,
+      transferRadio,
+      transferWay,
+      paymentInfo
     }
     let stringifiedBody = JSON.stringify(body);
 
     $scope.success = '';
     $http.post('/order',stringifiedBody, httpOptions).then(
       success => {
-        console.log(success);
         if(!success.data.error){
-          $location.path('/userTable').replace();
+           $location.path('/userTable').replace();
         }else{
            $scope.orderError = success.data.error;
         }
       },
       innerError => {
-        console.log(innerError);
         if(innerError.error){
           $scope.orderError = innerError.error;
         }
@@ -835,7 +836,6 @@ app.controller('tableCtrl', function($scope,$http,$location){
     success => {
       let bambooData = success.data;
       $scope.viewData = bambooData;
-      // console.log(bambooData);
       $scope.$emit("UNLOAD")
     },
     innerError => {
@@ -877,7 +877,6 @@ app.controller('profileCntrl', function($scope, $location, $http){
   $scope.editUser = function(){
     $scope.ubdateError = "";
     let contactInfo = {
-      
       skypeViberWhatsApp: $scope.skypeViberWhatsApp,
       facebookLink: $scope.facebook
     }
@@ -916,9 +915,6 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
 
       $scope.logout = function(){
 
-        // localStorage.removeItem('token');
-        // $location.path('/').replace();
-        // window.location.reload();
         $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.token}`}})
         .then(data => {
           localStorage.removeItem('token')

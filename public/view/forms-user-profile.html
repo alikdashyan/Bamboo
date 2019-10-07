@@ -50,19 +50,19 @@
 										<div class="col-lg-9">
 											<div class="radio">
 												<label>
-													<input ng-model="paymentRadio1" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+													<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios" id="optionsRadios1" ng-value="5" checked="">
 													Buy product and take review 5$
 												</label>
 											</div>
 											<div class="radio">
 												<label>
-													<input ng-model="paymentRadio2" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+													<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios" id="optionsRadios2" ng-value="4">
 													Buy product 4$
 												</label>
 											</div>
 											<div class="radio">
 												<label>
-													<input ng-model="paymentRadio3" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+													<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios" id="optionsRadios2" ng-value="3">
 													Buy product with coupon 3$
 												</label>
 											</div>
@@ -116,13 +116,13 @@
 									<div class="col-lg-9">
 										<div class="radio">
 											<label>
-												<input ng-model="transferRadio1" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+												<input ng-model="transferRadio.option" type="radio" name="transferRadios" id="optionsRadios1" value="Tranfer money now" checked="">
 												Tranfer money now
 											</label>
 										</div>
 										<div class="radio">
 											<label>
-												<input ng-model="transferRadio2" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+												<input ng-model="transferRadio.option" type="radio" name="transferRadios" id="optionsRadios2" value="I will buy myself">
 												I will buy myself
 											</label>
 										</div>
