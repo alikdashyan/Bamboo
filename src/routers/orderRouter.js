@@ -53,8 +53,9 @@ orderRouter.get('/order/callback', async (req, res) => {
         const orderID = req.query.orderId
         const url = `https://ipay.arca.am/payment/rest/getOrderStatusExtended.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&orderId=${orderID}`
         const orderStatusData = JSON.parse(await request(url))
+        console.log(JSON.stringify(orderStatusData))
         if(orderStatusData.orderStatus === 2){
-            const order = await Order.findOne({_id: orderStatusData.orderNumber})
+            const order = await Order.findOne({id: orderStatusData.orderNumber})
             if(!order){
                 return res.status(404).send({error: "Order not found"})
             }
