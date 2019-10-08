@@ -50,8 +50,8 @@ orderRouter.get('/orders', auth, async (req, res) => {
 
 orderRouter.get('/order/callback', async (req, res) => {
     try{
-        console.log("Request query " + req.query)
-        console.log("request body" + req.body)
+        console.log("Request query " + req.query.orderNumber)
+        console.log("request body" + req.body.orderNumber)
         const order = await Order.findOne({_id: req.query.orderNumber})
         if(!order){
             return res.status(404).send({error: "Order not found"})
