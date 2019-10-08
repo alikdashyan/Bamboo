@@ -80,8 +80,10 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
       controller: 'HeaderCtrl'
       
     })
-    
-    .otherwise({templateUrl:'view/page-404.html'})
+    // .when('/error404',{
+    //   templateUrl: 'view/page-404.html'
+    // })
+    .otherwise({ templateUrl: 'view/page-404.html'})
 }])
 //Admin Panel
 app.controller('adminCtrl',function($scope,$http,$location){
@@ -507,34 +509,6 @@ $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer 
  
 })
  
-
-app.controller('demoCtrl', function($scope,$http){
-    $scope.submit = function(){
-      let id = $scope.demoId;
-      let hedingSpan = $scope.demoHedingSpan
-      let heding = $scope.demoHeding;
-      let descriotion = $scope.demoDescriotion;
-      let descriotionSpan = $scope.demoDescriotionSpan;
-      let callToAction = $scope.demoCallToAction;
-      let additionalDescription = $scope.demoAdditionalDescription;
-      let demoBody = {
-          id,
-          hedingSpan,
-          heding,
-          descriotion,
-          descriotionSpan,
-          callToAction,
-          additionalDescription,
-          
-        }
-      
-      $http.post('/textData/create',JSON.stringify(demoBody),{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
-        success => console.log(success),
-        innerError => console.log(innerError)
-        
-      ).catch(error => console.log(error))
-    } 
-})
 app.controller('adminLogoutCtrl', function($scope, $http, $location){
   $scope.adminLogout = function(){
     $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.adminToken}`}})
@@ -664,9 +638,9 @@ app.controller('contactCtrl', function ($scope,$http) {
     ).catch(error => console.log(error))
 })
 app.controller('authCtrl', function($scope, $http, $location) {
-    if(localStorage.token){
-      $location.path('/profile').replace();
-    }
+    // if(localStorage.token){
+    //   $location.path('/profile').replace();
+    // }
     $scope.submit = function(){
       $scope.loginError = '';
       $scope.loginPasswordError = '';
@@ -676,13 +650,13 @@ app.controller('authCtrl', function($scope, $http, $location) {
           email,
           password
       });
-
+    
       $http.post('/users/login', body).then(
             success => {
               let token = success.data.token;
               if(token){
                 localStorage.setItem('token', token);
-                window.location.reload();
+                $location.path('/profile').replace();
               }
             },
             innerError => {
@@ -723,7 +697,7 @@ app.controller('authCtrl', function($scope, $http, $location) {
               let token = success.data.token;
               if(token){
                 localStorage.setItem('token', token);
-                window.location.reload();
+                $location.path('/profile').replace();
               }
             },
             innerError => {
@@ -810,6 +784,7 @@ app.controller('formCntrl', function($scope, $http,$location) {
         }else{
            $scope.orderError = success.data.error;
         }
+        console.log(success)
       },
       innerError => {
         if(innerError.error){
@@ -929,7 +904,7 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      console.log(textData )
+      
     },
     innerError => {
       console.log(innerError);
