@@ -25,7 +25,7 @@ orderRouter.post('/order', auth, async (req, res) => {
         const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${req.body.paymentInfo.amount}&orderNumber=${order._id}`
         const data = await request(url)
         order.paymentId = data.orderId
-        
+        await order.save()
         res.send(data)
     } catch(e) {
         console.log(e)
