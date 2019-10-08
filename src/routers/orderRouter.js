@@ -50,16 +50,14 @@ orderRouter.get('/orders', auth, async (req, res) => {
 
 orderRouter.get('/order/callback', async (req, res) => {
     try{
-        console.log("Request query " + req.query.orderNumber)
-        console.log("request body" + req.body.orderNumber)
-        const order = await Order.findOne({_id: req.query.orderNumber})
-        if(!order){
-            return res.status(404).send({error: "Order not found"})
-        }
-        const url = `https://ipay.arca.am/payment/rest/getOrderStatusExtended.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&orderNumber=${order._id}`
-        console.log("Check status url: " + url)
+        const orderID = req.query.orderId
+        const url = `https://ipay.arca.am/payment/rest/getOrderStatusExtended.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&orderId=${orderID}`
         const orderStatusData = JSON.parse(await request(url))
         if(orderStatusData.orderStatus === 2){
+            const order = await Order.findOne({_id: orderStatusData.orderNumber})
+            if(!order){
+                return res.status(404).send({error: "Order not found"})
+            }
             order.status = "accepted"
             await order.save()
             // const mailcfg = {
