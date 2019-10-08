@@ -85,6 +85,7 @@ orderRouter.get('/order/callback', async (req, res) => {
             // sgMail.send(mailcfg)
             res.redirect('/reportsTable')
         }
+        res.send("ERROR")
     } catch(e){
         console.log(e)
         res.status(500).send({error: e.message})
