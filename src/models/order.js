@@ -7,10 +7,6 @@ const orderSchema = new mongoose.Schema({
         required: true,
         refPath: 'externalModels'
     },
-    paymentId: {
-        type: String,
-        default: ''
-    },
     status:{
         type: String,
         required: true,

@@ -28,8 +28,6 @@ orderRouter.post('/order', auth, async (req, res) => {
             console.log(data)
             return res.status(400).send({error: data.errorMessage})
         }
-        order.paymentId = data.orderId
-        await order.save()
         res.send(data)
     } catch(e) {
         console.log(e)
@@ -52,7 +50,7 @@ orderRouter.get('/orders', auth, async (req, res) => {
 
 orderRouter.get('/order/callback', async (req, res) => {
     try{
-        const order = await Order.findOne({paymentId: req.query.orderId})
+        const order = await Order.findOne({_id: req.query.orderNumber})
         if(!order){
             return res.status(404).send({error: "Order not found"})
         }
