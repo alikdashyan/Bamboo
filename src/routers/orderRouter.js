@@ -22,10 +22,10 @@ orderRouter.post('/order', auth, async (req, res) => {
     try{
         await order.save()
         const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${req.body.paymentInfo.amount}&orderNumber=${order._id}`
-        console.log(url)
+        console.log("Request: " + url)
         const data = await request(url)
         if(data.errorCode){
-            console.log(data)
+            console.log("Response data" + data)
             return res.status(400).send({error: data.errorMessage})
         }
         res.send(data)
@@ -50,12 +50,14 @@ orderRouter.get('/orders', auth, async (req, res) => {
 
 orderRouter.get('/order/callback', async (req, res) => {
     try{
+        console.log("Request query " + req.query)
+        console.log("request body" + req.body)
         const order = await Order.findOne({_id: req.query.orderNumber})
         if(!order){
             return res.status(404).send({error: "Order not found"})
         }
         const url = `https://ipay.arca.am/payment/rest/getOrderStatusExtended.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&orderNumber=${order._id}`
-        console.log(url)
+        console.log("Check status url: " + url)
         const orderStatusData = JSON.parse(await request(url))
         if(orderStatusData.orderStatus === 2){
             order.status = "accepted"
