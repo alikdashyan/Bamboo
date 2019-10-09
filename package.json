@@ -24,6 +24,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
     "randomstring": "^1.1.5",
+    "request-promise": "^4.2.4",
     "validator": "^11.1.0"
   },
   "devDependencies": {
