@@ -80,9 +80,9 @@ orderRouter.get('/order/callback', async (req, res) => {
                         </ul>`
             }
             sgMail.send(mailcfg)
-            return res.status(200).send({status: 'Success'})
+            return res.redirect('/#/userTable')
         }
-        return res.status(400).send({error: orderStatusData.errorMessage})
+        return res.redirect('/#/paymentError')
     } catch(e){
         console.log(e)
         res.status(500).send({error: e.message})
