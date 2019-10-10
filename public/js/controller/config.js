@@ -539,6 +539,10 @@ app.controller('homeCtrl', function ($scope,$http) {
         if(opacity != '1')
             element.style.opacity = '1';
     }
+   
+    // let owl = $(".owl-carousel");
+    // owl.carousel();
+    $(".owl-carousel").owlCarousel();
     $http.get('/textData/readAll').then(
       success => {
         let textData = success.data;
@@ -557,7 +561,7 @@ app.controller('homeCtrl', function ($scope,$http) {
     ).catch(error => console.log(error))
 })
 app.controller('pageCtrl', function ($scope,$http) {
-
+  $('#revolutionSlider').show().revolution();
     let animations = document.getElementsByClassName('appear-animation');
 
     for (let index = 0; index < animations.length; index++) {
@@ -581,6 +585,7 @@ app.controller('pageCtrl', function ($scope,$http) {
 app.controller('blogCtrl',function ($scope, postsFactory) {
 
     $scope.posts = postsFactory;
+    $('#revolutionSlider').show().revolution();
     let animations = document.getElementsByClassName('appear-animation');
 
     for (let index = 0; index < animations.length; index++) {
@@ -591,6 +596,15 @@ app.controller('blogCtrl',function ($scope, postsFactory) {
     }
 })
 app.controller('aboutCtrl',function($scope, $http){
+  $('#revolutionSlider').show().revolution();
+  let animations = document.getElementsByClassName('appear-animation');
+
+  for (let index = 0; index < animations.length; index++) {
+    const element = animations[index];
+    const opacity =  element.style.opacity;
+    if(opacity != '1')
+      element.style.opacity = '1';
+  }
   $(function() {
       $('[data-plugin-counter]:not(.manual), .counters [data-to]').each(function() {
           var $this = $(this),
@@ -603,14 +617,7 @@ app.controller('aboutCtrl',function($scope, $http){
           $this.themePluginCounter(opts);
       });
   });
-  let animations = document.getElementsByClassName('appear-animation');
 
-  for (let index = 0; index < animations.length; index++) {
-    const element = animations[index];
-    const opacity =  element.style.opacity;
-    if(opacity != '1')
-      element.style.opacity = '1';
-  }
   $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
@@ -623,7 +630,7 @@ app.controller('aboutCtrl',function($scope, $http){
   ).catch(error => console.log(error))
 })
 app.controller('contactCtrl', function ($scope,$http) {
-
+  $('#revolutionSlider').show().revolution();
     let animations = document.getElementsByClassName('appear-animation');
 
     for (let index = 0; index < animations.length; index++) {
@@ -644,6 +651,15 @@ app.controller('contactCtrl', function ($scope,$http) {
     ).catch(error => console.log(error))
 })
 app.controller('authCtrl', function($scope, $http, $location) {
+  $('#revolutionSlider').show().revolution();
+  let animations = document.getElementsByClassName('appear-animation');
+
+  for (let index = 0; index < animations.length; index++) {
+      const element = animations[index];
+      const opacity =  element.style.opacity;
+      if(opacity != '1')
+          element.style.opacity = '1';
+  }
     // if(localStorage.token){
     //   $location.path('/profile').replace();
     // }
@@ -715,19 +731,11 @@ app.controller('authCtrl', function($scope, $http, $location) {
         }
       }
 
-    let animations = document.getElementsByClassName('appear-animation');
-
-    for (let index = 0; index < animations.length; index++) {
-        const element = animations[index];
-        const opacity =  element.style.opacity;
-        if(opacity != '1')
-            element.style.opacity = '1';
-    }
   })
 app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
     console.log($routeParams.postId);
     $scope.postId = $routeParams.postId
-
+    $('#revolutionSlider').show().revolution();
     let animations = document.getElementsByClassName('appear-animation');
 
     for (let index = 0; index < animations.length; index++) {
@@ -961,6 +969,26 @@ app.factory('postsFactory', function () {
      {
        "id": "3",
        "name": "Unlimited Ways"
-     }
+     },
+     {
+      "id": "4",
+      "name": "Unlimited Ways"
+    },
+    {
+      "id": "5",
+      "name": "Unlimited Ways"
+    },
+    {
+      "id": "6",
+      "name": "Unlimited Ways"
+    },
+    {
+      "id": "7",
+      "name": "Unlimited Ways"
+    },
+    {
+      "id": "8",
+      "name": "Unlimited Ways"
+    }
     ];
 })

@@ -41,15 +41,6 @@ const passportUserSchema = new mongoose.Schema({
         unique: true
     },
     contactInfo: {
-        emailForRefunds: {
-            type: String,
-            trim: true,
-            validate(value){
-                if(!validator.isEmail(value)){
-                    throw new Error('You must enter a valid email')
-                }
-            }
-        },
         skypeViberWhatsApp: {
             type: String,
             trim: true,
