@@ -5,7 +5,6 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     .when('/',{
         templateUrl:'view/home.html',
         controller: 'homeCtrl'
-    
     })
     .when('/services',{
         templateUrl:'view/page-services.html',
@@ -78,20 +77,22 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     .when('/formHeader',{
       templateUrl: 'view/admin/adminview/formHeader.html',
       controller: 'HeaderCtrl'
-      
     })
-    // .when('/error404',{
-    //   templateUrl: 'view/page-404.html'
-    // })
-    .otherwise({ templateUrl: 'view/page-404.html'})
+    .when('/paymentError', {
+      templateUrl: 'view/page-error.html'
+    })
+    .when('/error404',{
+      templateUrl: 'view/page-404.html'
+    })
+    // .otherwise({ redirectTo: 'view/page-404.html'})
 }])
+
 //Admin Panel
 app.controller('adminCtrl',function($scope,$http,$location){
   if(localStorage.adminToken){
     $location.path('/formHome').replace();
   }
   $scope.submit = function(){
-      console.log("Davo exav")
       $scope.loginError = '';
       $scope.loginPasswordError = '';
       let email = $scope.email;
@@ -119,6 +120,7 @@ app.controller('adminCtrl',function($scope,$http,$location){
             .catch(error => console.log(error));
       }
 })
+
 app.controller('formHome',function($scope, $http,$location){
   if(!localStorage.adminToken){
         $location.path('/').replace();
@@ -190,6 +192,7 @@ app.controller('formHome',function($scope, $http,$location){
     ).catch(error => console.log(error))
   }
 })
+
 app.controller('formServices',function($scope,$http,$location){
   if(!localStorage.adminToken){
     $location.path('/').replace();
@@ -294,6 +297,7 @@ app.controller('formServices',function($scope,$http,$location){
     ).catch(error => console.log(error))
   }
 })
+
 app.controller('formAbout',function($scope,$http,$location){
   if(!localStorage.adminToken){
     $location.path('/').replace();
@@ -388,6 +392,7 @@ app.controller('formAbout',function($scope,$http,$location){
     ).catch(error => console.log(error))
   }
 })
+
 app.controller('formContact', function($scope,$http,$location){
   if(!localStorage.adminToken){
     $location.path('/').replace();
@@ -456,10 +461,11 @@ app.controller('formContact', function($scope,$http,$location){
     ).catch(error => console.log(error))
   }
 })
+
 app.controller('footerCntrl', function($scope, $http,$location) {
-  if(!localStorage.adminToken){
-    $location.path('/').replace();
-   }
+  // if(!localStorage.adminToken){
+  //   $location.path('/').replace();
+  //  }
 $http.get('/textData/readAll').then(
 success => {
   let textData = success.data;
@@ -518,7 +524,7 @@ app.controller('adminLogoutCtrl', function($scope, $http, $location){
     })
     .catch(error => error ? console.log(error) : '')
   }
-});
+})
 
 //End Admin Panel
 
@@ -905,45 +911,46 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
         })
         .catch(error => error ? console.log(error) : '')
       }
-      if(!localStorage.adminToken){
-        $location.path('/').replace();
-       }
+      // if(!localStorage.adminToken){
+        // $location.path('/').replace();
+      //   console.log('es piti urish texic ashxati Davs');
+      //  }
     $http.get('/textData/readAll').then(
-    success => {
-      let textData = success.data;
-      $scope.textData = textData;
-      
-    },
-    innerError => {
-      console.log(innerError);
-    }
+      success => {
+        let textData = success.data;
+        $scope.textData = textData;
+        
+      },
+      innerError => {
+        console.log(innerError);
+      }
     
     ).catch(error => console.log(error))
     $scope.updateData = function (id) {
-    let headingHeaderSection1= $scope.headingHeaderSection1;
-    let headingHeaderSection2 = $scope.headingHeaderSection2;
-    let headingHeaderSection3 = $scope.headingHeaderSection3;
-    let headingHeaderSection4 = $scope.headingHeaderSection4;
-    let headingHeaderSection5 = $scope.headingHeaderSection5;
-    let body = JSON.stringify(
-      {
-        headingHeaderSection1,
-        headingHeaderSection2,
-        headingHeaderSection3,
-        headingHeaderSection4,
-        headingHeaderSection5
-      }
-    )
-    $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
-      success => {
-        if(success.data){
-          $scope.congratsText = 'Data is updated succesfully';
+      let headingHeaderSection1= $scope.headingHeaderSection1;
+      let headingHeaderSection2 = $scope.headingHeaderSection2;
+      let headingHeaderSection3 = $scope.headingHeaderSection3;
+      let headingHeaderSection4 = $scope.headingHeaderSection4;
+      let headingHeaderSection5 = $scope.headingHeaderSection5;
+      let body = JSON.stringify(
+        {
+          headingHeaderSection1,
+          headingHeaderSection2,
+          headingHeaderSection3,
+          headingHeaderSection4,
+          headingHeaderSection5
         }
-      },
-      innerError => {
-        console.log(innerError)
-      }
-    ).catch(error => console.log(error))
+      )
+      $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+        success => {
+          if(success.data){
+            $scope.congratsText = 'Data is updated succesfully';
+          }
+        },
+        innerError => {
+          console.log(innerError)
+        }
+      ).catch(error => console.log(error))
     }
 });
 

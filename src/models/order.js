@@ -13,6 +13,16 @@ const orderSchema = new mongoose.Schema({
         trim: true,
         default: "pending"
     },
+    emailForRefunds: {
+        type: String,
+        required: true,
+        trim: true,
+        validate(value){
+            if(!validator.isEmail(value)){
+                throw new Error('Provided email is invalid')
+            }
+        }
+    },
     userContactInfo: {
         type: Object,
         required: true
