@@ -22,7 +22,7 @@ orderRouter.post('/order', auth, async (req, res) => {
     order.userContactInfo = req.user.contactInfo
     try{
         await order.save()
-        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${req.body.paymentInfo.amount}&orderNumber=${order._id}&currency=051`
+        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${req.body.paymentInfo.amount*1000}&orderNumber=${order._id}&currency=051`
         const data = await request(url)
         if(data.errorCode){
             return res.status(400).send({error: data.errorMessage})
