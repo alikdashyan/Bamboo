@@ -769,16 +769,16 @@ app.controller('formCntrl', function($scope, $http,$location) {
     
     let body = {
         orderInfo: {
-        productLink,
-        buyingsPerDay,
-        itemPrice,
-        totalBuyingSummary,
-        additionalInfo,
-        emailForRefunds,
-        keywords,
-        transferWay,
-      },
-      paymentInfo
+          productLink,
+          buyingsPerDay,
+          itemPrice,
+          totalBuyingSummary,
+          additionalInfo,
+          emailForRefunds,
+          keywords,
+          transferWay,
+        },
+        paymentInfo
     }
     let stringifiedBody = JSON.stringify(body);
 
@@ -786,15 +786,16 @@ app.controller('formCntrl', function($scope, $http,$location) {
     $http.post('/order',stringifiedBody, httpOptions).then(
       success => {
         if(!success.data.error){
-           window.location.href = success.data.formUrl;
+          console.log(success);
+          //  window.location.href = success.data.formUrl;
         }else{
            $scope.orderError = success.data.error;
         }
-        console.log(success)
       },
       innerError => {
         if(innerError.error){
           $scope.orderError = innerError.error;
+          console.log(innerError);
         }
       }
     )
