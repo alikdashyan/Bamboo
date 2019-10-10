@@ -3,6 +3,7 @@ const express = require('express')
 const auth = require('../middleware/userAuth')
 const sgMail = require('../utils/sgmail')
 const request = require('request-promise')
+const User = require('../models/user')
 
 const orderRouter = new express.Router()
 
@@ -21,7 +22,7 @@ orderRouter.post('/order', auth, async (req, res) => {
     order.userContactInfo = req.user.contactInfo
     try{
         await order.save()
-        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${req.body.paymentInfo.amount}&orderNumber=${order._id}&currency=840`
+        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${req.body.paymentInfo.amount}&orderNumber=${order._id}&currency=643`
         const data = await request(url)
         if(data.errorCode){
             return res.status(400).send({error: data.errorMessage})
@@ -56,19 +57,23 @@ orderRouter.get('/order/callback', async (req, res) => {
             if(!order){
                 return res.status(404).send({error: "Order not found"})
             }
+            const user = await User.findOne({userID: order.ID})
+            if(!user){
+                return res.status(404).send({error: "Order owner is not found"})
+            }
             order.status = "accepted"
             await order.save()
             const mailcfg = {
                 to: process.env.SENDER_EMAIL_ADDRESS,
                 from: process.env.SENDER_EMAIL_ADDRESS,
-                subject: `${req.user.name} ${req.user.lastName} has sent an order`,
-                text: `${req.user.name} ${req.user.lastName} has sent an order`,
-                html: `<h1>New order from ${req.user.name} ${req.user.lastName}</h1><br>
+                subject: `${user.name} ${user.lastName} has sent an order`,
+                text: `${user.name} ${user.lastName} has sent an order`,
+                html: `<h1>New order from ${user.name} ${user.lastName}</h1><br>
                         <h3>Order details:</h3>
                         <ul>
                             <li>User ID: ${order.ID}</li>
                             <li>Contact Info: <ul>
-                                <li>Email for refunds: ${order.userContactInfo.emailForRefunds}</li>
+                                <li>Email for refunds: ${order.emailForRefunds}</li>
                                 <li>Skype, Viber or WhatsApp: ${order.userContactInfo.skypeViberWhatsApp}</li>
                                 <li>Facebook link: ${order.userContactInfo.facebookLink}</li>
                             </ul>

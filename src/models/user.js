@@ -31,15 +31,6 @@ const userSchema = new mongoose.Schema({
         }
     },
     contactInfo: {
-        emailForRefunds: {
-            type: String,
-            trim: true,
-            validate(value){
-                if(!validator.isEmail(value)){
-                    throw new Error('You must enter a valid email')
-                }
-            }
-        },
         skypeViberWhatsApp: {
             type: String,
             trim: true,
