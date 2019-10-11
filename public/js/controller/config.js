@@ -855,8 +855,7 @@ app.controller('formCntrl', function($scope, $http,$location) {
     $http.post('/order',stringifiedBody, httpOptions).then(
       success => {
         if(!success.data.error){
-          console.log(success);
-          //  window.location.href = success.data.formUrl;
+           window.location.href = success.data.formUrl;
         }else{
            $scope.orderError = success.data.error;
         }
