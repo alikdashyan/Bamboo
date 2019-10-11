@@ -539,16 +539,17 @@ app.controller('homeCtrl', function ($scope,$http) {
         if(opacity != '1')
             element.style.opacity = '1';
     }
-   
-    $('.owl-carousel').owlCarousel({
-      items: 1, 
-      margin: 100, 
-      loop: false, 
-      nav: true, 
-      dots: false, 
-      stagePadding: 100, 
-      autoHeight: true
-  })
+    $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+        items: 1, 
+        margin: 100, 
+        loop: true, 
+        nav: true, 
+        dots: false, 
+        stagePadding: 100, 
+        autoHeight: true
+      })
+    })
     
     $http.get('/textData/readAll').then(
       success => {
@@ -577,21 +578,22 @@ app.controller('pageCtrl', function ($scope,$http) {
         if(opacity != '1')
             element.style.opacity = '1';
     }
-    $('.owl-carousel').owlCarousel({
-      responsive: {
-        0: {items: 1}, 
-        476: {items: 1}, 
-        768: {items: 5}, 
-        992: {items: 5}, 
-        1200: {items: 7}
-      },
-       
-        autoplay: true,
-        autoplayTimeout: 3000,
-        dots: false
-    
+    $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+        responsive: {
+          0: {items: 1}, 
+          476: {items: 1}, 
+          768: {items: 5}, 
+          992: {items: 5}, 
+          1200: {items: 7}
+        },
+        
+          autoplay: true,
+          autoplayTimeout: 3000,
+          dots: false
+      
+      })
     })
-     
     $http.get('/textData/readAll').then(
       success => {
         let textData = success.data;
@@ -627,36 +629,41 @@ app.controller('aboutCtrl',function($scope, $http){
     if(opacity != '1')
       element.style.opacity = '1';
   }
-  $('.owl-carousel').eq(0).owlCarousel({
+  $(document).ready(function(){
+    
+    $('.owl-carousel').eq(0).owlCarousel({
+      responsive: {
+        576: {items: 1}, 
+        768: {items: 1}, 
+        992: {items: 2}, 
+        1200: {items: 2}
+      },
+        margin: 25,
+        loop: true,
+        nav: false,
+        dots: false, 
+        stagePadding: 40,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        loop: true
+  
+  })
+  $('.owl-carousel').eq(1).owlCarousel({
     responsive: {
       576: {items: 1}, 
       768: {items: 1}, 
-      992: {items: 2}, 
-      1200: {items: 2}
+      992: {items: 1}, 
+      1200: {items: 1}
     },
-      margin: 25,
-      loop: true,
-      nav: true,
+      loop: true, 
+      nav: false,
       dots: false, 
-      stagePadding: 40
-
-})
-$('.owl-carousel').eq(1).owlCarousel({
-  responsive: {
-    576: {items: 1}, 
-    768: {items: 1}, 
-    992: {items: 1}, 
-    1200: {items: 1}
-  },
-    loop: true, 
-    nav: false,
-    dots: false, 
-    stagePadding: 40,
-    autoplay: true,
-    autoplayTimeout: 6000,
-    loop: true
-
-})
+      stagePadding: 40,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      loop: true
+  })
+  })
    
 
   $(function() {
