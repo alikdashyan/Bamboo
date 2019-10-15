@@ -547,7 +547,7 @@ app.controller('homeCtrl', function ($scope,$http) {
         nav: true, 
         dots: false, 
         stagePadding: 100, 
-        autoHeight: true
+        // autoHeight: true
       })
     })
     
@@ -618,6 +618,9 @@ app.controller('blogCtrl',function ($scope, postsFactory) {
         if(opacity != '1')
             element.style.opacity = '1';
     }
+    $(function() {
+      $('body').scrollTop(0);
+   });
 })
 app.controller('aboutCtrl',function($scope, $http){
   $('#revolutionSlider').show().revolution();
@@ -794,17 +797,18 @@ app.controller('authCtrl', function($scope, $http, $location) {
 
   })
 app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
-    console.log($routeParams.postId);
+    // console.log($routeParams.postId );
     $scope.postId = $routeParams.postId
-    $('#revolutionSlider').show().revolution();
-    let animations = document.getElementsByClassName('appear-animation');
+    // $http.get('/')
+    // $('#revolutionSlider').show().revolution();
+    // let animations = document.getElementsByClassName('appear-animation');
 
-    for (let index = 0; index < animations.length; index++) {
-        const element = animations[index];
-        const opacity =  element.style.opacity;
-        if(opacity != '1')
-            element.style.opacity = '1';
-    }
+    // for (let index = 0; index < animations.length; index++) {
+    //     const element = animations[index];
+    //     const opacity =  element.style.opacity;
+    //     if(opacity != '1')
+    //         element.style.opacity = '1';
+    // }
 })
 
 app.controller('formCntrl', function($scope, $http,$location) {
@@ -959,6 +963,17 @@ app.controller('profileCntrl', function($scope, $location, $http){
 })
 
 app.controller('HeaderCtrl', function($scope, $http, $location){
+    $(document).ready(function(){
+      $('.owl-carousel').owlCarousel({
+        stickyEnabled: true, 
+        stickyEffect: shrink,
+        stickyEnableOnBoxed: true, 
+        stickyEnableOnMobile: true,
+        stickyChangeLogo: true,
+        stickyStartAt: 30,
+        stickyHeaderContainerHeight: 70,
+      })
+    })
       if(localStorage.token) {
         $scope.token = localStorage.token;
       }

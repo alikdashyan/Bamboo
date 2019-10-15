@@ -1,154 +1,179 @@
-		<div class="body">
-			<div role="main" class="main">
+<div class="body">
+	<div role="main" class="main">
 
-				<section class="page-header page-header-modern page-header-background page-header-background-sm overlay overlay-color-primary overlay-show overlay-op-8 mb-5" style="background-image: url(img/page-header/page-header-elements.jpg);">
-					<div class="container">
-						<div class="row">
-							<!-- <div class="col-md-12 align-self-center p-static order-2 text-center">
+		<section
+			class="page-header page-header-modern page-header-background page-header-background-sm overlay overlay-color-primary overlay-show overlay-op-8 mb-5"
+			style="background-image: url(img/page-header/page-header-elements.jpg);">
+			<div class="container">
+				<div class="row">
+					<!-- <div class="col-md-12 align-self-center p-static order-2 text-center">
 								<h1>Forms</h1>
 
 							</div> -->
-							<div class="col-md-12 align-self-center order-1">
-								<ul class="breadcrumb breadcrumb-light d-block text-center">
-									<li><a href="#">Home</a></li>
-									<li class="active">Make Order</li>
-								</ul>
-							</div>
-						</div>
+					<div class="col-md-12 align-self-center order-1">
+						<ul class="breadcrumb breadcrumb-light d-block text-center">
+							<li><a href="#">Home</a></li>
+							<li class="active">Make Order</li>
+						</ul>
 					</div>
-				</section>
+				</div>
+			</div>
+		</section>
 
-				<div class="container py-2">
+		<div class="container py-2">
 
-					<div class="row">
-							<div class="col-lg-2 mt-4 mt-lg-0">
+			<div class="row">
+				<div class="col-lg-2 mt-4 mt-lg-0">
 
-									<aside class="sidebar mt-2" id="sidebar">
-										<ul class="nav nav-list flex-column mb-5">
-											<li class="nav-item"><a class="nav-link text-dark" href="#/profile">My Profile</a></li>
-											<li class="nav-item"><a class="nav-link text-dark active" href="#/formsUserProfile">Make Order</a></li>
-											<li class="nav-item"><a class="nav-link text-dark" href="#/userTable">My Orders</a></li>
-											<li class="nav-item"><a class="nav-link text-dark" href="#/reportsTable">My Reports</a></li>
-										</ul>
-									</aside>
-		
-								</div>
-					
-						<div class="col-lg-10 order-1 order-lg-2">
-							
-							<div class="overflow-hidden mb-1">
-								<h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">Make</strong> Order</h2>
-							</div>
-							<div class="overflow-hidden mb-4 pb-3">
-								<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-							</div>
-
-							<form ng-submit="submitOrder()" role="form" class="needs-validation">
-									<div class="form-group row">
-											<label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Payment method</label>
-										
-										<div class="col-lg-9">
-											<div class="radio">
-												<label>
-													<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios" id="optionsRadios1" ng-value="5" checked="">
-													Buy product and take review 5$
-												</label>
-											</div>
-											<div class="radio">
-												<label>
-													<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios" id="optionsRadios2" ng-value="4">
-													Buy product 4$
-												</label>
-											</div>
-											<div class="radio">
-												<label>
-													<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios" id="optionsRadios2" ng-value="3">
-													Buy product with coupon 3$
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group row">
-											<label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email For Refunds</label>
-											<div class="col-lg-9">
-												<input ng-model="emailForRefunds" class="form-control" required type="email">
-											</div>
-											</div>	
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Product link</label>
-							        <div class="col-lg-9">
-							            <input ng-model="productLink" class="form-control" required type="url" >
-							        </div>
-							    </div>
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Buyings Per Day</label>
-							        <div class="col-lg-9">
-							            <input ng-model="buyingsPerDay"  class="form-control" required type="number" >
-							        </div>
-							    </div>
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Item Price</label>
-							        <div class="col-lg-9">
-							            <input ng-model="itemPrice" class="form-control" required type="number" >
-							        </div>
-							    </div>
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Total Buying Summary</label>
-							        <div class="col-lg-9">
-							            <input ng-model="totalBuyingSummary" class="form-control" type="number" >
-							        </div>
-							    </div>
-							    <div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Add Itional Info</label>
-							        <div class="col-lg-9">
-							            <input ng-model="additionalInfo" class="form-control" type="text" >
-							        </div>
-							    </div>
-								<div class="form-group row">
-							        <label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Keywords</label>
-							        <div class="col-lg-9">
-							            <input ng-model="keywords" class="form-control" type="text" >
-							        </div>
-								</div>
-								<div class="form-group row">
-										<label class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Transfer Method</label>
-									
-									<div class="col-lg-9">
-										<div class="radio">
-											<label>
-												<input ng-model="transferRadio.option" type="radio" name="transferRadios" id="optionsRadios1" value="Tranfer money now" checked="">
-												Tranfer money now
-											</label>
-										</div>
-										<div class="radio">
-											<label>
-												<input ng-model="transferRadio.option" type="radio" name="transferRadios" id="optionsRadios2" value="I will buy myself">
-												I will buy myself
-											</label>
-										</div>
-										
-									</div>
-								</div>
-								
-							    <div class="form-group row">
-									<div class="form-group col-lg-9" style="text-align: center">
-										<p>{{ orderError ? orderError : success}}</p>
-									</div>
-									<div class="form-group col-lg-3">
-										<input type="submit" value="Save" class="btn btn-primary btn-modern float-right" data-loading-text="Loading...">
-										
-									</div>
-							    </div>
-							</form>
-
-						</div>
-					</div>
+					<aside class="sidebar mt-2" id="sidebar">
+						<ul class="nav nav-list flex-column mb-5">
+							<li class="nav-item"><a class="nav-link text-dark" href="#/profile">My Profile</a></li>
+							<li class="nav-item"><a class="nav-link text-dark active" href="#/formsUserProfile">Make
+									Order</a></li>
+							<li class="nav-item"><a class="nav-link text-dark" href="#/userTable">My Orders</a></li>
+							<li class="nav-item"><a class="nav-link text-dark" href="#/reportsTable">My Reports</a></li>
+						</ul>
+					</aside>
 
 				</div>
 
-				
+				<div class="col-lg-10 order-1 order-lg-2">
+
+					<div class="overflow-hidden mb-1">
+						<h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">Make</strong>
+							Order</h2>
+					</div>
+					<div class="overflow-hidden mb-4 pb-3">
+						<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					</div>
+
+					<form ng-submit="submitOrder()" role="form" class="needs-validation">
+						<div class="form-group row">
+							<label
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Payment
+								method</label>
+
+							<div class="col-lg-9">
+								<div class="radio">
+									<label>
+										<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios"
+											id="optionsRadios1" ng-value="5" checked="">
+										Buy product and take review 5$
+									</label>
+								</div>
+								<div class="radio">
+									<label>
+										<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios"
+											id="optionsRadios2" ng-value="4">
+										Buy product 4$
+									</label>
+								</div>
+								<div class="radio">
+									<label>
+										<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios"
+											id="optionsRadios2" ng-value="3">
+										Buy product with coupon 3$
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email
+								For Refunds</label>
+							<div class="col-lg-9">
+								<input ng-model="emailForRefunds" class="form-control" required type="email">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Product
+								link</label>
+							<div class="col-lg-9">
+								<input ng-model="productLink" class="form-control" required type="url">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Buyings
+								Per Day</label>
+							<div class="col-lg-9">
+								<input ng-model="buyingsPerDay" class="form-control" required type="number">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Item
+								Price</label>
+							<div class="col-lg-9">
+								<input ng-model="itemPrice" class="form-control" required type="number">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Total
+								Buying Summary</label>
+							<div class="col-lg-9">
+								<input ng-model="totalBuyingSummary" class="form-control" type="number">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Add
+								Itional Info</label>
+							<div class="col-lg-9">
+								<input ng-model="additionalInfo" class="form-control" type="text">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Keywords</label>
+							<div class="col-lg-9">
+								<input ng-model="keywords" class="form-control" type="text">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Transfer
+								Method</label>
+
+							<div class="col-lg-9">
+								<div class="radio">
+									<label>
+										<input ng-model="transferRadio.option" type="radio" name="transferRadios"
+											id="optionsRadios1" value="Tranfer money now" checked="">
+										Tranfer money now
+									</label>
+								</div>
+								<div class="radio">
+									<label>
+										<input ng-model="transferRadio.option" type="radio" name="transferRadios"
+											id="optionsRadios2" value="I will buy myself">
+										I will buy myself
+									</label>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="form-group col-lg-9" style="text-align: center">
+								<p>{{ orderError ? orderError : success}}</p>
+							</div>
+							<div class="form-group col-lg-3">
+								<input type="submit" value="Save" class="btn btn-primary btn-modern float-right"
+									data-loading-text="Loading...">
+
+							</div>
+						</div>
+					</form>
+
+				</div>
 			</div>
- 
+
 		</div>
 
-	
+
+	</div>
+
+</div>
