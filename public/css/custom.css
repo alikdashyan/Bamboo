@@ -1,7 +1,5 @@
 /* Add here all your CSS customizations */
-.pagination{
-    color: aliceblue;
-}
+
 .pagination ul{
     width: auto; 
 }
@@ -15,7 +13,10 @@
 }
 .pagination a:hover {
     background-color: #CCC;
-    color: aliceblue;
+    color: aliceblue !important;
+}
+.active a {
+    color: #fff !important;
 }
 .ordersHrefStyle a {
     text-decoration: none;

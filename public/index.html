@@ -77,7 +77,7 @@
                 <div class="bounce3"></div>
         	</div>
 		</div>
-		<header ng-controller="HeaderCtrl" id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 30, 'stickyHeaderContainerHeight': 70}">
+		<header ng-controller="HeaderCtrl" id="header" class="header-effect-shrink" >
 				<div class="header-body">
 					<div class="header-container container">
 						<div class="header-row">
@@ -85,7 +85,7 @@
 								<div class="header-row">
 									<div class="header-logo">
 										<a href="/">
-											<img alt="Bamboo" width="300" height="120" data-sticky-width="300" data-sticky-height="120" src="img/bamboo-logo.png">
+											<img alt="Bamboo" width="300" height="120" src="img/bamboo-logo.png">
 										</a>
 									</div>
 								</div>
@@ -95,8 +95,8 @@
 									<div class="header-nav header-nav-line header-nav-top-line header-nav-top-line-with-border order-2 order-lg-1">
 										<div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
 												<nav class="collapse">
-														<ul class="nav nav-pills" id="mainNav">
-															<li class="dropdown">
+														<ul class="nav nav-pills" id="mainNav" class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
+															<li class="dropdown" >
 																<a class="dropdown-item dropdown-toggle " href="#/services">{{textData["header"].headingHeaderSection1}}</a>														
 															</li>
 															<li class="dropdown">
@@ -146,10 +146,7 @@
 					</div>
 				</div>
 			</header>
-		
-	 
-			
-                        
+           
 			<ng-view ></ng-view>
 			<footer id="footer" ng-controller="footerCntrl"	>
 				
