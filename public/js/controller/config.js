@@ -815,7 +815,7 @@ app.controller('formCntrl', function($scope, $http,$location) {
   if(!localStorage.token){
     $location.path('/').replace();
   }
-
+  $scope.btnAdminPanel = false;
   $scope.submitOrder = function(){
 
     let productLink = $scope.productLink;
@@ -932,7 +932,8 @@ app.controller('profileCntrl', function($scope, $location, $http){
     $scope.ubdateError = "";
     let contactInfo = {
       skypeViberWhatsApp: $scope.skypeViberWhatsApp,
-      facebookLink: $scope.facebook
+      facebookLink: $scope.facebook,
+      Wechat: $scope.Wechat
     }
     
     const httpOptions = {
