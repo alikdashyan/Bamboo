@@ -653,6 +653,10 @@ app.controller('aboutCtrl',function($scope, $http){
   })
   $('.owl-carousel').eq(1).owlCarousel({
     responsive: {
+      300:{items:1},
+      320: {items:1},
+      450:{items: 1},
+      500: {items: 1},
       576: {items: 1}, 
       768: {items: 1}, 
       992: {items: 1}, 
@@ -815,7 +819,7 @@ app.controller('formCntrl', function($scope, $http,$location) {
   if(!localStorage.token){
     $location.path('/').replace();
   }
-   $scope.openEmail= false;
+  $scope.openEmail= false;
   $scope.submitOrder = function(){
 
     let productLink = $scope.productLink;
