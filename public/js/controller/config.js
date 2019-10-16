@@ -815,7 +815,7 @@ app.controller('formCntrl', function($scope, $http,$location) {
   if(!localStorage.token){
     $location.path('/').replace();
   }
-  $scope.btnAdminPanel = false;
+   $scope.openEmail= false;
   $scope.submitOrder = function(){
 
     let productLink = $scope.productLink;
