@@ -140,15 +140,15 @@
 							<div class="col-lg-9">
 								<div class="radio">
 									<label>
-										<input ng-model="transferRadio.option" type="radio" name="transferRadios"
+										<input ng-model="transferRadio.option" type="radio" name="transferRadios" ng-click="openEmail = false"
 											id="optionsRadios1" value="Tranfer money now" checked="">
 										Tranfer money now
 									</label>
 								</div>
-								<div class="radio">
-									<label>
-										<input ng-model="transferRadio.option" type="radio" name="transferRadios"
-											id="optionsRadios2" value="I will buy myself" ng-click="openEmail = !openEmail"> 
+								<div class="radio" >
+									<label >
+										<input ng-model="transferRadio.option" type="radio" name="transferRadios" ng-click="openEmail = true"
+											id="optionsRadios2" value="I will buy myself" > 
 										I will buy myself
 									</label>
 								</div>
