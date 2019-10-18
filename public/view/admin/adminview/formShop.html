@@ -51,8 +51,9 @@
                                                     <form role="form" ng-submit="updateData('shop')">
                                                         <div class="form-group">
                                                             <label>Shop</label>
-                                                            <input type="number" class="form-control" ng-model="shopSection" placeholder="{{textData['shop'].shopSection}}">
+                                                            <input type="text" class="form-control" ng-model="shopSection" placeholder="{{textData['shop'].shopSection}}">
                                                         </div>
+                                                        <div>{{ congratsText }}</div>
                                                         <button type="submit" class="btn btn-success">Submit Button</button>
                                                         <button type="reset" class="btn btn-default">Reset Button</button>
                                                     </form>

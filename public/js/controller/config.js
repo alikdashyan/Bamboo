@@ -523,6 +523,9 @@ $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer 
  
 })
 app.controller('shopCtrl',function($scope,$http){
+  if(!localStorage.adminToken){
+    $location.path('/').replace();
+  }
   $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
@@ -553,6 +556,9 @@ app.controller('shopCtrl',function($scope,$http){
       }
 })
 app.controller('formTableCtrl',function($scope,$http){
+  if(!localStorage.adminToken){
+    $location.path('/').replace();
+   }
   $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
@@ -1053,7 +1059,7 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
     $(document).ready(function(){
       $('.owl-carousel').owlCarousel({
         stickyEnabled: true, 
-        stickyEffect: shrink,
+        stickyEffect: 'shrink',
         stickyEnableOnBoxed: true, 
         stickyEnableOnMobile: true,
         stickyChangeLogo: true,
@@ -1074,10 +1080,7 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
         })
         .catch(error => error ? console.log(error) : '')
       }
-      // if(!localStorage.adminToken){
-        // $location.path('/').replace();
-      //   console.log('es piti urish texic ashxati Davs');
-      //  }
+
     $http.get('/textData/readAll').then(
       success => {
         let textData = success.data;
