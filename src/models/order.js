@@ -15,7 +15,6 @@ const orderSchema = new mongoose.Schema({
     },
     emailForRefunds: {
         type: String,
-        required: true,
         trim: true,
         validate(value){
             if(!validator.isEmail(value)){
