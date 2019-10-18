@@ -16,13 +16,10 @@ orderRouter.post('/order', auth, async (req, res) => {
     }
     const order = new Order(req.body.orderInfo)
     order.ID = req.user.userID
-    if(!req.user.contactInfo.skypeViberWhatsApp || !req.user.contactInfo.facebookLink){
-        return res.status(400).send({error: "Contact info is not provided or has not filled correctly"})
-    }
     order.userContactInfo = req.user.contactInfo
     try{
         await order.save()
-        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${req.body.paymentInfo.amount*1000}&orderNumber=${order._id}&currency=051`
+        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${req.body.paymentInfo.amount*100}&orderNumber=${order._id}&currency=840`
         const data = await request(url)
         if(data.errorCode){
             return res.status(400).send({error: data.errorMessage})
