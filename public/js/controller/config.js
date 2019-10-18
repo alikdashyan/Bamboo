@@ -46,9 +46,9 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
       templateUrl: 'view/reports.html',
       controller:'reportsCtrl'
     })
-    .when('/demo',{
-      templateUrl: 'view/demo.html',
-      controller: 'demoCtrl'
+    .when('/shopView',{
+      templateUrl: 'view/shop.html',
+      controller: 'shop'
     })
     .when('/admin',{
       templateUrl: 'view/admin/admin.html',
@@ -77,6 +77,14 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
     .when('/formHeader',{
       templateUrl: 'view/admin/adminview/formHeader.html',
       controller: 'HeaderCtrl'
+    })
+    .when('/shop',{
+      templateUrl: 'view/admin/adminview/formShop.html',
+      controller: 'shopCtrl'
+    })
+    .when('/formTable',{
+      templateUrl: 'view/admin/adminview/formTable.html',
+      controller: 'formTableCtrl'
     })
     .when('/paymentError', {
       templateUrl: 'view/page-error.html'
@@ -514,7 +522,70 @@ $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer 
 }
  
 })
- 
+app.controller('shopCtrl',function($scope,$http){
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+    },
+    innerError => {
+      console.log(innerError);
+    }
+    
+    ).catch(error => console.log(error))
+    $scope.updateData = function (id) {
+      let shopSection = $scope.shopSection;
+      let body = JSON.stringify(
+        {
+          shopSection 
+        }
+      )
+      $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+        success => {
+          if(success.data){
+            $scope.congratsText = 'Data is updated succesfully';
+          }
+        },
+        innerError => {
+          console.log(innerError)
+        }
+      ).catch
+      }
+})
+app.controller('formTableCtrl',function($scope,$http){
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+    },
+    innerError => {
+      console.log(innerError);
+    }
+    
+    ).catch(error => console.log(error))
+    $scope.updateData = function (id) {
+      let header = $scope.header;
+      let headerSpan = $scope.headerSpan;
+      let description = $scope.description;
+      let body = JSON.stringify(
+        {
+          header,
+          headerSpan,
+          description
+        }
+      )
+      $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+        success => {
+          if(success.data){
+            $scope.congratsText = 'Data is updated succesfully';
+          }
+        },
+        innerError => {
+          console.log(innerError)
+        }
+      ).catch
+      }
+})
 app.controller('adminLogoutCtrl', function($scope, $http, $location){
   $scope.adminLogout = function(){
     $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.adminToken}`}})
@@ -525,7 +596,6 @@ app.controller('adminLogoutCtrl', function($scope, $http, $location){
     .catch(error => error ? console.log(error) : '')
   }
 })
-
 //End Admin Panel
 
 app.controller('homeCtrl', function ($scope,$http) {
@@ -819,9 +889,19 @@ app.controller('formCntrl', function($scope, $http,$location) {
   if(!localStorage.token){
     $location.path('/').replace();
   }
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+      console.log(textData)
+    },
+    innerError => {
+      console.log(innerError);
+    }
+    
+  ).catch(error => console.log(error))
   $scope.openEmail= false;
   $scope.submitOrder = function(){
-
     let productLink = $scope.productLink;
     let buyingsPerDay = $scope.buyingsPerDay;
     let itemPrice = $scope.itemPrice;
@@ -855,11 +935,13 @@ app.controller('formCntrl', function($scope, $http,$location) {
         keywords,
         transferWay,
       },
-      paymentInfo
+      paymentInfo,
     }
     let stringifiedBody = JSON.stringify(body);
 
     $scope.success = '';
+   
+
     $http.post('/order',stringifiedBody, httpOptions).then(
       success => {
         if(!success.data.error){
@@ -1034,7 +1116,18 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
       ).catch(error => console.log(error))
     }
 });
-
+app.controller('shop',function($scope,$http){
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+    },
+    innerError => {
+      console.log(innerError);
+    }
+    
+  ).catch(error => console.log(error))
+})
 
 app.factory('postsFactory', function () {
     return [

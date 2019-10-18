@@ -1,297 +1,288 @@
 <!DOCTYPE html>
-<html  ng-app='app'>
+<html ng-app='app'>
+
 <head>
-    <!-- Basic -->
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
-
-		<title>Bamboo</title>	
-
-		<meta name="keywords" content="HTML5 Template" />
-		<meta name="description" content="Porto - Responsive HTML5 Template">
-		<meta name="author" content="okler.net">
-
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
-		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-
-		<!-- Mobile Metas -->
-		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-
-		<!-- Web Fonts  -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400" rel="stylesheet" type="text/css">
-
-		<!-- <base href="/"> -->
-		<!-- Vendor CSS -->
-		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
-		<link rel="stylesheet" href="vendor/animate/animate.min.css">
-		<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
-		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
-		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
-		<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
-
-		<!-- Theme CSS -->
-		<link rel="stylesheet" href="css/theme.css">
-		<link rel="stylesheet" href="css/theme-elements.css">
-		<link rel="stylesheet" href="css/theme-blog.css">
-		<link rel="stylesheet" href="css/theme-shop.css">
-
-		<!-- Current Page CSS -->
-		<link rel="stylesheet" href="vendor/rs-plugin/css/settings.css">
-		<link rel="stylesheet" href="vendor/rs-plugin/css/layers.css">
-		<link rel="stylesheet" href="vendor/rs-plugin/css/navigation.css">
-		<link rel="stylesheet" href="vendor/circle-flip-slideshow/css/component.css">
-		<!-- Demo CSS -->
-		
-
-		<!-- Skin CSS -->
-		<link rel="stylesheet" href="css/skins/default.css"> 
-		
-		<!-- Theme Custom CSS -->
-		<link rel="stylesheet" href="css/custom.css">
-
-		<link rel="stylesheet" href="index.css">
-
-	
+	<!-- Basic -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Bamboo</title>
+	<meta name="keywords" content="HTML5 Template" />
+	<meta name="description" content="Porto - Responsive HTML5 Template">
+	<meta name="author" content="okler.net">
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+	<!-- Web Fonts  -->
+	<link
+		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400"
+		rel="stylesheet" type="text/css">
+	<!-- <base href="/"> -->
+	<!-- Vendor CSS -->
+	<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">
+	<link rel="stylesheet" href="vendor/animate/animate.min.css">
+	<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">
+	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
+	<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
+	<!-- Theme CSS -->
+	<link rel="stylesheet" href="css/theme.css">
+	<link rel="stylesheet" href="css/theme-elements.css">
+	<link rel="stylesheet" href="css/theme-blog.css">
+	<link rel="stylesheet" href="css/theme-shop.css">
+	<!-- Current Page CSS -->
+	<link rel="stylesheet" href="vendor/rs-plugin/css/settings.css">
+	<link rel="stylesheet" href="vendor/rs-plugin/css/layers.css">
+	<link rel="stylesheet" href="vendor/rs-plugin/css/navigation.css">
+	<link rel="stylesheet" href="vendor/circle-flip-slideshow/css/component.css">
 	<!-- Demo CSS -->
-
-
 	<!-- Skin CSS -->
-	<link rel="stylesheet" href="css/skins/default.css"> 
-
+	<link rel="stylesheet" href="css/skins/default.css">
 	<!-- Theme Custom CSS -->
 	<link rel="stylesheet" href="css/custom.css">
-
-		
-	
-	
-	
-
+	<link rel="stylesheet" href="index.css">
+	<!-- Demo CSS -->
+	<!-- Skin CSS -->
+	<link rel="stylesheet" href="css/skins/default.css">
+	<!-- Theme Custom CSS -->
+	<link rel="stylesheet" href="css/custom.css">
 </head>
-<body   class="loading-overlay-showing body " data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 500}">
-		<div class="loading-overlay" >
-            <div class="bounce-loader">
-                <div class="bounce1"></div>
-                <div class="bounce2"></div>
-                <div class="bounce3"></div>
-        	</div>
+<body class="loading-overlay-showing body " data-plugin-page-transition data-loading-overlay
+	data-plugin-options="{'hideDelay': 500}">
+	<div class="loading-overlay">
+		<div class="bounce-loader">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
 		</div>
-		<header ng-controller="HeaderCtrl" id="header" class="header-effect-shrink" >
-				<div class="header-body">
-					<div class="header-container container">
+	</div>
+	<header ng-controller="HeaderCtrl" id="header" class="header-effect-shrink">
+		<div class="header-body">
+			<div class="header-container container">
+				<div class="header-row">
+					<div class="header-column">
 						<div class="header-row">
-							<div class="header-column">
-								<div class="header-row">
-									<div class="header-logo">
-										<a href="/">
-											<img alt="Bamboo" width="300" height="120" src="img/bamboo-logo.png">
-										</a>
-									</div>
-								</div>
+							<div class="header-logo">
+								<a href="/">
+									<img alt="Bamboo" width="300" height="120" src="img/bamboo-logo.png">
+								</a>
 							</div>
-							<div class="header-column justify-content-end">
-								<div class="header-row">
-									<div class="header-nav header-nav-line header-nav-top-line header-nav-top-line-with-border order-2 order-lg-1">
-										<div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
-												<nav class="collapse">
-														<ul class="nav nav-pills" id="mainNav" class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
-															<li class="dropdown" >
-																<a class="dropdown-item dropdown-toggle " href="#/services">{{textData["header"].headingHeaderSection1}}</a>														
-															</li>
-															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle" href="#/blog">
-																	{{textData["header"].headingHeaderSection2}}
-																</a>	
-															</li>
-															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle "  href="#/about">{{textData["header"].headingHeaderSection3}}</a>														
-															</li>
-															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle "  href="#/contact">{{textData["header"].headingHeaderSection4}}</a>														
-															</li>
-															<li class="dropdown">
-																<a class="dropdown-item dropdown-toggle " href="{{ token ? '#/profile' : '#/login' }}">{{ token ? 'Profile' : 'Login/Register' }}</a>															
-															</li>
-															<li class="dropdown" ng-show='token' ng-click='logout()'>
-																<a class="dropdown-item dropdown-toggle " href="#">{{textData["header"].headingHeaderSection5}}</a>															
-															</li>
-														</ul>
-													</nav>
-										</div>
-										<button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
-											<i class="fas fa-bars"></i>
-										</button>
-									</div>
-									<div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
-										<div class="header-nav-feature header-nav-features-search d-inline-flex">
-											<a href="#" class="header-nav-features-toggle" data-focus="headerSearch"><i class="fas fa-search header-nav-top-icon"></i></a>
-											<div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
-												<form role="search" action="page-search-results.html" method="get">
-													<div class="simple-search input-group">
-														<input class="form-control text-1" id="headerSearch" name="q" type="search" value="" placeholder="Search...">
-														<span class="input-group-append">
-															<button class="btn" type="submit">
-																<i class="fa fa-search header-nav-top-icon"></i>
-															</button>
-														</span>
-													</div>
-												</form>
+						</div>
+					</div>
+					<div class="header-column justify-content-end">
+						<div class="header-row">
+							<div
+								class="header-nav header-nav-line header-nav-top-line header-nav-top-line-with-border order-2 order-lg-1">
+								<div
+									class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
+									<nav class="collapse">
+										<ul class="nav nav-pills" id="mainNav" class="btn header-btn-collapse-nav"
+											data-toggle="collapse" data-target=".header-nav-main nav">
+											<li class="dropdown">
+												<a class="dropdown-item dropdown-toggle "
+													href="#/services">{{textData["header"].headingHeaderSection1}}</a>
+											</li>
+											<li class="dropdown">
+												<a class="dropdown-item dropdown-toggle" href="#/blog">
+													{{textData["header"].headingHeaderSection2}}
+												</a>
+											</li>
+											<li class="dropdown">
+												<a class="dropdown-item dropdown-toggle "
+													href="#/about">{{textData["header"].headingHeaderSection3}}</a>
+											</li>
+											<li class="dropdown">
+												<a class="dropdown-item dropdown-toggle "
+													href="#/contact">{{textData["header"].headingHeaderSection4}}</a>
+											</li>
+											<li class="dropdown">
+												<a class="dropdown-item dropdown-toggle "
+													href="{{ token ? '#/profile' : '#/login' }}">{{ token ? 'Profile' : 'Login/Register' }}</a>
+											</li>
+											<li class="dropdown" ng-show='token' ng-click='logout()'>
+												<a class="dropdown-item dropdown-toggle "
+													href="#">{{textData["header"].headingHeaderSection5}}</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+								<button class="btn header-btn-collapse-nav" data-toggle="collapse"
+									data-target=".header-nav-main nav">
+									<i class="fas fa-bars"></i>
+								</button>
+							</div>
+							<div
+								class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
+								<div class="header-nav-feature header-nav-features-search d-inline-flex">
+									<a href="#" class="header-nav-features-toggle" data-focus="headerSearch"><i
+											class="fas fa-search header-nav-top-icon"></i></a>
+									<div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
+										<form role="search" action="page-search-results.html" method="get">
+											<div class="simple-search input-group">
+												<input class="form-control text-1" id="headerSearch" name="q"
+													type="search" value="" placeholder="Search...">
+												<span class="input-group-append">
+													<button class="btn" type="submit">
+														<i class="fa fa-search header-nav-top-icon"></i>
+													</button>
+												</span>
 											</div>
-										</div>
+										</form>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</header>
-           
-			<ng-view ></ng-view>
-			<footer id="footer" ng-controller="footerCntrl"	>
-				
-					<div class="container" >
-							<div class="footer-ribbon">
-								<span>Get in Touch</span>
-							</div>
-							<div class="row py-5 my-4">
-								<div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
-									<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection1}}</h5>
-									<p class="pr-1">{{textData["footer"].descriptionFooterSection1}}</p>
-									<div class="alert alert-success d-none" id="newsletterSuccess">
-										<strong>Success!</strong> You've been added to our email list.
-									</div>
-									<div class="alert alert-danger d-none" id="newsletterError"></div>
-								</div>
-								<div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-									<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection2}}</h5>
-									<div id="tweet" class="twitter" data-plugin-tweets data-plugin-options="{'username': 'oklerthemes', 'count': 2}">
-										<p>{{textData["footer"].descriptionFooterSection2}}</p>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-									<div class="contact-details">
-										<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection3}}</h5>
-										<ul class="list list-icons list-icons-lg">
-											<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i><p class="m-0">{{textData["footer"].contactAdres}}</p></li>
-											<li class="mb-1"><i class="fab fa-whatsapp text-color-primary"></i><p class="m-0"><a href="tel:8001234567">{{textData["footer"].contactPhone}}</a></p></li>
-											<li class="mb-1"><i class="far fa-envelope text-color-primary"></i><p class="m-0"><a href="mailto:mail@example.com">{{textData["footer"].contactEmail}}</a></p></li>
-										</ul>
-									</div>
-								</div>
-								<div class="col-md-6 col-lg-2">
-									<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection4}}</h5>
-									<ul class="social-icons">
-										<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-										<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-										<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="footer-copyright">
-							<div class="container py-2">
-								<div class="row py-4">
-									<div class="col-lg-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
-										<a href="index.html" class="logo pr-0 pr-lg-3">
-											<img alt="Porto Website Template" src="img/bamboo-logo02.png" class="opacity-5" height="33" >
-										</a>
-									</div>
-									<div class="col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
-										<p>{{textData["footer"].headingFooterSection5}}.</p>
-									</div>
-									<div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
-										<nav id="sub-menu">
-											<ul>
-												<li><i class="fas fa-angle-right"></i><a href="page-faq.html" class="ml-1 text-decoration-none"> FAQ's</a></li>
-												<li><i class="fas fa-angle-right"></i><a href="sitemap.html" class="ml-1 text-decoration-none"> Sitemap</a></li>
-												<li><i class="fas fa-angle-right"></i><a href="contact-us.html" class="ml-1 text-decoration-none"> Contact Us</a></li>
-											</ul>
-										</nav>
-									</div>
-								</div>
-							</div>
-						</div>
-				
-			</footer>
-			
-		<!-- Vendor -->
-		<script src="vendor/jquery/jquery.min.js"></script>
-		<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
-		<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
-		<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
-		<script src="vendor/popper/umd/popper.min.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-		<script src="vendor/common/common.min.js"></script>
-		<script src="vendor/jquery.validation/jquery.validate.min.js"></script>
-		<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-		<script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
-		<script src="vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
-		<script src="vendor/isotope/jquery.isotope.min.js"></script>
-		<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
-		<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-		<script src="vendor/vide/jquery.vide.min.js"></script>
-		<script src="vendor/vivus/vivus.min.js"></script>
-		
-					
-		
-		<!-- Theme Base, Components and Settings -->
-		<script src="js/theme.js"></script>
+			</div>
+		</div>
+	</header>
+	<ng-view></ng-view>
+	<footer id="footer" ng-controller="footerCntrl">
 
-		<!-- Current Page Vendor and Views -->
-		<script src="vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
-		<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
-		<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script> 
-	
-		<!-- <script src="js/views/view.home.js"></script> -->
-		<!-- Current Page Vendor and Views -->
-		<!-- <script src="js/views/view.contact.js"></script> -->
-		<!-- Theme Custom -->
-		<!-- <script src="js/custom.js"></script> -->
-		<!-- Current Page Vendor and Views -->
-		<!-- <script src="js/examples/examples.forms.js"></script> -->
+		<div class="container">
+			<div class="footer-ribbon">
+				<span>Get in Touch</span>
+			</div>
+			<div class="row py-5 my-4">
+				<div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+					<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection1}}</h5>
+					<p class="pr-1">{{textData["footer"].descriptionFooterSection1}}</p>
+					<div class="alert alert-success d-none" id="newsletterSuccess">
+						<strong>Success!</strong> You've been added to our email list.
+					</div>
+					<div class="alert alert-danger d-none" id="newsletterError"></div>
+				</div>
+				<div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+					<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection2}}</h5>
+					<div id="tweet" class="twitter" data-plugin-tweets
+						data-plugin-options="{'username': 'oklerthemes', 'count': 2}">
+						<p>{{textData["footer"].descriptionFooterSection2}}</p>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+					<div class="contact-details">
+						<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection3}}</h5>
+						<ul class="list list-icons list-icons-lg">
+							<li class="mb-1"><i class="far fa-dot-circle text-color-primary"></i>
+								<p class="m-0">{{textData["footer"].contactAdres}}</p>
+							</li>
+							<li class="mb-1"><i class="fab fa-whatsapp text-color-primary"></i>
+								<p class="m-0"><a href="tel:8001234567">{{textData["footer"].contactPhone}}</a></p>
+							</li>
+							<li class="mb-1"><i class="far fa-envelope text-color-primary"></i>
+								<p class="m-0"><a href="mailto:mail@example.com">{{textData["footer"].contactEmail}}</a>
+								</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-lg-2">
+					<h5 class="text-3 mb-3">{{textData["footer"].headingFooterSection4}}</h5>
+					<ul class="social-icons">
+						<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank"
+								title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank"
+								title="Twitter"><i class="fab fa-twitter"></i></a></li>
+						<li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank"
+								title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container py-2">
+				<div class="row py-4">
+					<div
+						class="col-lg-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
+						<a href="index.html" class="logo pr-0 pr-lg-3">
+							<img alt="Porto Website Template" src="img/bamboo-logo02.png" class="opacity-5" height="33">
+						</a>
+					</div>
+					<div
+						class="col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
+						<p>{{textData["footer"].headingFooterSection5}}.</p>
+					</div>
+					<div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
+						<nav id="sub-menu">
+							<ul>
+								<li><i class="fas fa-angle-right"></i><a href="page-faq.html"
+										class="ml-1 text-decoration-none"> FAQ's</a></li>
+								<li><i class="fas fa-angle-right"></i><a href="sitemap.html"
+										class="ml-1 text-decoration-none"> Sitemap</a></li>
+								<li><i class="fas fa-angle-right"></i><a href="contact-us.html"
+										class="ml-1 text-decoration-none"> Contact Us</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
 
-		
-		<!-- Theme Initialization Files -->
-		<script src="js/theme.init.js"></script>
-		
-		<!-- Examples -->
-		<script src="js/examples/examples.demos.js"></script>
-
-			<!-- Head Libs -->
+	</footer>
+	<!-- Vendor -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/jquery.appear/jquery.appear.min.js"></script>
+	<script src="vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>
+	<script src="vendor/popper/umd/popper.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/common/common.min.js"></script>
+	<script src="vendor/jquery.validation/jquery.validate.min.js"></script>
+	<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>
+	<script src="vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+	<script src="vendor/isotope/jquery.isotope.min.js"></script>
+	<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+	<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+	<script src="vendor/vide/jquery.vide.min.js"></script>
+	<script src="vendor/vivus/vivus.min.js"></script>
+	<!-- Theme Base, Components and Settings -->
+	<script src="js/theme.js"></script>
+	<!-- Current Page Vendor and Views -->
+	<script src="vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+	<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+	<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+	<!-- <script src="js/views/view.home.js"></script> -->
+	<!-- Current Page Vendor and Views -->
+	<!-- <script src="js/views/view.contact.js"></script> -->
+	<!-- Theme Custom -->
+	<!-- <script src="js/custom.js"></script> -->
+	<!-- Current Page Vendor and Views -->
+	<!-- <script src="js/examples/examples.forms.js"></script> -->
+	<!-- Theme Initialization Files -->
+	<script src="js/theme.init.js"></script>
+	<!-- Examples -->
+	<script src="js/examples/examples.demos.js"></script>
+	<!-- Head Libs -->
 	<script src="vendor/modernizr/modernizr.min.js"></script>
-
-		<!-- Head Libs -->
-		<script src="vendor/modernizr/modernizr.min.js"></script>
-		<!--Davit angularjs-->
-		<script src="lib/angular/angular.min.js"></script> 
-		<script src="lib/angular-route/angular-route.min.js"></script>
-		<script src="lib/dir-pagination/dirPagination.js"></script>
-		<script src="js/controller/config.js"></script>
-		<!-- Theme Base, Components and Settings -->
-		<!--  ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled -->
-
-		
-
-	
-		<!-- Admin Extension -->
-		<!-- <script src="js/theme.admin.extension.js"></script> -->
-
-		
-					
+	<!-- Head Libs -->
+	<script src="vendor/modernizr/modernizr.min.js"></script>
+	<!--Davit angularjs-->
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular-route/angular-route.min.js"></script>
+	<script src="lib/dir-pagination/dirPagination.js"></script>
+	<script src="js/controller/config.js"></script>
+	<!-- Theme Base, Components and Settings -->
+	<!--  ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled -->
+	<!-- Admin Extension -->
+	<!-- <script src="js/theme.admin.extension.js"></script> -->
 	<!--Start of Tawk.to Script-->
 	<script type="text/javascript">
-		var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-		(function(){
-		var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-		s1.async=true;
-		s1.src='https://embed.tawk.to/5d9e1216fbec0f2fe3b8eb60/default';
-		s1.charset='UTF-8';
-		s1.setAttribute('crossorigin','*');
-		s0.parentNode.insertBefore(s1,s0);
+		var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+		(function () {
+			var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+			s1.async = true;
+			s1.src = 'https://embed.tawk.to/5d9e1216fbec0f2fe3b8eb60/default';
+			s1.charset = 'UTF-8';
+			s1.setAttribute('crossorigin', '*');
+			s0.parentNode.insertBefore(s1, s0);
 		})();
 	</script>
 	<!--End of Tawk.to Script-->
-		
+
 </body>
+
 </html>
