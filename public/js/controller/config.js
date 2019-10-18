@@ -529,6 +529,7 @@ app.controller('shopCtrl',function($scope,$http){
       $scope.textData = textData;
     },
     innerError => {
+
       console.log(innerError);
     }
     
@@ -540,6 +541,7 @@ app.controller('shopCtrl',function($scope,$http){
           shopSection 
         }
       )
+      
       $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
         success => {
           if(success.data){
@@ -1053,7 +1055,7 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
     $(document).ready(function(){
       $('.owl-carousel').owlCarousel({
         stickyEnabled: true, 
-        stickyEffect: shrink,
+        stickyEffect: 'shrink',
         stickyEnableOnBoxed: true, 
         stickyEnableOnMobile: true,
         stickyChangeLogo: true,
