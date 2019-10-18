@@ -48,11 +48,12 @@
                         
                                                    
                         
-                                                    <form role="form" ng-submit="updateData('shop')">
+                                                    <form role="form" ng-submit="updateData('shop')" ng-keypress="($event.which === 13)?foo(edItem):0">
                                                         <div class="form-group">
                                                             <label>Shop</label>
-                                                            <input type="number" class="form-control" ng-model="shopSection" placeholder="{{textData['shop'].shopSection}}">
+                                                            <input type="text" class="form-control" ng-model="shopSection" placeholder="{{textData['shop'].shopSection}}">
                                                         </div>
+                                                        <div>{{ congratsText }}</div>
                                                         <button type="submit" class="btn btn-success">Submit Button</button>
                                                         <button type="reset" class="btn btn-default">Reset Button</button>
                                                     </form>
