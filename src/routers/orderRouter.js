@@ -141,6 +141,7 @@ orderRouter.get('/order/callback', async (req, res) => {
                                 <li>Facebook link: ${order.userContactInfo.facebookLink}</li>
                             </ul>
                             <li>Product link: ${order.productLink}</li>
+                            <li>Service Type: $${order.serviceType}</li>
                             <li>Buyings per day: ${order.buyingsPerDay}</li>
                             <li>Item price: ${order.itemPrice}</li>
                             <li>Total buying summary: ${order.totalBuyingSummary}</li>

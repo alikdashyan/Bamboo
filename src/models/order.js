@@ -58,6 +58,10 @@ const orderSchema = new mongoose.Schema({
         required: true,
         default: false
     },
+    serviceType: {
+        type: Number,
+        required: true
+    },
     additionalInfo: {
         type: String,
         trim: true
