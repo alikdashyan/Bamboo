@@ -154,8 +154,12 @@ userRouter.post('/login', async (req, res) => {
 userRouter.post('/login/admin', async (req, res) => {
     try{
         const user = await User.findByCredentials(req.body.email, req.body.password)
-        if(!user || user.kind !== 'admin'){
+        if(!user || user.kind !== 'admin' || user.kind !== 'worker'){
             return res.status(404).send({error: 'User not found'})
+        };
+        if(user.kind === 'worker'){
+            const workerToken = await user.generateAuthToken();
+            res.send({user, workerToken})
         }
         const adminToken = await user.generateAuthToken()
         res.send({user, adminToken})

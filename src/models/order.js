@@ -48,6 +48,16 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    price: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    readyForPayment: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     additionalInfo: {
         type: String,
         trim: true
