@@ -15,15 +15,7 @@
                     <div class="col-lg-2 mt-4 mt-lg-0">
                         <aside class="sidebar mt-2" id="sidebar">
                             <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl' >
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHome">formHome</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formServices">formServices</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formAbout">formAbout</a></li>
-                                <li class="nav-item"><a class="nav-link"   href="#/formContact">formContact</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHeader">formHeader</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formFooter">formFooter</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark active " href="#/shop">formShop</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formTable">formTable</a></li>
-                                <li class="nav-item" ng-click='adminLogout()'><a class="nav-link text-dark " href="">Logout</a></li>
+                                <li class="nav-item" ng-click='adminLogoutWorker()'><a class="nav-link text-dark " href="">Logout</a></li>
                                
                             </ul>
                         </aside>
@@ -48,15 +40,22 @@
                         
                                                    
                         
-                                                    <form role="form" ng-submit="updateData('shop')" ng-keypress="($event.which === 13)?foo(edItem):0">
+                                                    <form role="form" >
                                                         <div class="form-group">
-                                                            <label>Shop</label>
+                                                            <label for="email">Email</label>
+                                                            <input type="email" class="emailClient" ng-model="emailClient">
+                                                            <label for="orderID">Orders</label>
+                                                            <select name="orderName" ng-model="selectedName" >
+                                                                <option ng-repeat="id in names" value="{{id._id}}">{{id.totalBuyingSummary}}</option>
+                                                            </select>
+                                                            <label>Price</label>
                                                             <input type="text" class="form-control" ng-model="shopSection" placeholder="{{textData['shop'].shopSection}}">
                                                         </div>
                                                         <div>{{ congratsText }}</div>
-                                                        <button type="submit" class="btn btn-success">Submit Button</button>
+                                                        <button type="submit" class="btn btn-success" ng-click="submitReadyOrder()">Submit Button</button>
                                                         <button type="reset" class="btn btn-default">Reset Button</button>
                                                     </form>
+                                                    {{ successMessage ? successMessage : '' }}
                                                 </div>
                                             </div>
                                         </div>
