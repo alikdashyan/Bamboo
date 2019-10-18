@@ -9706,14 +9706,15 @@ html .scroll-to-top {
 	transition: opacity 0.3s;
 	background: #404040;
 	border-radius: 4px 4px 0 0;
-	bottom: 0;
+	/* bottom: 0; */
+	top: 30px;
 	color: #FFF;
 	display: block;
 	height: 9px;
 	opacity: 0;
 	padding: 10px 10px 35px;
 	position: fixed;
-	right: 10px;
+	right: 30px;
 	text-align: center;
 	text-decoration: none;
 	min-width: 50px;

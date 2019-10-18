@@ -6,10 +6,6 @@
 			style="background-image: url(img/page-header/page-header-elements.jpg);">
 			<div class="container">
 				<div class="row">
-					<!-- <div class="col-md-12 align-self-center p-static order-2 text-center">
-								<h1>Forms</h1>
-
-							</div> -->
 					<div class="col-md-12 align-self-center order-1">
 						<ul class="breadcrumb breadcrumb-light d-block text-center">
 							<li><a href="#">Home</a></li>
@@ -40,11 +36,11 @@
 				<div class="col-lg-10 order-1 order-lg-2">
 
 					<div class="overflow-hidden mb-1">
-						<h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">Make</strong>
-							Order</h2>
+						<h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">{{textData['formUserProfile'].headerSpan}}</strong>
+							{{textData['formUserProfile'].header}}</h2>
 					</div>
 					<div class="overflow-hidden mb-4 pb-3">
-						<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+						<p class="mb-0">{{textData['formUserProfile'].description}}</p>
 					</div>
 
 					<form ng-submit="submitOrder()" role="form" class="needs-validation">
