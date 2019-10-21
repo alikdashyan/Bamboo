@@ -1,5 +1,4 @@
 <div class="body">
-			
     <div role="main" class="main">
         <section class="page-header page-header-classic page-header-md">
             <div class="container">
@@ -16,27 +15,29 @@
                 </div>
             </div>
         </section>
-
-        <div class="form-group row">
-    
+        <div class="form-group row ">
+            <div class="col-lg-12">
+                <div class="summary entry-summary ">
                     <div class="col-lg-12">
-                            <div class="summary entry-summary text-center">
+                        <div class="featured-box featured-box-primary text-left mt-3 mt-lg-4 ">
+                            <div class="box-content">
+                                <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3 text-center">
+                                    Cart Totals</h4>
+                                <table class="cart-totals tableCenter ">
 
-    
-                                <form role="form">
-                                    <div class="form-group">
-                                        <label>{{textData["shop"].shopSection}}$</label>
-                                    </div>
-                                    <button type="submit" class="btn btn-success">Pay</button>
-                                   
-                                </form>
+                                    <tr class="cart-subtotal " ng-repeat="item in textData">
+                                        <th>
+                                            {{item.price}} &#36
+                                            <button type="submit" class="btn btn-success marginButton">Pay</button>
+                                        </th>
+                                    </tr>
+                                </table>
                             </div>
-      
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-
-       
-
     </div>
-
-    
 </div>

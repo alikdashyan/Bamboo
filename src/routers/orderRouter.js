@@ -94,9 +94,11 @@ orderRouter.post('/setOrderPrice', auth, async (req, res) => {
         return res.status(400).send({ error: "Access denied!" })
     };
     try {
-        const order = await Order.find({ _id: req.body.orderId });
+        console.log(req.body.orderId)
+        const order = await Order.findOne({ _id: req.body.orderId });
+        console.log(order)
         if (!order) {
-            res.status(400).send({ error: "Order not found" });
+            return res.status(400).send({ error: "Order not found" });
         };
         order.price = req.body.price;
         order.readyForPayment = true;

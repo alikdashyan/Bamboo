@@ -47,3 +47,9 @@
 	text-align: left;
 	color: white;
 }
+.tableCenter {
+    margin: 0 auto;
+}
+.marginButton {
+    margin-left: 15px;
+}

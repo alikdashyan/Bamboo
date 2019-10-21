@@ -952,9 +952,9 @@ app.controller('formCntrl', function($scope, $http,$location) {
     let serviceType = $scope.paymentRadio.paymentOption;
     let transferWay = $scope.transferRadio.option;
 
-    let paymentInfo = {
-      amount
-    } 
+    // let paymentInfo = {
+    //   amount
+    // } 
 
 
     let httpOptions = {
@@ -1159,8 +1159,8 @@ app.controller('HeaderCtrl', function($scope, $http, $location){
     }
 });
 app.controller('shop',function($scope,$http){
- 
-  $http.get('/setOrderPrice').then(
+
+  $http.get('/orders',{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
