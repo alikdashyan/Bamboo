@@ -46,7 +46,7 @@ orderRouter.post('/payOrder', auth, async (req, res) => {
     }
 })
 
-orderRouter.get('/orders', auth, async (req, res) => {
+orderRouter.get('/successOrders', auth, async (req, res) => {
     try {
         await req.user.populate('orders').execPopulate();
         const successOrders = req.user.orders.filter((order) => {
@@ -58,6 +58,16 @@ orderRouter.get('/orders', auth, async (req, res) => {
         res.status(500).send({ error: e.message });
     }
 });
+
+orderRouter.get('/orders', auth, async (req, res) => {
+    try{
+        await req.user.populate('orders').execPopulate();
+        res.send(req.user.orders);
+    }catch(e){
+        console.log(e);
+        res.status(500).send({error: e.message});
+    }
+})
 
 orderRouter.get('/allOrders', auth, async (req, res) => {
     if (req.user.kind !== "admin") {
