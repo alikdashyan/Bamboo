@@ -15,29 +15,40 @@
                 </div>
             </div>
         </section>
-        <div class="form-group row ">
-            <div class="col-lg-12">
-                <div class="summary entry-summary ">
-                    <div class="col-lg-12">
-                        <div class="featured-box featured-box-primary text-left mt-3 mt-lg-4 ">
-                            <div class="box-content">
-                                <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3 text-center">
-                                    Cart Totals</h4>
-                                <table class="cart-totals tableCenter ">
-
-                                    <tr class="cart-subtotal " ng-repeat="item in textData">
-                                        <th>
-                                            {{item.price}} &#36
-                                            <button type="submit" class="btn btn-success marginButton">Pay</button>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+        <div class="container">
+                <section class="card card-admin">
+                    <header class="card-header">
+                
+                        <h2 class="card-title">Orders</h2>
+                    </header>
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped mb-0" id="datatable-editable">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Product Link</th>
+                                    <th>Total Buying Summary</th>
+                                    <th>Price</th>
+                                    <th>Pay</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                
+                                <tr ng-repeat="item in textData" ng-show="{{ item.price > 0 }}">
+                                    <td class="ordersHrefStyle text-center align-middle" data-id="{{ item._id }}"><a href="{{item.productLink}}">Open Product Link</a></td>
+                                    <td class="text-center align-middle">{{item.totalBuyingSummary}}</td>
+                                    <td class="text-center align-middle">{{item.price}} &#36</td>
+                                    <td class=" text-center align-middle ">
+                                            <button type="submit" ng-click="postOrder(item._id)" class="btn btn-success marginButton">Pay</button>
+                                    </td>
+                                </tr>
+                          
+                            </tbody>
+                            
+                        </table>
+                        
                     </div>
-
-                </div>
+                    <div class="text-center " ng-show="loading"><img src="{{loadingGif}}" alt="loading"></div>
+                </section>
             </div>
-        </div>
     </div>
 </div>

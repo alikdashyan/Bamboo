@@ -569,7 +569,7 @@ app.controller('workerCtrl', function ($scope, $http, $location) {
     let orderId = $scope.selectedName;
     let price = $scope.shopSection;
 
-    $http.post(`/setOrderPrice`, { orderId, price }, { headers: { "Authorization": `Bearer ${localStorage.workerToken}` } }).then(
+    $http.post('/setOrderPrice', { orderId, price }, { headers: { "Authorization": `Bearer ${localStorage.workerToken}` } }).then(
       success => {
         if (success) {
           let order = success.data;
@@ -1159,35 +1159,43 @@ app.controller('HeaderCtrl', function ($scope, $http, $location) {
   }
 });
 app.controller('shop', function ($scope, $http) {
-
+  $scope.$on('LOAD', function () {
+    $scope.loading = true;
+  })
+  $scope.$on('UNLOAD', function () {
+    $scope.loading = false;
+  })
+  $scope.loadingGif = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'
+  $scope.$emit("LOAD")
   $http.get('/orders', { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
     success => {
       let textData = success.data;
+      let price = textData.price;
       $scope.textData = textData;
-      let bodyOrder = {
-        orderId: textData._id
-      }
-      let body = JSON.stringify(bodyOrder)
-      console.log(body)
-      console.log(success.data)
-      $scope.postOrder = function(){
-        $http.post('/payOrder', {body} , { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
-          successPost => {
-            console.log(successPost)
-          },
-          innerErrorPost => {
-            console.log(innerErrorPost)
-          }
-        )
-      }
+      $scope._id = success.data._id;
+
+      $scope.$emit("UNLOAD")
     },
     innerError => {
       console.log(innerError);
     }
 
   ).catch(error => console.log(error))
+  
+  $scope.postOrder = function(id){
+    console.log(id);
+    $http.post('/payOrder', { orderId: id }, { headers: { "Authorization": `Bearer ${localStorage.token}` } }).then(
+      success => {
+        if(success.data){
+          window.location.href = success.data.formUrl;
+        }
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch(e => console.log(e))
+  }
 })
-
 app.factory('postsFactory', function () {
   return [
     {
