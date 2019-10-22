@@ -37,7 +37,7 @@ orderRouter.post('/payOrder', auth, async (req, res) => {
         if(!order.readyForPayment){
             return res.status(400).send({error: "Order is not ready for payment"});
         }
-        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${order.price * 100}&orderNumber=${orderNumber}&currency=840`;
+        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${order.price * 100}&orderNumber=${orderNumber}&currency=840&description=Product link: ${order.productLink}`;
         const data = await request(url);
         if (data.errorCode) {
             return res.status(400).send({ error: data.errorMessage });
