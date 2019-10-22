@@ -1186,8 +1186,10 @@ app.controller('shop', function ($scope, $http) {
     console.log(id);
     $http.post('/payOrder', { orderId: id }, { headers: { "Authorization": `Bearer ${localStorage.token}` } }).then(
       success => {
-        if(success.data){
+        if(success.data.formUrl){
           window.location.href = success.data.formUrl;
+        }else{
+          console.log(success)
         }
       },
       innerError => {
