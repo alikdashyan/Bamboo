@@ -1,36 +1,36 @@
-var app = angular.module('app',['ngRoute','angularUtils.directives.dirPagination']);
-app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider){
-    $locationProvider.hashPrefix('');
-    $routeProvider
-    .when('/',{
-        templateUrl:'view/home.html',
-        controller: 'homeCtrl'
+var app = angular.module('app', ['ngRoute', 'angularUtils.directives.dirPagination']);
+app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+  $locationProvider.hashPrefix('');
+  $routeProvider
+    .when('/', {
+      templateUrl: 'view/home.html',
+      controller: 'homeCtrl'
     })
-    .when('/services',{
-        templateUrl:'view/page-services.html',
-        controller: 'pageCtrl'
+    .when('/services', {
+      templateUrl: 'view/page-services.html',
+      controller: 'pageCtrl'
     })
-    .when('/blog',{
-        templateUrl:'view/blog-grid-3-columns.html',   
-        controller: 'blogCtrl' 
-    }) 
-    .when('/about',{
-        templateUrl:'view/about-us-advanced.html', 
-        controller: "aboutCtrl"   
+    .when('/blog', {
+      templateUrl: 'view/blog-grid-3-columns.html',
+      controller: 'blogCtrl'
     })
-    .when('/contact',{
-        templateUrl:'view/contact-us.html',
-        controller: 'contactCtrl'
-    })   
-    .when('/login',{
-        templateUrl:'view/page-login.html',    
-        controller: 'authCtrl'
-      })
-    .when('/blog/:postId',{
-        templateUrl: 'view/blog-post.html',
-        controller: 'postCtrl',
+    .when('/about', {
+      templateUrl: 'view/about-us-advanced.html',
+      controller: "aboutCtrl"
     })
-    .when('/formsUserProfile',{
+    .when('/contact', {
+      templateUrl: 'view/contact-us.html',
+      controller: 'contactCtrl'
+    })
+    .when('/login', {
+      templateUrl: 'view/page-login.html',
+      controller: 'authCtrl'
+    })
+    .when('/blog/:postId', {
+      templateUrl: 'view/blog-post.html',
+      controller: 'postCtrl',
+    })
+    .when('/formsUserProfile', {
       templateUrl: 'view/forms-user-profile.html',
       controller: 'formCntrl'
     })
@@ -38,105 +38,105 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
       templateUrl: 'view/profile.html',
       controller: 'profileCntrl'
     })
-    .when('/userTable',{
+    .when('/userTable', {
       templateUrl: 'view/user-tables.html',
       controller: 'tableCtrl'
     })
-    .when('/reportsTable',{
+    .when('/reportsTable', {
       templateUrl: 'view/reports.html',
-      controller:'reportsCtrl'
+      controller: 'reportsCtrl'
     })
-    .when('/shopView',{
+    .when('/shopView', {
       templateUrl: 'view/shop.html',
       controller: 'shop'
     })
-    .when('/admin',{
+    .when('/admin', {
       templateUrl: 'view/admin/admin.html',
-      controller:'adminCtrl'
+      controller: 'adminCtrl'
     })
-    .when('/formAbout',{
+    .when('/formAbout', {
       templateUrl: 'view/admin/adminview/formAbout.html',
       controller: 'formAbout'
     })
-    .when('/formContact',{
+    .when('/formContact', {
       templateUrl: 'view/admin/adminview/formContact.html',
       controller: 'formContact'
     })
-    .when('/formFooter',{
+    .when('/formFooter', {
       templateUrl: 'view/admin/adminview/formFooter.html',
       controller: 'footerCntrl'
     })
-    .when('/formHome',{
+    .when('/formHome', {
       templateUrl: 'view/admin/adminview/formHome.html',
-      controller:'formHome'
+      controller: 'formHome'
     })
-    .when('/formServices',{
+    .when('/formServices', {
       templateUrl: 'view/admin/adminview/formServices.html',
       controller: 'formServices'
     })
-    .when('/formHeader',{
+    .when('/formHeader', {
       templateUrl: 'view/admin/adminview/formHeader.html',
       controller: 'HeaderCtrl'
     })
-    .when('/worker',{
+    .when('/worker', {
       templateUrl: 'view/admin/adminview/formShop.html',
       controller: 'workerCtrl'
     })
-    .when('/formTable',{
+    .when('/formTable', {
       templateUrl: 'view/admin/adminview/formTable.html',
       controller: 'formTableCtrl'
     })
     .when('/paymentError', {
       templateUrl: 'view/page-error.html'
     })
-    .when('/error404',{
+    .when('/error404', {
       templateUrl: 'view/page-404.html'
     })
-    // .otherwise({ redirectTo: 'view/page-404.html'})
+  // .otherwise({ redirectTo: 'view/page-404.html'})
 }])
 
 //Admin Panel
-app.controller('adminCtrl',function($scope,$http,$location){
-  if(localStorage.adminToken){
+app.controller('adminCtrl', function ($scope, $http, $location) {
+  if (localStorage.adminToken) {
     $location.path('/formHome').replace();
-  } else if (localStorage.workerToken){
+  } else if (localStorage.workerToken) {
     $location.path('/worker').replace()
   }
-  $scope.submit = function(){
-      $scope.loginError = '';
-      $scope.loginPasswordError = '';
-      let email = $scope.email;
-      let password = $scope.password ;
-      let body = JSON.stringify({
-          email,
-          password
-      });
+  $scope.submit = function () {
+    $scope.loginError = '';
+    $scope.loginPasswordError = '';
+    let email = $scope.email;
+    let password = $scope.password;
+    let body = JSON.stringify({
+      email,
+      password
+    });
 
-      $http.post('/users/login/admin', body).then(
-            success => {
-              let adminToken = success.data.adminToken;
-              let workerToken = success.data.workerToken;
-              if(adminToken){
-                localStorage.setItem('adminToken', adminToken);
-                window.location.reload();
-              } else if (workerToken){
-                localStorage.setItem('workerToken',workerToken)
-                window.location.reload();
-              }
-            },
-            innerError => {
-              if(innerError.data){
-                $scope.loginError = innerError.data.error;
-              }
-            }
-            )
-            .catch(error => console.log(error));
+    $http.post('/users/login/admin', body).then(
+      success => {
+        let adminToken = success.data.adminToken;
+        let workerToken = success.data.workerToken;
+        if (adminToken) {
+          localStorage.setItem('adminToken', adminToken);
+          window.location.reload();
+        } else if (workerToken) {
+          localStorage.setItem('workerToken', workerToken)
+          window.location.reload();
+        }
+      },
+      innerError => {
+        if (innerError.data) {
+          $scope.loginError = innerError.data.error;
+        }
       }
+    )
+      .catch(error => console.log(error));
+  }
 })
 
-app.controller('formHome',function($scope, $http,$location){
-  if(!localStorage.adminToken){
-        $location.path('/').replace();
+app.controller('formHome', function ($scope, $http, $location) {
+  if (!localStorage.adminToken) {
+    $location.path('/').replace();
   }
   $http.get('/textData/readAll').then(
     success => {
@@ -146,7 +146,7 @@ app.controller('formHome',function($scope, $http,$location){
     innerError => {
       console.log(innerError);
     }
-    
+
   ).catch(error => console.log(error))
   $scope.updateData = function (id) {
     let headingHomeSection1 = $scope.headingHomeSection1;
@@ -176,7 +176,7 @@ app.controller('formHome',function($scope, $http,$location){
         callToActionHomeSection1,
         headingHomeSection2,
         headingSpanHomeSection2,
-        descriptionHomeSection2 ,
+        descriptionHomeSection2,
         additionalDescriptionHomeSection2,
         headingHomeSection3_1,
         descriptionHomeSection3_1,
@@ -193,9 +193,9 @@ app.controller('formHome',function($scope, $http,$location){
         callToActionHomeSection4
       }
     )
-    $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
-        if(success.data){
+        if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
         }
       },
@@ -206,20 +206,20 @@ app.controller('formHome',function($scope, $http,$location){
   }
 })
 
-app.controller('formServices',function($scope,$http,$location){
-  if(!localStorage.adminToken){
+app.controller('formServices', function ($scope, $http, $location) {
+  if (!localStorage.adminToken) {
     $location.path('/').replace();
-   }
+  }
   $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      console.log(textData )
+      console.log(textData)
     },
     innerError => {
       console.log(innerError);
     }
-    
+
   ).catch(error => console.log(error))
   $scope.updateData = function (id) {
     let headingServicesSection1 = $scope.headingServicesSection1;
@@ -298,9 +298,9 @@ app.controller('formServices',function($scope,$http,$location){
         callToActionServicesSection7
       }
     )
-    $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
-        if(success.data){
+        if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
         }
       },
@@ -311,38 +311,38 @@ app.controller('formServices',function($scope,$http,$location){
   }
 })
 
-app.controller('formAbout',function($scope,$http,$location){
-  if(!localStorage.adminToken){
+app.controller('formAbout', function ($scope, $http, $location) {
+  if (!localStorage.adminToken) {
     $location.path('/').replace();
-   }
- 
+  }
+
   $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      console.log(textData )
-      
+      console.log(textData)
+
     },
     innerError => {
-      
+
       console.log(innerError);
     }
-    
+
   ).catch(error => console.log(error))
   $scope.updateData = function (id) {
     let headingAboutSection1 = $scope.headingAboutSection1;
     let descriptionAboutSection1 = $scope.descriptionAboutSection1;
-    let headingAboutSection2 = $scope.headingAboutSection2 ;
+    let headingAboutSection2 = $scope.headingAboutSection2;
     let descriptionAboutSection2 = $scope.descriptionAboutSection2;
     let headingAboutSection3_1 = $scope.headingAboutSection3_1;
     let descriptionAboutSection3_1 = $scope.descriptionAboutSection3_1;
     let headingAboutSection3_2 = $scope.headingAboutSection3_2;
     let descriptionAboutSection3_2 = $scope.descriptionAboutSection3_2;
-    let headingAboutSection3_3 = $scope.headingAboutSection3_3 ;
+    let headingAboutSection3_3 = $scope.headingAboutSection3_3;
     let descriptionAboutSection3_3 = $scope.descriptionAboutSection3_3;
     let headingAboutSection3_4 = $scope.headingAboutSection3_4;
     let descriptionAboutSection3_4 = $scope.descriptionAboutSection3_4;
-    let headingAboutSection3_5 =$scope.headingAboutSection3_5;
+    let headingAboutSection3_5 = $scope.headingAboutSection3_5;
     let descriptionAboutSection3_5 = $scope.descriptionAboutSection3_5;
     let headingAboutSection4_1 = $scope.headingAboutSection4_1;
     let headingAboutSection4_2 = $scope.headingAboutSection4_2;
@@ -359,12 +359,12 @@ app.controller('formAbout',function($scope,$http,$location){
     let headingSpanAboutSection7 = $scope.headingSpanAboutSection7;
     let headingAboutSection7 = $scope.headingAboutSection7;
     let descriptionAboutSection7 = $scope.descriptionAboutSection7;
-      
+
     let body = JSON.stringify(
       {
         headingAboutSection1,
         descriptionAboutSection1,
-        headingAboutSection2 ,
+        headingAboutSection2,
         descriptionAboutSection2,
         headingAboutSection3_1,
         descriptionAboutSection3_1,
@@ -374,7 +374,7 @@ app.controller('formAbout',function($scope,$http,$location){
         descriptionAboutSection3_3,
         headingAboutSection3_4,
         descriptionAboutSection3_4,
-        headingAboutSection3_5 ,
+        headingAboutSection3_5,
         descriptionAboutSection3_5,
         headingAboutSection4_1,
         headingAboutSection4_2,
@@ -383,19 +383,19 @@ app.controller('formAbout',function($scope,$http,$location){
         headingSpanAboutSection5,
         headingAboutSection5,
         descriptionAboutSection5,
-        ditionalDescriptionAboutSection5 ,
+        ditionalDescriptionAboutSection5,
         headingSpanAboutSection6,
         headingAboutSection6,
         descriptionAboutSection6,
         ditionalDescriptionAboutSection6,
         headingSpanAboutSection7,
         headingAboutSection7,
-        descriptionAboutSection7 
+        descriptionAboutSection7
       }
     )
-    $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
-        if(success.data){
+        if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
         }
       },
@@ -406,20 +406,20 @@ app.controller('formAbout',function($scope,$http,$location){
   }
 })
 
-app.controller('formContact', function($scope,$http,$location){
-  if(!localStorage.adminToken){
+app.controller('formContact', function ($scope, $http, $location) {
+  if (!localStorage.adminToken) {
     $location.path('/').replace();
-   }
+  }
   $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      console.log(textData )
+      console.log(textData)
     },
     innerError => {
       console.log(innerError);
     }
-    
+
   ).catch(error => console.log(error))
   $scope.updateData = function (id) {
     let headingSpanContactSection1 = $scope.headingSpanContactSection1;
@@ -457,14 +457,14 @@ app.controller('formContact', function($scope,$http,$location){
         contactEmailSection,
         headingContactSection5,
         headingSpanContactSection5,
-        descriptionContactSection5_1 ,
+        descriptionContactSection5_1,
         descriptionContactSection5_2,
         descriptionContactSection5_3
       }
     )
-    $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
+    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
-        if(success.data){
+        if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
         }
       },
@@ -475,61 +475,61 @@ app.controller('formContact', function($scope,$http,$location){
   }
 })
 
-app.controller('footerCntrl', function($scope, $http,$location) {
+app.controller('footerCntrl', function ($scope, $http, $location) {
   // if(!localStorage.adminToken){
   //   $location.path('/').replace();
   //  }
-$http.get('/textData/readAll').then(
-success => {
-  let textData = success.data;
-  $scope.textData = textData;
-},
-innerError => {
-  console.log(innerError);
-}
-
-).catch(error => console.log(error))
-$scope.updateData = function (id) {
-let headingFooterSection1 = $scope.headingFooterSection1;
-let descriptionFooterSection1 = $scope.descriptionFooterSection1;
-let headingFooterSection2 = $scope.headingFooterSection2;
-let descriptionFooterSection2 = $scope.descriptionFooterSection2;
-let headingFooterSection3 = $scope.headingFooterSection3;
-let contactAdres = $scope.contactAdres;
-let contactPhone = $scope.contactPhone;
-let contactEmail = $scope.contactEmail;
-let headingFooterSection4 = $scope.headingFooterSection4;
-let headingFooterSection5 = $scope.headingFooterSection5;
-let body = JSON.stringify(
-  {
-    headingFooterSection1,
-    descriptionFooterSection1,
-    headingFooterSection2,
-    descriptionFooterSection2,
-    headingFooterSection3,
-    contactAdres ,
-		contactPhone,
-    contactEmail,
-    headingFooterSection4,
-    headingFooterSection5
-  }
-)
-$http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
-  success => {
-    if(success.data){
-      $scope.congratsText = 'Data is updated succesfully';
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+    },
+    innerError => {
+      console.log(innerError);
     }
-  },
-  innerError => {
-    console.log(innerError)
+
+  ).catch(error => console.log(error))
+  $scope.updateData = function (id) {
+    let headingFooterSection1 = $scope.headingFooterSection1;
+    let descriptionFooterSection1 = $scope.descriptionFooterSection1;
+    let headingFooterSection2 = $scope.headingFooterSection2;
+    let descriptionFooterSection2 = $scope.descriptionFooterSection2;
+    let headingFooterSection3 = $scope.headingFooterSection3;
+    let contactAdres = $scope.contactAdres;
+    let contactPhone = $scope.contactPhone;
+    let contactEmail = $scope.contactEmail;
+    let headingFooterSection4 = $scope.headingFooterSection4;
+    let headingFooterSection5 = $scope.headingFooterSection5;
+    let body = JSON.stringify(
+      {
+        headingFooterSection1,
+        descriptionFooterSection1,
+        headingFooterSection2,
+        descriptionFooterSection2,
+        headingFooterSection3,
+        contactAdres,
+        contactPhone,
+        contactEmail,
+        headingFooterSection4,
+        headingFooterSection5
+      }
+    )
+    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+      success => {
+        if (success.data) {
+          $scope.congratsText = 'Data is updated succesfully';
+        }
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch(error => console.log(error))
   }
-).catch(error => console.log(error))
-}
- 
+
 })
-app.controller('workerCtrl',function($scope,$http,$location){
-  if(!localStorage.workerToken){
-      $location.path('/').replace();
+app.controller('workerCtrl', function ($scope, $http, $location) {
+  if (!localStorage.workerToken) {
+    $location.path('/').replace();
   }
 
 
@@ -542,39 +542,19 @@ app.controller('workerCtrl',function($scope,$http,$location){
 
       console.log(innerError);
     }
-    
-    ).catch(error => console.log(error))
 
-    let emailClient = document.getElementsByClassName('emailClient')[0];
+  ).catch(error => console.log(error))
 
-    $(emailClient).on('keyup', (event) => {
-      if(event.key === 'Enter'){
-        $http.post(`/ordersByMail`, {email: event.target.value}, {headers: {"Authorization": `Bearer ${localStorage.workerToken}`}}).then(
-          success => {
-            if(success){
-              let data = success.data;
-              if(data.length > 0){
-                $scope.names = data;
-              }
-            }
-          },
-          innerError => {
-            console.log(innerError)
-          }
-        ).catch(e => console.log(e))
-      } 
-    })
+  let emailClient = document.getElementsByClassName('emailClient')[0];
 
-    $scope.submitReadyOrder = function () {
-      let orderId = $scope.selectedName;
-      let price = $scope.shopSection;
-
-      $http.post(`/setOrderPrice`, {orderId, price}, {headers: {"Authorization": `Bearer ${localStorage.workerToken}`}}).then(
+  $(emailClient).on('keyup', (event) => {
+    if (event.key === 'Enter') {
+      $http.post(`/ordersByMail`, { email: event.target.value }, { headers: { "Authorization": `Bearer ${localStorage.workerToken}` } }).then(
         success => {
-          if(success){
-            let order = success.data;
-            if(order){
-              $scope.successMessage = 'Data is saved';
+          if (success) {
+            let data = success.data;
+            if (data.length > 0) {
+              $scope.names = data;
             }
           }
         },
@@ -582,9 +562,29 @@ app.controller('workerCtrl',function($scope,$http,$location){
           console.log(innerError)
         }
       ).catch(e => console.log(e))
+    }
+  })
+
+  $scope.submitReadyOrder = function () {
+    let orderId = $scope.selectedName;
+    let price = $scope.shopSection;
+
+    $http.post(`/setOrderPrice`, { orderId, price }, { headers: { "Authorization": `Bearer ${localStorage.workerToken}` } }).then(
+      success => {
+        if (success) {
+          let order = success.data;
+          if (order) {
+            $scope.successMessage = 'Data is saved';
+          }
+        }
+      },
+      innerError => {
+        console.log(innerError)
       }
+    ).catch(e => console.log(e))
+  }
 })
-app.controller('formTableCtrl',function($scope,$http){
+app.controller('formTableCtrl', function ($scope, $http) {
   $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
@@ -593,207 +593,207 @@ app.controller('formTableCtrl',function($scope,$http){
     innerError => {
       console.log(innerError);
     }
-    
-    ).catch(error => console.log(error))
-    $scope.updateData = function (id) {
-      let header = $scope.header;
-      let headerSpan = $scope.headerSpan;
-      let description = $scope.description;
-      let body = JSON.stringify(
-        {
-          header,
-          headerSpan,
-          description
-        }
-      )
-      $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
-        success => {
-          if(success.data){
-            $scope.congratsText = 'Data is updated succesfully';
-          }
-        },
-        innerError => {
-          console.log(innerError)
-        }
-      ).catch
+
+  ).catch(error => console.log(error))
+  $scope.updateData = function (id) {
+    let header = $scope.header;
+    let headerSpan = $scope.headerSpan;
+    let description = $scope.description;
+    let body = JSON.stringify(
+      {
+        header,
+        headerSpan,
+        description
       }
-})
-app.controller('adminLogoutCtrl', function($scope, $http, $location){
-  $scope.adminLogout = function(){
-    $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.adminToken}`}})
-    .then(data => {
-      localStorage.removeItem('adminToken')
-      window.location.reload()
-    })
-    .catch(error => error ? console.log(error) : '')
+    )
+    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+      success => {
+        if (success.data) {
+          $scope.congratsText = 'Data is updated succesfully';
+        }
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch
   }
-  $scope.adminLogoutWorker = function(){
-    $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.workerToken}`}})
-    .then(data => {
-      localStorage.removeItem('workerToken')
-      window.location.reload()
-    })
-    .catch(error => error ? console.log(error) : '')
+})
+app.controller('adminLogoutCtrl', function ($scope, $http, $location) {
+  $scope.adminLogout = function () {
+    $http.post('/users/logout', {}, { headers: { 'Authorization': `Bearer ${localStorage.adminToken}` } })
+      .then(data => {
+        localStorage.removeItem('adminToken')
+        window.location.reload()
+      })
+      .catch(error => error ? console.log(error) : '')
+  }
+  $scope.adminLogoutWorker = function () {
+    $http.post('/users/logout', {}, { headers: { 'Authorization': `Bearer ${localStorage.workerToken}` } })
+      .then(data => {
+        localStorage.removeItem('workerToken')
+        window.location.reload()
+      })
+      .catch(error => error ? console.log(error) : '')
   }
 })
 //End Admin Panel
 
-app.controller('homeCtrl', function ($scope,$http) {
-    $('#revolutionSlider').show().revolution();
-
-    let animations = document.getElementsByClassName('appear-animation');
-
-    for (let index = 0; index < animations.length; index++) {
-        const element = animations[index];
-        const opacity =  element.style.opacity;
-        if(opacity != '1')
-            element.style.opacity = '1';
-    }
-    $(document).ready(function(){
-      $('.owl-carousel').owlCarousel({
-        items: 1, 
-        margin: 100, 
-        loop: true, 
-        nav: true, 
-        dots: false, 
-        stagePadding: 100, 
-        // autoHeight: true
-      })
-    })
-    
-    $http.get('/textData/readAll').then(
-      success => {
-        let textData = success.data;
-        $scope.textData = textData;
-        let slider_heading = document.querySelectorAll('div#revolutionSlider h1')[0];
-        slider_heading.textContent = textData["home"].headingHomeSection1;
-        let slider_descriotion = document.querySelectorAll('div#revolutionSlider div.tp-caption')[1];
-        slider_descriotion.textContent = textData["home"].descriptionHomeSection1;
-        let slider_callToAction= document.querySelectorAll('div#revolutionSlider a')[0];
-        slider_callToAction.textContent = textData["home"].callToActionHomeSection1;
-      },
-      innerError => {
-        console.log(innerError);
-      }
-      
-    ).catch(error => console.log(error))
-})
-app.controller('pageCtrl', function ($scope,$http) {
+app.controller('homeCtrl', function ($scope, $http) {
   $('#revolutionSlider').show().revolution();
-    let animations = document.getElementsByClassName('appear-animation');
 
-    for (let index = 0; index < animations.length; index++) {
-        const element = animations[index];
-        const opacity =  element.style.opacity;
-        if(opacity != '1')
-            element.style.opacity = '1';
-    }
-    $(document).ready(function(){
-      $('.owl-carousel').owlCarousel({
-        responsive: {
-          0: {items: 1}, 
-          476: {items: 1}, 
-          768: {items: 5}, 
-          992: {items: 5}, 
-          1200: {items: 7}
-        },
-        
-          autoplay: true,
-          autoplayTimeout: 3000,
-          dots: false
-      
-      })
+  let animations = document.getElementsByClassName('appear-animation');
+
+  for (let index = 0; index < animations.length; index++) {
+    const element = animations[index];
+    const opacity = element.style.opacity;
+    if (opacity != '1')
+      element.style.opacity = '1';
+  }
+  $(document).ready(function () {
+    $('.owl-carousel').owlCarousel({
+      items: 1,
+      margin: 100,
+      loop: true,
+      nav: true,
+      dots: false,
+      stagePadding: 100,
+      // autoHeight: true
     })
-    $http.get('/textData/readAll').then(
-      success => {
-        let textData = success.data;
-        $scope.textData = textData;
-      },
-      innerError => {
-        console.log(innerError);
-      }
-      
-    ).catch(error => console.log(error))
+  })
 
-})
-app.controller('blogCtrl',function ($scope, postsFactory) {
-
-    $scope.posts = postsFactory;
-    $('#revolutionSlider').show().revolution();
-    let animations = document.getElementsByClassName('appear-animation');
-
-    for (let index = 0; index < animations.length; index++) {
-        const element = animations[index];
-        const opacity =  element.style.opacity;
-        if(opacity != '1')
-            element.style.opacity = '1';
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+      let slider_heading = document.querySelectorAll('div#revolutionSlider h1')[0];
+      slider_heading.textContent = textData["home"].headingHomeSection1;
+      let slider_descriotion = document.querySelectorAll('div#revolutionSlider div.tp-caption')[1];
+      slider_descriotion.textContent = textData["home"].descriptionHomeSection1;
+      let slider_callToAction = document.querySelectorAll('div#revolutionSlider a')[0];
+      slider_callToAction.textContent = textData["home"].callToActionHomeSection1;
+    },
+    innerError => {
+      console.log(innerError);
     }
-    $(function() {
-      $('body').scrollTop(0);
-   });
+
+  ).catch(error => console.log(error))
 })
-app.controller('aboutCtrl',function($scope, $http){
+app.controller('pageCtrl', function ($scope, $http) {
   $('#revolutionSlider').show().revolution();
   let animations = document.getElementsByClassName('appear-animation');
 
   for (let index = 0; index < animations.length; index++) {
     const element = animations[index];
-    const opacity =  element.style.opacity;
-    if(opacity != '1')
+    const opacity = element.style.opacity;
+    if (opacity != '1')
       element.style.opacity = '1';
   }
-  $(document).ready(function(){
-    
+  $(document).ready(function () {
+    $('.owl-carousel').owlCarousel({
+      responsive: {
+        0: { items: 1 },
+        476: { items: 1 },
+        768: { items: 5 },
+        992: { items: 5 },
+        1200: { items: 7 }
+      },
+
+      autoplay: true,
+      autoplayTimeout: 3000,
+      dots: false
+
+    })
+  })
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+    },
+    innerError => {
+      console.log(innerError);
+    }
+
+  ).catch(error => console.log(error))
+
+})
+app.controller('blogCtrl', function ($scope, postsFactory) {
+
+  $scope.posts = postsFactory;
+  $('#revolutionSlider').show().revolution();
+  let animations = document.getElementsByClassName('appear-animation');
+
+  for (let index = 0; index < animations.length; index++) {
+    const element = animations[index];
+    const opacity = element.style.opacity;
+    if (opacity != '1')
+      element.style.opacity = '1';
+  }
+  $(function () {
+    $('body').scrollTop(0);
+  });
+})
+app.controller('aboutCtrl', function ($scope, $http) {
+  $('#revolutionSlider').show().revolution();
+  let animations = document.getElementsByClassName('appear-animation');
+
+  for (let index = 0; index < animations.length; index++) {
+    const element = animations[index];
+    const opacity = element.style.opacity;
+    if (opacity != '1')
+      element.style.opacity = '1';
+  }
+  $(document).ready(function () {
+
     $('.owl-carousel').eq(0).owlCarousel({
       responsive: {
-        576: {items: 1}, 
-        768: {items: 1}, 
-        992: {items: 2}, 
-        1200: {items: 2}
+        576: { items: 1 },
+        768: { items: 1 },
+        992: { items: 2 },
+        1200: { items: 2 }
       },
-        margin: 25,
-        loop: true,
-        nav: false,
-        dots: false, 
-        stagePadding: 40,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        loop: true
-  
-  })
-  $('.owl-carousel').eq(1).owlCarousel({
-    responsive: {
-      300:{items:1},
-      320: {items:1},
-      450:{items: 1},
-      500: {items: 1},
-      576: {items: 1}, 
-      768: {items: 1}, 
-      992: {items: 1}, 
-      1200: {items: 1}
-    },
-      loop: true, 
+      margin: 25,
+      loop: true,
       nav: false,
-      dots: false, 
+      dots: false,
       stagePadding: 40,
       autoplay: true,
       autoplayTimeout: 3000,
       loop: true
+
+    })
+    $('.owl-carousel').eq(1).owlCarousel({
+      responsive: {
+        300: { items: 1 },
+        320: { items: 1 },
+        450: { items: 1 },
+        500: { items: 1 },
+        576: { items: 1 },
+        768: { items: 1 },
+        992: { items: 1 },
+        1200: { items: 1 }
+      },
+      loop: true,
+      nav: false,
+      dots: false,
+      stagePadding: 40,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      loop: true
+    })
   })
-  })
-   
 
-  $(function() {
-      $('[data-plugin-counter]:not(.manual), .counters [data-to]').each(function() {
-          var $this = $(this),
-              opts;
 
-          var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
-          if (pluginOptions)
-              opts = pluginOptions;
+  $(function () {
+    $('[data-plugin-counter]:not(.manual), .counters [data-to]').each(function () {
+      var $this = $(this),
+        opts;
 
-          $this.themePluginCounter(opts);
-      });
+      var pluginOptions = theme.fn.getOptions($this.data('plugin-options'));
+      if (pluginOptions)
+        opts = pluginOptions;
+
+      $this.themePluginCounter(opts);
+    });
   });
 
   $http.get('/textData/readAll').then(
@@ -804,129 +804,129 @@ app.controller('aboutCtrl',function($scope, $http){
     innerError => {
       console.log(innerError);
     }
-    
+
   ).catch(error => console.log(error))
 })
-app.controller('contactCtrl', function ($scope,$http) {
-  $('#revolutionSlider').show().revolution();
-    let animations = document.getElementsByClassName('appear-animation');
-
-    for (let index = 0; index < animations.length; index++) {
-        const element = animations[index];
-        const opacity =  element.style.opacity;
-        if(opacity != '1')
-            element.style.opacity = '1';
-    }
-    $http.get('/textData/readAll').then(
-      success => {
-        let textData = success.data;
-        $scope.textData = textData;
-      },
-      innerError => {
-        console.log(innerError);
-      }
-      
-    ).catch(error => console.log(error))
-})
-app.controller('authCtrl', function($scope, $http, $location) {
+app.controller('contactCtrl', function ($scope, $http) {
   $('#revolutionSlider').show().revolution();
   let animations = document.getElementsByClassName('appear-animation');
 
   for (let index = 0; index < animations.length; index++) {
-      const element = animations[index];
-      const opacity =  element.style.opacity;
-      if(opacity != '1')
-          element.style.opacity = '1';
+    const element = animations[index];
+    const opacity = element.style.opacity;
+    if (opacity != '1')
+      element.style.opacity = '1';
   }
-    // if(localStorage.token){
-    //   $location.path('/profile').replace();
-    // }
-    $scope.submit = function(){
-      $scope.loginError = '';
-      $scope.loginPasswordError = '';
-      let email = $scope.email;
-      let password = $scope.password ;
-      let body = JSON.stringify({
-          email,
-          password
-      });
-    
-      $http.post('/users/login', body).then(
-            success => {
-              let token = success.data.token;
-              if(token){
-                localStorage.setItem('token', token);
-                $location.path('/profile').replace();
-              }
-            },
-            innerError => {
-              if(innerError.data){
-                $scope.loginError = innerError.data.error;
-              }
-              console.log(innerError)
-            }
-            )
-            .catch(error => console.log(error));
+  $http.get('/textData/readAll').then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+    },
+    innerError => {
+      console.log(innerError);
+    }
+
+  ).catch(error => console.log(error))
+})
+app.controller('authCtrl', function ($scope, $http, $location) {
+  $('#revolutionSlider').show().revolution();
+  let animations = document.getElementsByClassName('appear-animation');
+
+  for (let index = 0; index < animations.length; index++) {
+    const element = animations[index];
+    const opacity = element.style.opacity;
+    if (opacity != '1')
+      element.style.opacity = '1';
+  }
+  // if(localStorage.token){
+  //   $location.path('/profile').replace();
+  // }
+  $scope.submit = function () {
+    $scope.loginError = '';
+    $scope.loginPasswordError = '';
+    let email = $scope.email;
+    let password = $scope.password;
+    let body = JSON.stringify({
+      email,
+      password
+    });
+
+    $http.post('/users/login', body).then(
+      success => {
+        let token = success.data.token;
+        if (token) {
+          localStorage.setItem('token', token);
+          $location.path('/profile').replace();
+        }
+      },
+      innerError => {
+        if (innerError.data) {
+          $scope.loginError = innerError.data.error;
+        }
+        console.log(innerError)
       }
-      $scope.registerSubmit = function() {
-        $scope.authError = '';
-        $scope.passwordError = '';
-        let name = $scope.regName;
-        let lastName = $scope.regLastName;
-        let email = $scope.regEmail;
-        let password = $scope.regPassword === $scope.regPasswordRepeat ? $scope.regPassword : $scope.passwordError = 'Password didnt match';
+    )
+      .catch(error => console.log(error));
+  }
+  $scope.registerSubmit = function () {
+    $scope.authError = '';
+    $scope.passwordError = '';
+    let name = $scope.regName;
+    let lastName = $scope.regLastName;
+    let email = $scope.regEmail;
+    let password = $scope.regPassword === $scope.regPasswordRepeat ? $scope.regPassword : $scope.passwordError = 'Password didnt match';
 
-        let regBody = {
-          name,
-          lastName,
-          email,
-          password,
-        }
-        
-        let stringifiedBody = JSON.stringify(regBody);
-        let checked = document.querySelector('label[for="terms"]');
-        let submitBUtton = document.querySelector('input[disabled="disabled"]');
+    let regBody = {
+      name,
+      lastName,
+      email,
+      password,
+    }
 
-        if(password != $scope.passwordError ){
-          regRequest();
-        }
+    let stringifiedBody = JSON.stringify(regBody);
+    let checked = document.querySelector('label[for="terms"]');
+    let submitBUtton = document.querySelector('input[disabled="disabled"]');
 
-        function regRequest() {
-          $http.post('/users/signup',stringifiedBody,{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
-            success => {
-              let token = success.data.token;
-              if(token){
-                localStorage.setItem('token', token);
-                $location.path('/profile').replace();
-              }
-            },
-            innerError => {
-              if(innerError){
-                $scope.authError = innerError.data.error;
-              }
-            })
-            .catch(error => console.log(error));      
-        }
-      }
+    if (password != $scope.passwordError) {
+      regRequest();
+    }
 
-  })
-app.controller('postCtrl', function ($scope, $routeParams,postsFactory) {
-    // console.log($routeParams.postId );
-    $scope.postId = $routeParams.postId
-    // $http.get('/')
-    // $('#revolutionSlider').show().revolution();
-    // let animations = document.getElementsByClassName('appear-animation');
+    function regRequest() {
+      $http.post('/users/signup', stringifiedBody, { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
+        success => {
+          let token = success.data.token;
+          if (token) {
+            localStorage.setItem('token', token);
+            $location.path('/profile').replace();
+          }
+        },
+        innerError => {
+          if (innerError) {
+            $scope.authError = innerError.data.error;
+          }
+        })
+        .catch(error => console.log(error));
+    }
+  }
 
-    // for (let index = 0; index < animations.length; index++) {
-    //     const element = animations[index];
-    //     const opacity =  element.style.opacity;
-    //     if(opacity != '1')
-    //         element.style.opacity = '1';
-    // }
+})
+app.controller('postCtrl', function ($scope, $routeParams, postsFactory) {
+  // console.log($routeParams.postId );
+  $scope.postId = $routeParams.postId
+  // $http.get('/')
+  // $('#revolutionSlider').show().revolution();
+  // let animations = document.getElementsByClassName('appear-animation');
+
+  // for (let index = 0; index < animations.length; index++) {
+  //     const element = animations[index];
+  //     const opacity =  element.style.opacity;
+  //     if(opacity != '1')
+  //         element.style.opacity = '1';
+  // }
 })
 
-app.controller('formCntrl', function($scope, $http,$location) {
-  if(!localStorage.token){
+app.controller('formCntrl', function ($scope, $http, $location) {
+  if (!localStorage.token) {
     $location.path('/').replace();
   }
   $http.get('/textData/readAll').then(
@@ -938,10 +938,10 @@ app.controller('formCntrl', function($scope, $http,$location) {
     innerError => {
       console.log(innerError);
     }
-    
+
   ).catch(error => console.log(error))
-  $scope.openEmail= false;
-  $scope.submitOrder = function(){
+  $scope.openEmail = false;
+  $scope.submitOrder = function () {
     let productLink = $scope.productLink;
     let buyingsPerDay = $scope.buyingsPerDay;
     let itemPrice = $scope.itemPrice;
@@ -963,9 +963,9 @@ app.controller('formCntrl', function($scope, $http,$location) {
         'Content-Type': 'application/json'
       }
     }
-    
+
     let body = {
-        orderInfo: {
+      orderInfo: {
         productLink,
         buyingsPerDay,
         itemPrice,
@@ -981,40 +981,40 @@ app.controller('formCntrl', function($scope, $http,$location) {
     let stringifiedBody = JSON.stringify(body);
 
     $scope.success = '';
-   
 
-    $http.post('/order',stringifiedBody, httpOptions).then(
+
+    $http.post('/order', stringifiedBody, httpOptions).then(
       success => {
-        if(success.data){
+        if (success.data) {
           $scope.successMessage = 'Order is Complete. Our Customer Supprt will cpntact you soon.'
           //  window.location.href = success.data.formUrl;
-        }else{
-           $scope.orderError = success.data.error;
+        } else {
+          $scope.orderError = success.data.error;
         }
         console.log(success)
       },
       innerError => {
-        if(innerError.error){
+        if (innerError.error) {
           $scope.orderError = innerError.error;
         }
       }
     )
   }
- 
+
 })
-app.controller('tableCtrl', function($scope,$http,$location){
-  if(!localStorage.token){
+app.controller('tableCtrl', function ($scope, $http, $location) {
+  if (!localStorage.token) {
     $location.path('/').replace();
   }
-  $scope.$on('LOAD',function(){
-    $scope.loading=true;
+  $scope.$on('LOAD', function () {
+    $scope.loading = true;
   })
-  $scope.$on('UNLOAD',function(){
-   $scope.loading=false;
- })
- $scope.loadingGif = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'
- $scope.$emit("LOAD")
-  $http.get('/orders', {headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+  $scope.$on('UNLOAD', function () {
+    $scope.loading = false;
+  })
+  $scope.loadingGif = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'
+  $scope.$emit("LOAD")
+  $http.get('/orders', { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
     success => {
       let bambooData = success.data;
       $scope.viewData = bambooData;
@@ -1025,52 +1025,52 @@ app.controller('tableCtrl', function($scope,$http,$location){
     }
   )
 })
-app.controller('reportsCtrl',function($scope, $http, $location){
-  if(!localStorage.token){
+app.controller('reportsCtrl', function ($scope, $http, $location) {
+  if (!localStorage.token) {
     $location.path('/').replace();
   }
-   $scope.$on('LOAD',function(){
-     $scope.loading=true;
-   })
-   $scope.$on('UNLOAD',function(){
-    $scope.loading=false;
+  $scope.$on('LOAD', function () {
+    $scope.loading = true;
+  })
+  $scope.$on('UNLOAD', function () {
+    $scope.loading = false;
   })
   $scope.loadingGif = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'
   $scope.$emit("LOAD")
-  $http.get('http://www.amzbamboo.com/data',{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+  $http.get('http://www.amzbamboo.com/data', { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
     success => {
       let bambooData = success.data;
       $scope.viewData = bambooData;
-      
+
       $scope.$emit("UNLOAD")
       console.log(bambooData)
-      
+
     },
     innerError => {
       console.log(innerError)
     }
   )
 })
-app.controller('profileCntrl', function($scope, $location, $http){
-  if(!localStorage.token){
+app.controller('profileCntrl', function ($scope, $location, $http) {
+  if (!localStorage.token) {
     $location.path('/').replace();
   }
-  
-  $scope.editUser = function(){
+
+  $scope.editUser = function () {
     $scope.ubdateError = "";
     let contactInfo = {
       skypeViberWhatsApp: $scope.skypeViberWhatsApp,
       facebookLink: $scope.facebook,
       Wechat: $scope.Wechat
     }
-    
+
     const httpOptions = {
       headers: {
         'Authorization': `Bearer ${localStorage.token}`,
         'Content-Type': 'application/json'
       },
     }
-  
+
     let profileBody = JSON.stringify({
       contactInfo
     })
@@ -1080,114 +1080,129 @@ app.controller('profileCntrl', function($scope, $location, $http){
         innerSuccess => innerSuccess.statusText == "OK" ? $scope.success = 'User Successfully Edited' : $scope.error = 'Something went wrong',
 
         innerError => {
-          
-            $scope.ubdateError = innerError.data.error;
-            // console.log('text' , innerError)
-            // console.log('text' , innerError.data.error)
+
+          $scope.ubdateError = innerError.data.error;
+          // console.log('text' , innerError)
+          // console.log('text' , innerError.data.error)
         }
       )
       .catch(error => console.log(error))
   }
-  
+
 })
 
-app.controller('HeaderCtrl', function($scope, $http, $location){
-    $(document).ready(function(){
-      $('.owl-carousel').owlCarousel({
-        stickyEnabled: true, 
-        stickyEffect: 'shrink',
-        stickyEnableOnBoxed: true, 
-        stickyEnableOnMobile: true,
-        stickyChangeLogo: true,
-        stickyStartAt: 30,
-        stickyHeaderContainerHeight: 70,
-      })
+app.controller('HeaderCtrl', function ($scope, $http, $location) {
+  $(document).ready(function () {
+    $('.owl-carousel').owlCarousel({
+      stickyEnabled: true,
+      stickyEffect: 'shrink',
+      stickyEnableOnBoxed: true,
+      stickyEnableOnMobile: true,
+      stickyChangeLogo: true,
+      stickyStartAt: 30,
+      stickyHeaderContainerHeight: 70,
     })
-      if(localStorage.token) {
-        $scope.token = localStorage.token;
-      }
+  })
+  if (localStorage.token) {
+    $scope.token = localStorage.token;
+  }
 
-      $scope.logout = function(){
+  $scope.logout = function () {
 
-        $http.post('/users/logout', {}, {headers:{'Authorization': `Bearer ${localStorage.token}`}})
-        .then(data => {
-          localStorage.removeItem('token')
-          window.location.reload()
-        })
-        .catch(error => error ? console.log(error) : '')
-      }
-      // if(!localStorage.adminToken){
-        // $location.path('/').replace();
-      //   console.log('es piti urish texic ashxati Davs');
-      //  }
-    $http.get('/textData/readAll').then(
-      success => {
-        let textData = success.data;
-        $scope.textData = textData;
-        
-      },
-      innerError => {
-        console.log(innerError);
-      }
-    
-    ).catch(error => console.log(error))
-    $scope.updateData = function (id) {
-      let headingHeaderSection1= $scope.headingHeaderSection1;
-      let headingHeaderSection2 = $scope.headingHeaderSection2;
-      let headingHeaderSection3 = $scope.headingHeaderSection3;
-      let headingHeaderSection4 = $scope.headingHeaderSection4;
-      let headingHeaderSection5 = $scope.headingHeaderSection5;
-      let body = JSON.stringify(
-        {
-          headingHeaderSection1,
-          headingHeaderSection2,
-          headingHeaderSection3,
-          headingHeaderSection4,
-          headingHeaderSection5
-        }
-      )
-      $http.patch(`/textData/update/${id}`, body, {headers: {"Authorization": `Bearer ${localStorage.adminToken}`}}).then(
-        success => {
-          if(success.data){
-            $scope.congratsText = 'Data is updated succesfully';
-          }
-        },
-        innerError => {
-          console.log(innerError)
-        }
-      ).catch(error => console.log(error))
-    }
-});
-app.controller('shop',function($scope,$http){
-
-  $http.get('/orders',{headers:{'Authorization': `Bearer ${localStorage.token}`}}).then(
+    $http.post('/users/logout', {}, { headers: { 'Authorization': `Bearer ${localStorage.token}` } })
+      .then(data => {
+        localStorage.removeItem('token')
+        window.location.reload()
+      })
+      .catch(error => error ? console.log(error) : '')
+  }
+  // if(!localStorage.adminToken){
+  // $location.path('/').replace();
+  //   console.log('es piti urish texic ashxati Davs');
+  //  }
+  $http.get('/textData/readAll').then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      console.log(success.data)
+
     },
     innerError => {
       console.log(innerError);
     }
-    
+
+  ).catch(error => console.log(error))
+  $scope.updateData = function (id) {
+    let headingHeaderSection1 = $scope.headingHeaderSection1;
+    let headingHeaderSection2 = $scope.headingHeaderSection2;
+    let headingHeaderSection3 = $scope.headingHeaderSection3;
+    let headingHeaderSection4 = $scope.headingHeaderSection4;
+    let headingHeaderSection5 = $scope.headingHeaderSection5;
+    let body = JSON.stringify(
+      {
+        headingHeaderSection1,
+        headingHeaderSection2,
+        headingHeaderSection3,
+        headingHeaderSection4,
+        headingHeaderSection5
+      }
+    )
+    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+      success => {
+        if (success.data) {
+          $scope.congratsText = 'Data is updated succesfully';
+        }
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch(error => console.log(error))
+  }
+});
+app.controller('shop', function ($scope, $http) {
+
+  $http.get('/orders', { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+      let bodyOrder = {
+        orderId: textData._id
+      }
+      let body = JSON.stringify(bodyOrder)
+      console.log(body)
+      console.log(success.data)
+      $scope.postOrder = function(){
+        $http.post('/payOrder', {body} , { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
+          successPost => {
+            console.log(successPost)
+          },
+          innerErrorPost => {
+            console.log(innerErrorPost)
+          }
+        )
+      }
+    },
+    innerError => {
+      console.log(innerError);
+    }
+
   ).catch(error => console.log(error))
 })
 
 app.factory('postsFactory', function () {
-    return [
-      {
-       "id": "1",
-       "name": "Amazing Mountain"
-     },
-     {
-       "id": "2",
-       "name": "Creative Business"
-     },
-     {
-       "id": "3",
-       "name": "Unlimited Ways"
-     },
-     {
+  return [
+    {
+      "id": "1",
+      "name": "Amazing Mountain"
+    },
+    {
+      "id": "2",
+      "name": "Creative Business"
+    },
+    {
+      "id": "3",
+      "name": "Unlimited Ways"
+    },
+    {
       "id": "4",
       "name": "Unlimited Ways"
     },
@@ -1207,5 +1222,5 @@ app.factory('postsFactory', function () {
       "id": "8",
       "name": "Unlimited Ways"
     }
-    ];
+  ];
 })
