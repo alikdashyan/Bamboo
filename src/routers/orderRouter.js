@@ -4,7 +4,7 @@ const auth = require('../middleware/userAuth');
 const sgMail = require('../utils/sgmail');
 const request = require('request-promise');
 const User = require('../models/user');
-
+const grs = require('randomstring');
 const orderRouter = new express.Router();
 
 
@@ -27,13 +27,17 @@ orderRouter.post('/order', auth, async (req, res) => {
 orderRouter.post('/payOrder', auth, async (req, res) => {
     try {
         const order = await Order.findOne({ _id: req.body.orderId });
+        const orderNumber = grs.generate({
+            length: 25,
+            charset: 'alphanumeric'
+        });
         if (!order) {
             return res.status(404).send({ error: "Order not found" })
         }
         if(!order.readyForPayment){
             return res.status(400).send({error: "Order is not ready for payment"});
         }
-        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${order.price * 100}&orderNumber=${order._id}&currency=840`;
+        const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${order.price * 100}&orderNumber=${orderNumber}&currency=840`;
         const data = await request(url);
         if (data.errorCode) {
             return res.status(400).send({ error: data.errorMessage });
