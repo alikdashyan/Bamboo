@@ -16,7 +16,7 @@ orderRouter.post('/order', auth, async (req, res) => {
         const order = new Order(req.body.orderInfo);
         order.ID = req.user.userID;
         order.userContactInfo = req.user.contactInfo;
-        orderId = grs.generate({
+        order.orderId = grs.generate({
             length: 6,
             charset: 'alphanumeric'
         })
