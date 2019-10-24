@@ -16,6 +16,10 @@ orderRouter.post('/order', auth, async (req, res) => {
         const order = new Order(req.body.orderInfo);
         order.ID = req.user.userID;
         order.userContactInfo = req.user.contactInfo;
+        orderId = grs.generate({
+            length: 6,
+            charset: 'alphanumeric'
+        })
         await order.save();
         res.send(order);
     } catch (e) {
@@ -86,33 +90,14 @@ orderRouter.get('/allOrders', auth, async (req, res) => {
     }
 });
 
-orderRouter.post('/ordersByMail', auth, async (req, res) => {
-    if (req.user.kind.toLowerCase() !== 'worker') {
-        return res.status(400).send({ error: "Access denied!" })
-    };
-    try {
-        const user = await User.findOne({ email: req.body.email });
-        if (!user) {
-            return res.status(400).send({ error: "User with provided email not found" })
-        }
-        await user.populate('orders').execPopulate();
-        res.send(user.orders)
-    } catch (e) {
-        console.log(e);
-        res.status(500).send({ error: e.message });
-    }
-})
-
 orderRouter.post('/setOrderPrice', auth, async (req, res) => {
     if (req.user.kind.toLowerCase() !== 'worker') {
         return res.status(400).send({ error: "Access denied!" })
     };
     try {
-        console.log(req.body.orderId)
-        const order = await Order.findOne({ _id: req.body.orderId });
-        console.log(order)
+        const order = await Order.findOne({ orderId: req.body.orderId });
         if (!order) {
-            return res.status(400).send({ error: "Order not found" });
+            return res.status(404).send({ error: "Order not found" });
         };
         order.price = req.body.price;
         order.readyForPayment = true;
