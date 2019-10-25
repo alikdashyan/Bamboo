@@ -4,31 +4,16 @@ const fs = require('fs');
 const path = require('path');
 
 const router = express.Router();
-const textFilePath = path.join(__dirname, '..', 'data', 'textData.json');
+const ruTextFilePath = path.join(__dirname, '..', 'data', 'textDataRu.json');
+const engTextFilePath = path.join(__dirname, '..', 'data', 'textDataEng.json');
 
-router.post('/create', auth, (req, res) => {
-    if(req.user.kind !== 'admin'){
-        return res.status(400).send({error: "You dont have admin privileges"})
-    };
+router.get('/readAll/:lang', (req, res) => {
     try{
-        fs.access(textFilePath, fs.constants.F_OK, (err) => {
-            if(err){
-                fs.writeFileSync(textFilePath, "{}");
-            }
-        });
-        const allData = JSON.parse(fs.readFileSync(textFilePath));
-        allData[req.body.id] = req.body.content;
-        fs.writeFileSync(textFilePath, JSON.stringify(allData));
-        res.status(201).send(allData);
-    } catch(e) {
-        console.log(e);
-        res.status(500).send({error: e.message});
-    }
-});
-
-router.get('/readAll', (req, res) => {
-    try{
-        const data = JSON.parse(fs.readFileSync(textFilePath));
+        if(!req.params.lang && req.params.lang!=='en' && req.params.lang !== 'ru'){
+            return res.status(400).send({error: 'Invalid request'});
+        }
+        const filePath = req.params.lang === 'ru'? ruTextFilePath: engTextFilePath;
+        const data = JSON.parse(fs.readFileSync(filePath));
         res.send(data);
     } catch(e){
         console.log(e);
@@ -36,37 +21,26 @@ router.get('/readAll', (req, res) => {
     }
 });
 
-router.patch('/update/:id', auth, (req, res) => {
+router.patch('/update/:lang/:id', auth, (req, res) => {
     if(req.user.kind !== 'admin'){
         return res.status(400).send({error: "You dont have admin privileges"})
     };
+    if(!req.params.lang || (req.params.lang!=='en' && req.params.lang !== 'ru')){
+        return res.status(400).send({error: 'Invalid request'});
+    }
+    const filePath = req.params.lang === 'ru'? ruTextFilePath: engTextFilePath;
     try{
-        const data = JSON.parse(fs.readFileSync(textFilePath));
+        const data = JSON.parse(fs.readFileSync(filePath));
         const item = data[req.params.id];
         if(item){
             Object.assign(item, req.body);
-            fs.writeFileSync(textFilePath, JSON.stringify(data));
+            fs.writeFileSync(filePath, JSON.stringify(data));
             return res.send(item);
         }
         res.status(404).send({error: 'Text item not found'});
     } catch(e) {
         console.log(e);
         res.status(500).send({error: e.message});
-    }
-});
-
-router.delete('/delete/:id', auth, (req, res) => {
-    if(req.user.kind !== 'admin'){
-        return res.status(400).send({error: "You dont have admin privileges"});
-    }
-    try{
-        const data = JSON.parse(fs.readFileSync(textFilePath));
-        const newArray = data.filter((elem) => {return elem.id !== req.params.id});
-        fs.writeFileSync(textFilePath, JSON.stringify(newArray));
-        res.send(newArray);
-    } catch(e) {
-        console.log(e);
-        res.status(500).send(e);
     }
 });
 
