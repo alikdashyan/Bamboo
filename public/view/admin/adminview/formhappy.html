@@ -18,10 +18,10 @@
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/formServices">formServices</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/formAbout">formAbout</a></li>
                                 <li class="nav-item"><a class="nav-link"   href="#/formContact">formContact</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark active" href="#/formHeader">formHeader</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHeader">formHeader</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/formFooter">formFooter</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/formTable">formTable</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHappy">formHappy</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark active" href="#/formHappy">formHappy</a></li>
                                 <li class="nav-item"><a class="nav-link text-dark " href="#/allOrder">All Order</a></li>
                                 <li class="nav-item" ng-click='adminLogout()'><a class="nav-link text-dark " href="">Logout</a></li>
                             </ul>
@@ -30,7 +30,7 @@
                     <div class="col-lg-10">
                         <div class="row">
                             <div class="col-lg-12">
-                                <h1 class="page-header" >Forms Header</h1>
+                                <h1 class="page-header" >Forms Happy</h1>
                             </div>
                             <!-- /.col-lg-12 -->
                         </div>
@@ -41,7 +41,7 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-lg-12">
-                                                <form role="form" ng-submit="updateData('header')">
+                                                <form role="form" ng-submit="updateData('happy')">
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="panel-heading adminTextSayle">
@@ -49,43 +49,20 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Heading</label>
-                                                                <input class="form-control" ng-model="headingHeaderSection1" placeholder="{{textData['header'].headingHeaderSection1}}" >
+                                                                <input class="form-control" ng-model="header" placeholder="{{textData['happy'].header}}" >
                                                             </div>
                                                             <div class="panel-heading adminTextSayle">
                                                                 Header Section 2
                                                             </div>
                                                             <div class="form-group">
                                                                 <label>Heading</label>
-                                                                <input class="form-control" ng-model="headingHeaderSection2" placeholder="{{textData['header'].headingHeaderSection2}}" >
-                                                            </div>
-                                                            <div class="panel-heading adminTextSayle">
-                                                                Header Section 3
+                                                                <input class="form-control" ng-model="description" placeholder="{{textData['happy'].description}}" >
                                                             </div>
                                                             <div class="form-group">
-                                                                <label>Heading</label>
-                                                                <input class="form-control" ng-model="headingHeaderSection3" placeholder="{{textData['header'].headingHeaderSection3}}" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="panel-heading adminTextSayle">
-                                                                Header Section 4
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Heading</label>
-                                                                <input class="form-control" ng-model="headingHeaderSection4" placeholder="{{textData['header'].headingHeaderSection4}}" >
-                                                            </div>
-                                                            <div class="panel-heading adminTextSayle">
-                                                                Header Section 5
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label>Heading</label>
-                                                                <input class="form-control" ng-model="headingHeaderSection5" placeholder="{{textData['header'].headingHeaderSection5}}" >
-                                                            </div>
-                                                            <div class="form-group">
-                                                                {{ congratsText }}
-                                                             </div>
-                                                            <button type="submit" class="btn btn-success ">Submit Button</button>
-                                                            <button type="reset" class="btn btn-default">Reset Button</button>
+                                                                    {{ congratsText }}
+                                                                 </div>
+                                                                <button type="submit" class="btn btn-success ">Submit Button</button>
+                                                                <button type="reset" class="btn btn-default">Reset Button</button>
                                                         </div>
                                                     </div>
                                                 </form>

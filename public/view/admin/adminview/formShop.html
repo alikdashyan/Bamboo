@@ -1,70 +1,65 @@
-
-    <div class="body">
-        <div role="main" class="main">
-            <section class="page-header page-header-classic">
-                <div class="container">
-                    <div class="row">
-                        <div class="col p-static">
-                            <h1 data-title-border>Admin Profile</h1>
-                        </div>
+<div class="body">
+    <div role="main" class="main">
+        <section class="page-header page-header-classic">
+            <div class="container">
+                <div class="row">
+                    <div class="col p-static">
+                        <h1 data-title-border>Admin Profile</h1>
                     </div>
                 </div>
-            </section>
-            <div class="container py-2">
-                <div class="row">
-                    <div class="col-lg-2 mt-4 mt-lg-0">
-                        <aside class="sidebar mt-2" id="sidebar">
-                            <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl' >
-                                <li class="nav-item" ng-click='adminLogoutWorker()'><a class="nav-link text-dark " href="">Logout</a></li>
-                               
-                            </ul>
-                        </aside>
-                    </div>
-                    <div class="col-lg-10">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h1 class="page-header">Forms Shop</h1>
-                            </div>
+            </div>
+        </section>
+        <div class="container py-2">
+            <div class="row">
+                <div class="col-lg-2 mt-4 mt-lg-0">
+                    <aside class="sidebar mt-2" id="sidebar">
+                        <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl'>
+                       
+                        <li class="nav-item"><a class="nav-link text-dark  " href="#/workerAllOrder">All Order</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark  active " href="#/worker">Forms Shop</a></li>
+                        <li class="nav-item " ><a class="nav-link text-dark" ng-click='adminLogoutWorker()' >Logout</a></li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Forms Shop</h1>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="summary entry-summary">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="summary entry-summary">
 
-                                                    <p class="price">
-                                                        <span class="amount">{{shopSection}}$</span>
-                                                    </p>
-                        
-                                                   
-                        
-                                                    <form role="form" >
-                                                        <div class="form-group">
-                                                            <label for="email">Email</label>
-                                                                <input type="email" class="emailClient form-control " ng-model="emailClient">
-                                                                <div class="form-group row">
-                                                                        <label class="col-lg-3 control-label  pt-2" for="orderID">Orders</label>
-                                                                        <div class="col-lg-12">
-                                                                            <select multiple="" class="form-control" name="orderName" ng-model="selectedName">
-                                                                                    <option ng-repeat="id in names | orderBy: '-' " value="{{id._id}}">{{id.totalBuyingSummary}}</option>
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-                                                        
-                                                            <!-- <select name="orderName" ng-model="selectedName" >
+                                                <p class="price">
+                                                    <span class="amount">{{shopSection}}$</span>
+                                                </p>
+
+
+
+                                                <form role="form">
+                                                    <div class="form-group">
+                                                        <label for="order-id">Order ID</label>
+                                                        <input type="text" id="order-id" class="emailClient form-control "
+                                                            ng-model="emailClient">
+
+                                                        <!-- <select name="orderName" ng-model="selectedName" >
                                                                 <option ng-repeat="id in names" value="{{id._id}}">{{id.totalBuyingSummary}}</option>
                                                             </select> -->
-                                                            <label>Price</label>
-                                                            <input type="text" class="form-control" ng-model="shopSection" placeholder="{{textData['shop'].shopSection}}">
-                                                        </div>
-                                                        <div>{{ congratsText }}</div>
-                                                        <button type="submit" class="btn btn-success" ng-click="submitReadyOrder()">Submit Button</button>
-                                                        <button type="reset" class="btn btn-default">Reset Button</button>
-                                                    </form>
-                                                    {{ successMessage ? successMessage : '' }}
-                                                </div>
+                                                        <label>Price</label>
+                                                        <input type="text" class="form-control" ng-model="shopSection"
+                                                            placeholder="{{textData['shop'].shopSection}}">
+                                                    </div>
+                                                    <div>{{ congratsText }}</div>
+                                                    <button type="submit" class="btn btn-success"
+                                                        ng-click="submitReadyOrder()">Submit Button</button>
+                                                    <button type="reset" class="btn btn-default">Reset Button</button>
+                                                </form>
+                                                {{ successMessage ? successMessage : '' }}
                                             </div>
                                         </div>
                                     </div>
@@ -76,3 +71,4 @@
             </div>
         </div>
     </div>
+</div>

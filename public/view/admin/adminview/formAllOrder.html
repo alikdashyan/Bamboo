@@ -1,0 +1,103 @@
+<div class="body">
+        <div role="main" class="main">
+            <section class="page-header page-header-classic">
+                <div class="container">
+                    <div class="row">
+                        <div class="col p-static">
+                            <h1 data-title-border>Admin Profile</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container py-2">
+                <div class="row">
+                    <div class="col-lg-2 mt-4 mt-lg-0">
+                        <aside class="sidebar mt-2" id="sidebar">
+                            <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl' >
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHome">formHome</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formServices">formServices</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formAbout">formAbout</a></li>
+                                <li class="nav-item"><a class="nav-link"   href="#/formContact">formContact</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHeader">formHeader</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formFooter">formFooter</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formTable">formTable</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHappy">formHappy</a></li>
+                                <li class="nav-item"><a class="nav-link text-dark active " href="#/allOrder">All Order</a></li>
+                                <li class="nav-item" ng-click='adminLogout()'><a class="nav-link text-dark " href="">Logout</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h1 class="page-header" >Forms All Orders</h1>
+                            </div>
+                            <!-- /.col-lg-12 -->
+                        </div>
+                        <!-- /.row -->
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                    <section class="card card-admin">
+                                                            <header class="card-header">
+                                                                <div class="card-actions">
+                                                                    <a href="#" class="card-action card-action-toggle" data-card-toggle></a>
+                                                                    <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
+                                                                </div>
+                                                
+                                                                <h2 class="card-title">My Orders Data</h2>
+                                                            </header>
+                                                        
+                                                            <div class="card-body">
+                                                                <table class="table table-responsive-lg table-bordered table-striped table-sm mb-0">
+                                                                        <thead>
+                                                                                <tr>								
+                                                                                    <th class="text-center align-middle">Product Link</th>
+                                                                                    <th class="text-center align-middle">Buyings Per Day</th>
+                                                                                    <th class="text-center align-middle">Item Price</th>
+                                                                                    <th class="text-center align-middle">Total Buying Summary</th>
+                                                                                    <th class="text-center align-middle">Additional Info</th>
+                                                                                    <th class="text-center align-middle">Order Id</th>
+                                                                                    <th class="text-center align-middle">Created At</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                <tr dir-paginate="data in viewData  |  orderBy: '-'  | itemsPerPage:6">
+                                                                                    <td class="text-center align-middle ordersHrefStyle"><a href="{{data.productLink}}">Open Orders Link</a></td>
+                                                                                    <td class="text-center align-middle">{{data.buyingsPerDay}}</td>
+                                                                                    <td class="text-center align-middle">{{data.itemPrice}}</td>
+                                                                                    <td class="text-center align-middle">{{data.totalBuyingSummary}}</td>
+                                                                                    <td class="text-center align-middle">{{data.additionalInfo}}</td>
+                                                                                    <td class="text-center align-middle">{{data.orderId}}</td>
+                                                                                    <td class="text-center align-middle">{{data.createdAt}}</td>									
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    
+                                                            </div>
+                                                            <div class="row">
+                                                                    <div class="col">
+                                                                        <dir-pagination-controls  class="pagination float-right"></dir-pagination-controls>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            <div class="text-center " ng-show="loading"><img src="{{loadingGif}}" alt="loading"></div>
+                                                        </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+    
+    
+    

@@ -78,7 +78,7 @@ orderRouter.get('/orders', auth, async (req, res) => {
 })
 
 orderRouter.get('/allOrders', auth, async (req, res) => {
-    if (req.user.kind !== "admin") {
+    if (req.user.kind !== "admin" && req.user.kind !== "worker") {
         return res.status(400).send({ error: "You dont have admin privileges" });
     };
     try {
@@ -113,9 +113,8 @@ orderRouter.get('/order/callback', async (req, res) => {
     try {
         const orderID = req.query.orderId;
         const url = `https://ipay.arca.am/payment/rest/getOrderStatusExtended.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&orderId=${orderID}`;
-        console.log('Status check url: ' + url);
         const orderStatusData = JSON.parse(await request(url));
-        console.log(JSON.stringify(orderStatusData));
+        
         if (orderStatusData.orderStatus === 2) {
             const order = await Order.findOne({ _id: orderStatusData.orderNumber });
             if (!order) {
