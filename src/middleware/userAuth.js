@@ -16,7 +16,8 @@ const auth = async (req, res, next) => {
         req.token = token
         next()
     } catch(e){
-        res.status(401).send(e)
+        console.log(e)
+        res.status(401).send({error: e.message})
     }
 }
 
