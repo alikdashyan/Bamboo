@@ -1038,7 +1038,6 @@ app.controller('formCntrl', function ($scope, $http, $location) {
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      console.log(textData)
     },
     innerError => {
       console.log(innerError);
@@ -1180,7 +1179,7 @@ app.controller('profileCntrl', function ($scope, $location, $http) {
     let profileBody = JSON.stringify({
       contactInfo
     })
-    console.log(profileBody);
+    
     $http.patch('/users/update', profileBody, httpOptions)
       .then(
         innerSuccess => innerSuccess.statusText == "OK" ? $scope.success = 'User Successfully Edited' : $scope.error = 'Something went wrong',
@@ -1214,7 +1213,6 @@ app.controller('HeaderCtrl', function ($scope, $http, $location) {
     $scope.token = localStorage.token;
   }
   $scope.changeLanguage = function(language){
-
     localStorage.setItem('language', language);
     window.location.reload();
   }
@@ -1288,7 +1286,7 @@ app.controller('shop', function ($scope, $http) {
   })
   $scope.loadingGif = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'
   $scope.$emit("LOAD")
-  $http.get('/orders', { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
+  $http.get('/orders', { headers: { 'Authorization': `Bearer ${localStorage.workerToken}` } }).then(
     success => {
       let textData = success.data;
       let price = textData.price;
