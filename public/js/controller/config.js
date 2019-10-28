@@ -154,7 +154,7 @@ app.controller('formHome', function ($scope, $http, $location) {
   if (!localStorage.adminToken) {
     $location.path('/').replace();
   }
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -209,7 +209,7 @@ app.controller('formHome', function ($scope, $http, $location) {
         callToActionHomeSection4
       }
     )
-    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+    $http.patch(`/textData/update/${localStorage.getItem('language')}/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
         if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
@@ -226,11 +226,11 @@ app.controller('formServices', function ($scope, $http, $location) {
   if (!localStorage.adminToken) {
     $location.path('/').replace();
   }
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      console.log(textData)
+      
     },
     innerError => {
       console.log(innerError);
@@ -314,7 +314,7 @@ app.controller('formServices', function ($scope, $http, $location) {
         callToActionServicesSection7
       }
     )
-    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+    $http.patch(`/textData/update/${localStorage.getItem('language')}/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
         if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
@@ -332,7 +332,7 @@ app.controller('formAbout', function ($scope, $http, $location) {
     $location.path('/').replace();
   }
 
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -409,7 +409,7 @@ app.controller('formAbout', function ($scope, $http, $location) {
         descriptionAboutSection7
       }
     )
-    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+    $http.patch(`/textData/update/${localStorage.getItem('language')}/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
         if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
@@ -426,7 +426,7 @@ app.controller('formContact', function ($scope, $http, $location) {
   if (!localStorage.adminToken) {
     $location.path('/').replace();
   }
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -478,7 +478,7 @@ app.controller('formContact', function ($scope, $http, $location) {
         descriptionContactSection5_3
       }
     )
-    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+    $http.patch(`/textData/update/${localStorage.getItem('language')}/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
         if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
@@ -495,7 +495,7 @@ app.controller('footerCntrl', function ($scope, $http, $location) {
   // if(!localStorage.adminToken){
   //   $location.path('/').replace();
   //  }
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -530,7 +530,7 @@ app.controller('footerCntrl', function ($scope, $http, $location) {
         headingFooterSection5
       }
     )
-    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+    $http.patch(`/textData/update/${localStorage.getItem('language')}/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
         if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
@@ -547,7 +547,7 @@ app.controller('formHappy', function ($scope, $http, $location) {
   if(!localStorage.adminToken){
     $location.path('/').replace();
    }
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -568,7 +568,7 @@ app.controller('formHappy', function ($scope, $http, $location) {
         
       }
     )
-    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+    $http.patch(`/textData/update/${localStorage.getItem('language')}/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
         if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
@@ -587,7 +587,7 @@ app.controller('workerCtrl', function ($scope, $http, $location) {
   }
 
 
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -642,7 +642,7 @@ app.controller('formTableCtrl', function ($scope, $http ,$location) {
   if (!localStorage.adminToken) {
     $location.path('/').replace();
   }
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -663,7 +663,7 @@ app.controller('formTableCtrl', function ($scope, $http ,$location) {
         description
       }
     )
-    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+    $http.patch(`/textData/update/${localStorage.getItem('language')}/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
         if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
@@ -766,7 +766,7 @@ app.controller('homeCtrl', function ($scope, $http) {
     })
   })
 
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -809,7 +809,7 @@ app.controller('pageCtrl', function ($scope, $http) {
 
     })
   })
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -901,7 +901,7 @@ app.controller('aboutCtrl', function ($scope, $http) {
     });
   });
 
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -922,7 +922,7 @@ app.controller('contactCtrl', function ($scope, $http) {
     if (opacity != '1')
       element.style.opacity = '1';
   }
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -1034,7 +1034,7 @@ app.controller('formCntrl', function ($scope, $http, $location) {
   if (!localStorage.token) {
     $location.path('/').replace();
   }
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -1198,6 +1198,7 @@ app.controller('profileCntrl', function ($scope, $location, $http) {
 })
 
 app.controller('HeaderCtrl', function ($scope, $http, $location) {
+
   $(document).ready(function () {
     $('.owl-carousel').owlCarousel({
       stickyEnabled: true,
@@ -1214,17 +1215,19 @@ app.controller('HeaderCtrl', function ($scope, $http, $location) {
   }
   $scope.changeLanguage = function(language){
 
-    $http.get(`/readAll/${language}`).then(
-      success => {
-        let textData = success.data;
-        $scope.textData = textData;
-        
-      },
-      innerError => {
-        console.log(innerError);
-      }
-    )
+    localStorage.setItem('language', language);
+    window.location.reload();
   }
+  $http.get(`/textData/readAll/${localStorage.getItem('language')}`).then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+      
+    },
+    innerError => {
+      console.log(innerError);
+    }
+  )
   $scope.logout = function () {
 
     $http.post('/users/logout', {}, { headers: { 'Authorization': `Bearer ${localStorage.token}` } })
@@ -1238,7 +1241,7 @@ app.controller('HeaderCtrl', function ($scope, $http, $location) {
   // $location.path('/').replace();
   //   console.log('es piti urish texic ashxati Davs');
   //  }
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
@@ -1264,7 +1267,7 @@ app.controller('HeaderCtrl', function ($scope, $http, $location) {
         headingHeaderSection5
       }
     )
-    $http.patch(`/textData/update/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+    $http.patch(`/textData/update/${localStorage.getItem('language')}/${id}`, body, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
       success => {
         if (success.data) {
           $scope.congratsText = 'Data is updated succesfully';
@@ -1318,7 +1321,7 @@ app.controller('shop', function ($scope, $http) {
 })
 app.controller('happy', function ($scope, $http) {
   
-  $http.get('/textData/readAll').then(
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
     success => {
       let textData = success.data;
       $scope.textData = textData;
