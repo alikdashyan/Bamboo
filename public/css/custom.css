@@ -53,3 +53,6 @@
 .marginButton {
     margin-left: 15px;
 }
+#header .header-nav-main nav {
+     height: unset !important;
+}

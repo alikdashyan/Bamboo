@@ -105,10 +105,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     .when('/paymentError', {
       templateUrl: 'view/page-error.html'
     })
-    .when('/error404', {
-      templateUrl: 'view/page-404.html'
-    })
-  // .otherwise({ redirectTo: 'view/page-404.html'})
+  .otherwise({ templateUrl: 'view/page-404.html'})
 }])
 
 //Admin Panel
@@ -1286,7 +1283,7 @@ app.controller('shop', function ($scope, $http) {
   })
   $scope.loadingGif = 'https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif'
   $scope.$emit("LOAD")
-  $http.get('/orders', { headers: { 'Authorization': `Bearer ${localStorage.workerToken}` } }).then(
+  $http.get('/orders', { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
     success => {
       let textData = success.data;
       let price = textData.price;
