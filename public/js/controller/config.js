@@ -5,6 +5,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     .when('/', {
       templateUrl: 'view/home.html',
       controller: 'homeCtrl'
+      
     })
     .when('/services', {
       templateUrl: 'view/page-services.html',
@@ -940,9 +941,7 @@ app.controller('authCtrl', function ($scope, $http, $location) {
     if (opacity != '1')
       element.style.opacity = '1';
   }
-  // if(localStorage.token){
-  //   $location.path('/profile').replace();
-  // }
+ 
   $scope.submit = function () {
     $scope.loginError = '';
     $scope.loginPasswordError = '';
@@ -958,7 +957,8 @@ app.controller('authCtrl', function ($scope, $http, $location) {
         let token = success.data.token;
         if (token) {
           localStorage.setItem('token', token);
-          $location.path('/profile').replace();
+          // $location.path('/profile').replace();
+          window.location.href = '/';
         }
       },
       innerError => {
@@ -1088,7 +1088,6 @@ app.controller('formCntrl', function ($scope, $http, $location) {
       success => {
         if (success.data) {
           $scope.successMessage = 'Order is Complete. Our Customer Supprt will cpntact you soon.'
-          //  window.location.href = success.data.formUrl;
           $location.path('/happyView').replace();
         } else {
           $scope.orderError = success.data.error;
@@ -1217,7 +1216,6 @@ app.controller('HeaderCtrl', function ($scope, $http, $location) {
     success => {
       let textData = success.data;
       $scope.textData = textData;
-      
     },
     innerError => {
       console.log(innerError);
@@ -1240,7 +1238,6 @@ app.controller('HeaderCtrl', function ($scope, $http, $location) {
     success => {
       let textData = success.data;
       $scope.textData = textData;
-
     },
     innerError => {
       console.log(innerError);
