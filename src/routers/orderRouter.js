@@ -10,7 +10,7 @@ const orderRouter = new express.Router();
 
 orderRouter.post('/order', auth, async (req, res) => {
     if (!req.user.emailVerified) {
-        return res.send({ error: 'Your email is not verified' });
+        return res.status(400).send({ error: 'Your email is not verified' });
     }
     try {
         const order = new Order(req.body.orderInfo);
