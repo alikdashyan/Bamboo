@@ -958,7 +958,7 @@ app.controller('authCtrl', function ($scope, $http, $location) {
         if (token) {
           localStorage.setItem('token', token);
           // $location.path('/profile').replace();
-          window.location.href = '/';
+          window.location.href = '/#/profile';
         }
       },
       innerError => {
@@ -999,7 +999,8 @@ app.controller('authCtrl', function ($scope, $http, $location) {
           let token = success.data.token;
           if (token) {
             localStorage.setItem('token', token);
-            $location.path('/profile').replace();
+            // $location.path('/profile').replace();
+            window.location.href = '/#/profile';
           }
         },
         innerError => {
