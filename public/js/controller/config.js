@@ -51,7 +51,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
       templateUrl: 'view/shop.html',
       controller: 'shop'
     })
-    .when('/happyView',{
+    .when('/orderCompleted',{
       templateUrl: 'view/happyView.html',
       controller: 'happy'
     })
@@ -958,7 +958,7 @@ app.controller('authCtrl', function ($scope, $http, $location) {
         if (token) {
           localStorage.setItem('token', token);
           // $location.path('/profile').replace();
-          window.location.href = '/#/profile';
+          window.location.href = '/';
         }
       },
       innerError => {
@@ -1000,7 +1000,7 @@ app.controller('authCtrl', function ($scope, $http, $location) {
           if (token) {
             localStorage.setItem('token', token);
             // $location.path('/profile').replace();
-            window.location.href = '/#/profile';
+            window.location.href = '/';
           }
         },
         innerError => {
@@ -1089,7 +1089,7 @@ app.controller('formCntrl', function ($scope, $http, $location) {
       success => {
         if (success.data) {
           $scope.successMessage = 'Order is Complete. Our Customer Supprt will cpntact you soon.'
-          $location.path('/happyView').replace();
+          $location.path('/orderCompleted').replace();
         } else {
           $scope.orderError = success.data.error;
         }
