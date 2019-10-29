@@ -1096,8 +1096,8 @@ app.controller('formCntrl', function ($scope, $http, $location) {
         console.log(success)
       },
       innerError => {
-        if (innerError.error) {
-          $scope.orderError = innerError.error;
+        if (innerError.data.error) {
+          $scope.orderError = innerError.data.error;
         }
       }
     )
