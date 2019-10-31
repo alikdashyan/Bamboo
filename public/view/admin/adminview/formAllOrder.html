@@ -63,18 +63,20 @@
                                                                                     <th class="text-center align-middle">Order Id</th>
                                                                                     <th class="text-center align-middle">Tranfer Amount</th>
                                                                                     <th class="text-center align-middle">Created At</th>
+                                                                                    <th class="text-center align-middle">Final Amount</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr dir-paginate="data in viewData  |  orderBy: '-'  | itemsPerPage:30">
                                                                                     <td class="text-center align-middle ordersHrefStyle"><a href="{{data.productLink}}">Open Orders Link</a></td>
-                                                                                    <td class="text-center align-middle">{{data.buyingsPerDay}}</td>
-                                                                                    <td class="text-center align-middle">{{data.itemPrice}}</td>
-                                                                                    <td class="text-center align-middle">{{data.totalBuyingSummary}}</td>
+                                                                                    <td class="text-center align-middle"> <span editable-text="data.buyingsPerDay" > {{data.buyingsPerDay}} </span> </td>
+                                                                                    <td class="text-center align-middle"> <span editable-text="data.itemPrice" > {{data.itemPrice}} </span> </td>
+                                                                                    <td class="text-center align-middle"> <span editable-text="data.totalBuyingSummary" > {{data.totalBuyingSummary}} </span> </td>
                                                                                     <td class="text-center align-middle">{{data.additionalInfo}}</td>
                                                                                     <td class="text-center align-middle">{{data.orderId}}</td>
                                                                                     <td class="text-center align-middle">{{data.serviceType}}</td>
                                                                                     <td class="text-center align-middle">{{data.createdAt}}</td>									
+                                                                                    <td class="text-center align-middle">{{ ( ( data.itemPrice + data.serviceType ) * data.totalBuyingSummary ) * 1.05 }}</td>									
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>

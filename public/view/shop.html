@@ -35,7 +35,7 @@
                                 
                                 <tr ng-repeat="item in textData" ng-show="{{ item.price > 0 }}">
                                     <td class="ordersHrefStyle text-center align-middle" data-id="{{ item._id }}"><a href="{{item.productLink}}" target="_blank">Open Product Link</a></td>
-                                    <td class="text-center align-middle">{{item.totalBuyingSummary}}</td>
+                                    <td class="text-center align-middle"> {{item.totalBuyingSummary}} </td>
                                     <td class="text-center align-middle">{{item.price}} &#36</td>
                                     <td class=" text-center align-middle ">
                                             <button type="submit" ng-click="postOrder(item._id)" class="btn btn-success marginButton">Pay</button>
