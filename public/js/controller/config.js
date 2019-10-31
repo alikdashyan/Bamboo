@@ -1044,6 +1044,8 @@ app.controller('formCntrl', function ($scope, $http, $location) {
   ).catch(error => console.log(error))
   $scope.openEmail = false;
   $scope.submitOrder = function () {
+    let nameSurename = $scope.nameSurename;
+    let productName = $scope.productName;
     let productLink = $scope.productLink;
     let buyingsPerDay = $scope.buyingsPerDay;
     let itemPrice = $scope.itemPrice;
@@ -1068,6 +1070,8 @@ app.controller('formCntrl', function ($scope, $http, $location) {
 
     let body = {
       orderInfo: {
+        nameSurename,
+        productName,
         productLink,
         buyingsPerDay,
         itemPrice,
