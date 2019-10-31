@@ -2,6 +2,16 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 
 const orderSchema = new mongoose.Schema({
+    productName: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    nameSurename: {
+        type: String,
+        required: true,
+        trim: true
+    },
     ID: {
         type: String,
         required: true,
