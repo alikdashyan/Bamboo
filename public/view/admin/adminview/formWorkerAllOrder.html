@@ -44,7 +44,7 @@
                                                                     <a href="#" class="card-action card-action-dismiss" data-card-dismiss></a>
                                                                 </div>
                                                 
-                                                                <h2 class="card-title">My Orders Data</h2>
+                                                                <h2 class="card-title" editable-text="data.buyingsPerDay">My Orders Data</h2>
                                                             </header>
                                                         
                                                             <div class="card-body">
@@ -57,17 +57,19 @@
                                                                                     <th class="text-center align-middle">Total Buying Summary</th>
                                                                                     <th class="text-center align-middle">Additional Info</th>
                                                                                     <th class="text-center align-middle">Order Id</th>
+                                                                                    <th class="text-center align-middle">Tranfer Amount</th>
                                                                                     <th class="text-center align-middle">Created At</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
                                                                                 <tr dir-paginate="data in viewData  |  orderBy: '-'  | itemsPerPage:30">
                                                                                     <td class="text-center align-middle ordersHrefStyle"><a href="{{data.productLink}}">Open Orders Link</a></td>
-                                                                                    <td class="text-center align-middle">{{data.buyingsPerDay}}</td>
+                                                                                    <td class="text-center align-middle" editable-text="data.buyingsPerDay">{{data.buyingsPerDay}}</td>
                                                                                     <td class="text-center align-middle">{{data.itemPrice}}</td>
                                                                                     <td class="text-center align-middle">{{data.totalBuyingSummary}}</td>
                                                                                     <td class="text-center align-middle">{{data.additionalInfo}}</td>
                                                                                     <td class="text-center align-middle">{{data.orderId}}</td>
+                                                                                    <td class="text-center align-middle">{{data.serviceType}}</td>
                                                                                     <td class="text-center align-middle">{{data.createdAt}}</td>									
                                                                                 </tr>
                                                                             </tbody>

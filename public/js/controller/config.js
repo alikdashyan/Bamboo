@@ -1,4 +1,7 @@
-var app = angular.module('app', ['ngRoute', 'angularUtils.directives.dirPagination']);
+var app = angular.module('app', ['ngRoute', 'angularUtils.directives.dirPagination', 'xeditable']);
+app.run(['editableOptions', function(editableOptions) {
+  editableOptions.theme = 'bs4'; // bootstrap3 theme. Can be also 'bs4', 'bs2', 'default'
+}]);
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix('');
   $routeProvider
@@ -729,9 +732,7 @@ app.controller('formWorkerAllOrder',function($scope, $http,$location){
   $scope.$emit("LOAD")
   $http.get('allOrders', { headers: { 'Authorization': `Bearer ${localStorage.workerToken}` } }).then(
     success => {
-      let bambooData = success.data;
-      $scope.viewData = bambooData;
-      console.log(bambooData)
+      $scope.viewData = success.data;
       $scope.$emit("UNLOAD")
     },
     innerError => {
@@ -1122,8 +1123,8 @@ app.controller('tableCtrl', function ($scope, $http, $location) {
   $scope.$emit("LOAD")
   $http.get('/orders', { headers: { 'Authorization': `Bearer ${localStorage.token}` } }).then(
     success => {
-      let bambooData = success.data;
-      $scope.viewData = bambooData;
+      $scope.viewData = success.data;
+      console.log(success);
       $scope.$emit("UNLOAD")
     },
     innerError => {
@@ -1162,6 +1163,25 @@ app.controller('profileCntrl', function ($scope, $location, $http) {
     $location.path('/').replace();
   }
 
+  const httpOptions = {
+    headers: {
+      'Authorization': `Bearer ${localStorage.token}`,
+      'Content-Type': 'application/json'
+    },
+  }
+
+  $http.get('/users/me', httpOptions)
+    .then(
+      innerSuccess => {
+        $scope.skype = innerSuccess.data.contactInfo.skypeViberWhatsApp;
+        $scope.facebook = innerSuccess.data.contactInfo.facebookLink;
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch(e => console.log(e))
+
+
   $scope.editUser = function () {
     $scope.ubdateError = "";
     let contactInfo = {
@@ -1170,12 +1190,6 @@ app.controller('profileCntrl', function ($scope, $location, $http) {
       Wechat: $scope.Wechat
     }
 
-    const httpOptions = {
-      headers: {
-        'Authorization': `Bearer ${localStorage.token}`,
-        'Content-Type': 'application/json'
-      },
-    }
 
     let profileBody = JSON.stringify({
       contactInfo
