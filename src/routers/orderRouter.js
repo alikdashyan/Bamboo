@@ -38,8 +38,8 @@ orderRouter.post('/payOrder', auth, async (req, res) => {
         if (!order) {
             return res.status(404).send({ error: "Order not found" })
         }
-        if(!order.readyForPayment){
-            return res.status(400).send({error: "Order is not ready for payment"});
+        if (!order.readyForPayment) {
+            return res.status(400).send({ error: "Order is not ready for payment" });
         }
         const url = `https://ipay.arca.am/payment/rest/register.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&returnUrl=http://www.amzbamboo.com/order/callback&amount=${order.price * 100}&orderNumber=${orderNumber}&currency=840&description=Product link: ${order.productLink}`;
         const data = await request(url);
@@ -68,12 +68,12 @@ orderRouter.get('/successOrders', auth, async (req, res) => {
 });
 
 orderRouter.get('/orders', auth, async (req, res) => {
-    try{
+    try {
         await req.user.populate('orders').execPopulate();
         res.send(req.user.orders);
-    }catch(e){
+    } catch (e) {
         console.log(e);
-        res.status(500).send({error: e.message});
+        res.status(500).send({ error: e.message });
     }
 })
 
@@ -114,7 +114,7 @@ orderRouter.get('/order/callback', async (req, res) => {
         const orderID = req.query.orderId;
         const url = `https://ipay.arca.am/payment/rest/getOrderStatusExtended.do?userName=${process.env.PAYMENT_LOGIN}&password=${process.env.PAYMENT_PASSWORD}&orderId=${orderID}`;
         const orderStatusData = JSON.parse(await request(url));
-        
+
         if (orderStatusData.orderStatus === 2) {
             const order = await Order.findOne({ _id: orderStatusData.orderNumber });
             if (!order) {
@@ -158,5 +158,23 @@ orderRouter.get('/order/callback', async (req, res) => {
     }
     res.send();
 });
+
+orderRouter.post('/changeOrderStatus', auth, async (req, res) => {
+    try {
+        if (req.user.kind !== "admin" && req.user.kind !== "worker") {
+            return res.status(400).send({ error: "You dont have admin privileges" });
+        };
+        const order = await Order.findOne({ _id: req.body.id });
+        if (!order) {
+            return res.status(404).send({ error: "Order not found" });
+        }
+        order.status = 'success';
+        await order.save();
+        res.send(order);
+    } catch (e) {
+        console.log(e);
+        res.status(500).send({ error: e.message });
+    }
+})
 
 module.exports = orderRouter
