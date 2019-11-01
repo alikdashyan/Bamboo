@@ -164,7 +164,7 @@ orderRouter.post('/changeOrderStatus', auth, async (req, res) => {
         if (req.user.kind !== "admin" && req.user.kind !== "worker") {
             return res.status(400).send({ error: "You dont have admin privileges" });
         };
-        const order = await Order.findOne({ _id: req.body.id });
+        const order = await Order.findOne({ orderId: req.body.orderId });
         if (!order) {
             return res.status(404).send({ error: "Order not found" });
         }
