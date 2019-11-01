@@ -90,6 +90,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
       templateUrl: 'view/admin/adminview/formShop.html',
       controller: 'workerCtrl'
     })
+    .when('/adminShop',{
+      templateUrl: 'view/admin/adminview/formAdminShop.html',
+      controller: 'adminShopCtrl'
+    })
     .when('/formTable', {
       templateUrl: 'view/admin/adminview/formTable.html',
       controller: 'formTableCtrl'
@@ -582,6 +586,82 @@ app.controller('formHappy', function ($scope, $http, $location) {
   }
 
 })
+
+app.controller('adminShopCtrl', function ($scope, $http, $location) {
+  if (!localStorage.adminToken) {
+    $location.path('/').replace();
+  }
+
+
+  $http.get('/textData/readAll/' + localStorage.getItem('language')).then(
+    success => {
+      let textData = success.data;
+      $scope.textData = textData;
+    },
+    innerError => {
+s
+      console.log(innerError);
+    }
+
+  ).catch(error => console.log(error))
+
+  let emailClient = document.getElementsByClassName('emailClient')[0];
+
+  // $(emailClient).on('keyup', (event) => {
+  //   if (event.key === 'Enter') {
+  //     $http.post(`/ordersByMail`, { email: event.target.value }, { headers: { "Authorization": `Bearer ${localStorage.workerToken}` } }).then(
+  //       success => {
+  //         if (success) {
+  //           let data = success.data;
+  //           if (data.length > 0) {
+  //             $scope.names = data;
+  //           }
+  //         }
+  //       },
+  //       innerError => {
+  //         console.log(innerError)
+  //       }
+  //     ).catch(e => console.log(e))
+  //   }
+  // })
+  $scope.submitChangeOrder = function(){
+    let orderId  = $scope.statusId;
+    $http.post('/changeOrderStatus',{orderId}, {headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+      success => {
+        if (success) {
+          let orderStatus = success.data;
+          if (orderStatus) {
+            $scope.succesStatusMessage = 'Order status changed succesfully';
+          }
+        }
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    )
+
+  }
+  $scope.submitReadyOrder = function () {
+    let orderId = $scope.emailClient;
+    let price = $scope.shopSection;
+
+    $http.post('/setOrderPrice', { orderId, price }, { headers: { "Authorization": `Bearer ${localStorage.adminToken}` } }).then(
+      success => {
+        if (success) {
+          let order = success.data;
+          if (order) {
+            $scope.successMessage = 'Data is saved';
+          }
+        }
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    ).catch(e => console.log(e))
+  }
+})
+
+
 app.controller('workerCtrl', function ($scope, $http, $location) {
   if (!localStorage.workerToken) {
     $location.path('/').replace();
@@ -619,7 +699,23 @@ app.controller('workerCtrl', function ($scope, $http, $location) {
   //     ).catch(e => console.log(e))
   //   }
   // })
+  $scope.submitChangeOrder = function(){
+    let orderId  = $scope.statusId;
+    $http.post('/changeOrderStatus',{orderId}, {headers: { "Authorization": `Bearer ${localStorage.workerToken}` } }).then(
+      success => {
+        if (success) {
+          let orderStatus = success.data;
+          if (orderStatus) {
+            $scope.succesStatusMessage = 'Order status changed succesfully';
+          }
+        }
+      },
+      innerError => {
+        console.log(innerError)
+      }
+    )
 
+  }
   $scope.submitReadyOrder = function () {
     let orderId = $scope.emailClient;
     let price = $scope.shopSection;

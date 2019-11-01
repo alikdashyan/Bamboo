@@ -13,18 +13,25 @@
             <div class="row">
                 <div class="col-lg-2 mt-4 mt-lg-0">
                     <aside class="sidebar mt-2" id="sidebar">
-                        <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl'>
-                       
-                        <li class="nav-item"><a class="nav-link text-dark  " href="#/workerAllOrder">All Order</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark  active " href="#/worker">Forms Shop</a></li>
-                        <li class="nav-item " ><a class="nav-link text-dark" ng-click='adminLogoutWorker()' >Logout</a></li>
+                        <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl' >
+                            <li class="nav-item"><a class="nav-link text-dark" href="#/formHome">formHome</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" href="#/formServices">formServices</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" href="#/formAbout">formAbout</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark active"   href="#/formContact">formContact</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/formHeader">formHeader</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" href="#/formFooter">formFooter</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/formTable">formTable</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/formHappy">formHappy</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/allOrder">All Order</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/adminShop">Admin shop</a></li>
+                            <li class="nav-item" ng-click='adminLogout()'><a class="nav-link text-dark" href="">Logout</a></li>
                         </ul>
                     </aside>
                 </div>
                 <div class="col-lg-10">
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">Forms Shop</h1>
+                            <h1 class="page-header">Admin Shop</h1>
                         </div>
                     </div>
                     <div class="row">
