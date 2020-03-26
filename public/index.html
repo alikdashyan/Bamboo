@@ -284,7 +284,26 @@
 	<!-- <script src="js/theme.admin.extension.js"></script> -->
 	<!--Start of Tawk.to Script-->
 	<script type="text/javascript">
+		let name = undefined;
+		if(localStorage.token){
+			fetch('https://www.amzbamboo.com/users/me', {
+				headers: {
+					'Authorization': `Bearer ${localStorage.token}`
+				}
+			})
+			.then(res => res.json())
+			.then(res => {console.log(res); name = res.email})
+		}
+
+		console.log(name != undefined ? name : 'empty');
+
 		var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+		
+		Tawk_API.visitor = {
+			name,
+			// email : ''
+		};
+
 		(function () {
 			var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
 			s1.async = true;
