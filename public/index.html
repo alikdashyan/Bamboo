@@ -15,8 +15,7 @@
 	<!-- Mobile Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 	<!-- Web Fonts  -->
-	<link
-		href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400"
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400"
 		rel="stylesheet" type="text/css">
 	<!-- <base href="/"> -->
 	<!-- Vendor CSS -->
@@ -27,8 +26,8 @@
 	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">
 	<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
-	
-	
+
+
 	<!-- Theme CSS -->
 	<link rel="stylesheet" href="css/theme.css">
 	<link rel="stylesheet" href="css/theme-elements.css">
@@ -51,7 +50,18 @@
 	<link type="text/css" rel="stylesheet" href="./master/xeditable/xeditable.css">
 	<!-- Theme Custom CSS -->
 	<link rel="stylesheet" href="css/custom.css">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167582471-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-167582471-1');
+	</script>
+
 </head>
+
 <body class="loading-overlay-showing body " data-plugin-page-transition data-loading-overlay
 	data-plugin-options="{'hideDelay': 500}">
 	<div class="loading-overlay">
@@ -81,14 +91,17 @@
 								<div
 									class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
 									<nav class="collapse">
-										<ul class="nav nav-pills" id="mainNav" class="btn header-btn-collapse-nav"
-											data-toggle="collapse" data-target=".header-nav-main nav">
+										<ul class="nav nav-pills" id="mainNav"
+											class="btn header-btn-collapse-nav"
+											data-toggle="collapse"
+											data-target=".header-nav-main nav">
 											<li class="dropdown">
 												<a class="dropdown-item dropdown-toggle "
 													href="#/services">{{textData["header"].headingHeaderSection1}}</a>
 											</li>
 											<li class="dropdown">
-												<a class="dropdown-item dropdown-toggle" href="#/blog">
+												<a class="dropdown-item dropdown-toggle"
+													href="#/blog">
 													{{textData["header"].headingHeaderSection2}}
 												</a>
 											</li>
@@ -104,18 +117,21 @@
 												<a class="dropdown-item dropdown-toggle "
 													href="{{ token ? '#/profile' : '#/login' }}">{{ token ? 'Profile' : 'Login/Register' }}</a>
 											</li>
-											<li class="dropdown" ng-show='token' ng-click='logout()'>
+											<li class="dropdown" ng-show='token'
+												ng-click='logout()'>
 												<a class="dropdown-item dropdown-toggle "
 													href="#">{{textData["header"].headingHeaderSection5}}</a>
 											</li>
 											<li class="dropdown">
 												<a class="#" ng-click="changeLanguage('en')">
-													<img src="img/blank.gif"  class="flag flag-us" alt="ENG" /> en
+													<img src="img/blank.gif"
+														class="flag flag-us" alt="ENG" /> en
 												</a>
 											</li>
 											<li>
 												<a href="#" ng-click="changeLanguage('ru')">
-													<img src="img/blank.gif"  class="flag flag-ru" alt="ru" /> ru
+													<img src="img/blank.gif"
+														class="flag flag-ru" alt="ru" /> ru
 												</a>
 											</li>
 										</ul>
@@ -128,17 +144,23 @@
 							</div>
 							<div
 								class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
-								<div class="header-nav-feature header-nav-features-search d-inline-flex">
-									<a href="#" class="header-nav-features-toggle" data-focus="headerSearch"><i
+								<div
+									class="header-nav-feature header-nav-features-search d-inline-flex">
+									<a href="#" class="header-nav-features-toggle"
+										data-focus="headerSearch"><i
 											class="fas fa-search header-nav-top-icon"></i></a>
-									<div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
-										<form role="search" action="page-search-results.html" method="get">
+									<div class="header-nav-features-dropdown"
+										id="headerTopSearchDropdown">
+										<form role="search" action="page-search-results.html"
+											method="get">
 											<div class="simple-search input-group">
-												<input class="form-control text-1" id="headerSearch" name="q"
-													type="search" value="" placeholder="Search...">
+												<input class="form-control text-1"
+													id="headerSearch" name="q" type="search"
+													value="" placeholder="Search...">
 												<span class="input-group-append">
 													<button class="btn" type="submit">
-														<i class="fa fa-search header-nav-top-icon"></i>
+														<i
+															class="fa fa-search header-nav-top-icon"></i>
 													</button>
 												</span>
 											</div>
@@ -183,10 +205,13 @@
 								<p class="m-0">{{textData["footer"].contactAdres}}</p>
 							</li>
 							<li class="mb-1"><i class="fab fa-whatsapp text-color-primary"></i>
-								<p class="m-0"><a href="tel:8001234567">{{textData["footer"].contactPhone}}</a></p>
+								<p class="m-0"><a
+										href="tel:8001234567">{{textData["footer"].contactPhone}}</a>
+								</p>
 							</li>
 							<li class="mb-1"><i class="far fa-envelope text-color-primary"></i>
-								<p class="m-0"><a href="mailto:mail@example.com">{{textData["footer"].contactEmail}}</a>
+								<p class="m-0"><a
+										href="mailto:mail@example.com">{{textData["footer"].contactEmail}}</a>
 								</p>
 							</li>
 						</ul>
@@ -211,14 +236,16 @@
 					<div
 						class="col-lg-1 d-flex align-items-center justify-content-center justify-content-lg-start mb-2 mb-lg-0">
 						<a href="index.html" class="logo pr-0 pr-lg-3">
-							<img alt="Porto Website Template" src="img/bamboo-logo02.png" class="opacity-5" height="33">
+							<img alt="Porto Website Template" src="img/bamboo-logo02.png"
+								class="opacity-5" height="33">
 						</a>
 					</div>
 					<div
 						class="col-lg-7 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">
 						<p>{{textData["footer"].headingFooterSection5}}.</p>
 					</div>
-					<div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
+					<div
+						class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">
 						<nav id="sub-menu">
 							<ul>
 								<li><i class="fas fa-angle-right"></i><a href="page-faq.html"
@@ -285,20 +312,20 @@
 	<!--Start of Tawk.to Script-->
 	<script type="text/javascript">
 		let name = undefined;
-		if(localStorage.token){
+		if (localStorage.token) {
 			fetch('https://www.amzbamboo.com/users/me', {
 				headers: {
 					'Authorization': `Bearer ${localStorage.token}`
 				}
 			})
-			.then(res => res.json())
-			.then(res => {console.log(res); name = res.email})
+				.then(res => res.json())
+				.then(res => { console.log(res); name = res.email })
 		}
 
 		console.log(name != undefined ? name : 'empty');
 
 		var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-		
+
 		Tawk_API.visitor = {
 			name,
 			// email : ''
