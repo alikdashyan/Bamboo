@@ -881,14 +881,14 @@ app.controller('homeCtrl', function ($scope, $http) {
 app.controller('pageCtrl', function ($scope, $http) {
   $('#revolutionSlider').show().revolution();
   let animations = document.getElementsByClassName('appear-animation');
-
   for (let index = 0; index < animations.length; index++) {
     const element = animations[index];
     const opacity = element.style.opacity;
     if (opacity != '1')
-      element.style.opacity = '1';
+    element.style.opacity = '1';
   }
   $(document).ready(function () {
+    document.querySelector('.get-a-quote').setAttribute('href', localStorage.token ? '/#/formsUserProfile' : '/#/login');
     $('.owl-carousel').owlCarousel({
       responsive: {
         0: { items: 1 },
@@ -1133,6 +1133,7 @@ app.controller('formCntrl', function ($scope, $http, $location) {
     success => {
       let textData = success.data;
       $scope.textData = textData;
+      document.querySelector('.read-before-order p').innerHTML = textData['formUserProfile'].description;
     },
     innerError => {
       console.log(innerError);

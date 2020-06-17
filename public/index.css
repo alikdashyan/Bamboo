@@ -1,0 +1,12 @@
+.parallax-order {
+      background-image: url(img/new/trust.jpg) !important;
+      background-repeat: repeat !important;
+      background-size: contain !important;
+}
+
+#footer{
+      background-image: url(img/new/phone.jpg) !important;
+      background-repeat: no-repeat !important;
+      background-size: cover !important;
+      background-position: 36% 84%;
+}

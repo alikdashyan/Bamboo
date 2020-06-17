@@ -1,82 +1,87 @@
-
-    <div class="body">
-        <div role="main" class="main">
-            <section class="page-header page-header-classic">
-                <div class="container">
-                    <div class="row">
-                        <div class="col p-static">
-                            <h1 data-title-border>Admin Profile</h1>
-                        </div>
+<div class="body">
+    <div role="main" class="main">
+        <section class="page-header page-header-classic">
+            <div class="container">
+                <div class="row">
+                    <div class="col p-static">
+                        <h1 data-title-border>Admin Profile</h1>
                     </div>
                 </div>
-            </section>
-            <div class="container py-2">
-                <div class="row">
-                    <div class="col-lg-2 mt-4 mt-lg-0">
-                        <aside class="sidebar mt-2" id="sidebar">
-                            <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl' >
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHome">formHome</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formServices">formServices</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formAbout">formAbout</a></li>
-                                <li class="nav-item"><a class="nav-link"   href="#/formContact">formContact</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHeader">formHeader</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formFooter">formFooter</a></li>
-                               
-                                <li class="nav-item"><a class="nav-link text-dark active " href="#/formTable">formTable</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/formHappy">formHappy</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/allOrder">All Order</a></li>
-                                <li class="nav-item"><a class="nav-link text-dark " href="#/adminShop">Admin shop</a></li>
-                                <li class="nav-item" ><a class="nav-link text-dark " ng-click='adminLogout()'>Logout</a></li>
-                               
-                            </ul>
-                        </aside>
-                    </div>
-                    <div class="col-lg-10">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h1 class="page-header">Forms Order Table</h1>
-                            </div>
+            </div>
+        </section>
+        <div class="container py-2">
+            <div class="row">
+                <div class="col-lg-2 mt-4 mt-lg-0">
+                    <aside class="sidebar mt-2" id="sidebar">
+                        <ul class="nav nav-list flex-column mb-5" ng-controller='adminLogoutCtrl'>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/formHome">formHome</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/formServices">formServices</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/formAbout">formAbout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#/formContact">formContact</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/formHeader">formHeader</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/formFooter">formFooter</a></li>
+
+                            <li class="nav-item"><a class="nav-link text-dark active " href="#/formTable">formTable</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/formHappy">formHappy</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/allOrder">All Order</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " href="#/adminShop">Admin shop</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark " ng-click='adminLogout()'>Logout</a></li>
+
+                        </ul>
+                    </aside>
+                </div>
+                <div class="col-lg-10">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="page-header">Forms Order Table</h1>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                                <div class="col-lg-12">
-                                                        <form role="form" ng-submit="updateData('formUserProfile')">
-                                                            <div class="row">
-                                                                
-                                                                <div class="col-lg-12">
-                                                                    <div class="panel-heading adminTextSayle">
-                                                                       Header
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Heading</label>
-                                                                        <input class="form-control" ng-model="headerSpan" placeholder="{{textData['formUserProfile'].headerSpan}}" >
-                                                                    </div>
-                                                                    <div class="panel-heading adminTextSayle">
-                                                                        HeaderSpan
-                                                                         </div>
-                                                                         <div class="form-group">
-                                                                             <label>Heading</label>
-                                                                             <input class="form-control" ng-model="header" placeholder="{{textData['formUserProfile'].header}}" >
-                                                                         </div>
-                                                                    <div class="panel-heading adminTextSayle">
-                                                                            Description
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Heading</label>
-                                                                        <input class="form-control" ng-model="description" placeholder="{{textData['formUserProfile'].description}}" >
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        {{ congratsText }}
-                                                                     </div>
-                                                                    <button type="submit" class="btn btn-success ">Submit Button</button>
-                                                                    <button type="reset" class="btn btn-default">Reset Button</button>
-                                                                </div>
-                                                            </div>
-                                                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <form role="form" ng-submit="updateData('formUserProfile')">
+                                                <div class="row">
+
+                                                    <div class="col-lg-12">
+                                                        <div class="panel-heading adminTextSayle">
+                                                            Header
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Heading</label>
+                                                            <input class="form-control" ng-model="headerSpan"
+                                                                placeholder="{{textData['formUserProfile'].headerSpan}}">
+                                                        </div>
+                                                        <div class="panel-heading adminTextSayle">
+                                                            HeaderSpan
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Heading</label>
+                                                            <input class="form-control" ng-model="header"
+                                                                placeholder="{{textData['formUserProfile'].header}}">
+                                                        </div>
+                                                        <div class="panel-heading adminTextSayle">
+                                                            Description
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Heading</label>
+                                                            <textarea class="form-control" ng-model="description"
+                                                                placeholder="{{textData['formUserProfile'].description}}"></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            {{ congratsText }}
+                                                        </div>
+                                                        <button type="submit" class="btn btn-success ">Submit
+                                                            Button</button>
+                                                        <button type="reset" class="btn btn-default">Reset
+                                                            Button</button>
                                                     </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -87,3 +92,4 @@
             </div>
         </div>
     </div>
+</div>

@@ -23,11 +23,15 @@
 
 					<aside class="sidebar mt-2" id="sidebar">
 						<ul class="nav nav-list flex-column mb-5">
-							<li class="nav-item"><a class="nav-link text-dark" href="#/profile">My Profile</a></li>
-							<li class="nav-item"><a class="nav-link text-dark active" href="#/formsUserProfile">Make
+							<li class="nav-item"><a class="nav-link text-dark" href="#/profile">My
+									Profile</a></li>
+							<li class="nav-item"><a class="nav-link text-dark active"
+									href="#/formsUserProfile">Make
 									Order</a></li>
-							<li class="nav-item"><a class="nav-link text-dark" href="#/userTable">My Orders</a></li>
-							<li class="nav-item"><a class="nav-link text-dark" href="#/reportsTable">My Reports</a></li>
+							<li class="nav-item"><a class="nav-link text-dark" href="#/userTable">My
+									Orders</a></li>
+							<li class="nav-item"><a class="nav-link text-dark" href="#/reportsTable">My
+									Reports</a></li>
 						</ul>
 					</aside>
 
@@ -36,14 +40,15 @@
 				<div class="col-lg-10 order-1 order-lg-2">
 
 					<div class="overflow-hidden mb-1">
-						<h2 class="font-weight-normal text-7 mb-0"><strong class="font-weight-extra-bold">{{textData['formUserProfile'].headerSpan}}</strong>
+						<h2 class="font-weight-normal text-7 mb-0"><strong
+								class="font-weight-extra-bold">{{textData['formUserProfile'].headerSpan}}</strong>
 							{{textData['formUserProfile'].header}}</h2>
 					</div>
-					<div class="overflow-hidden mb-4 pb-3">
+					<div class="overflow-hidden mb-4 pb-3 read-before-order">
 						<p class="mb-0">{{textData['formUserProfile'].description}}</p>
 					</div>
 
-					<form ng-submit="submitOrder()" role="form" class="needs-validation"  >
+					<form ng-submit="submitOrder()" role="form" class="needs-validation">
 						<div class="form-group row">
 							<label
 								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Payment
@@ -52,46 +57,50 @@
 							<div class="col-lg-9">
 								<div class="radio">
 									<label>
-										<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios"
-											id="optionsRadios1" ng-value="5" checked="">
+										<input ng-model="paymentRadio.paymentOption" type="radio"
+											name="optionsRadios" id="optionsRadios1" ng-value="5"
+											checked="">
 										Buy product and take review 5$
 									</label>
 								</div>
 								<div class="radio">
 									<label>
-										<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios"
-											id="optionsRadios2" ng-value="4">
+										<input ng-model="paymentRadio.paymentOption" type="radio"
+											name="optionsRadios" id="optionsRadios2" ng-value="4">
 										Buy product 4$
 									</label>
 								</div>
 								<div class="radio">
 									<label>
-										<input ng-model="paymentRadio.paymentOption" type="radio" name="optionsRadios"
-											id="optionsRadios2" ng-value="3">
+										<input ng-model="paymentRadio.paymentOption" type="radio"
+											name="optionsRadios" id="optionsRadios2" ng-value="3">
 										Buy product with coupon 3$
 									</label>
 								</div>
 							</div>
 						</div>
-						<div class="form-group row"  ng-show="openEmail">
+						<div class="form-group row" ng-show="openEmail">
 							<label
 								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Email
 								For Refunds</label>
 							<div class="col-lg-9">
-								<input ng-model="emailForRefunds" class="form-control"  type="email">
+								<input ng-model="emailForRefunds" class="form-control" type="email">
 							</div>
 						</div>
 
 						<div class="form-group row">
 							<label
-								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name/ Surename</label>
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Name/
+								Surename</label>
 							<div class="col-lg-9">
-								<input ng-model="nameSurename" class="form-control" required type="text">
+								<input ng-model="nameSurename" class="form-control" required
+									type="text">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label
-								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Product Name</label>
+								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Product
+								Name</label>
 							<div class="col-lg-9">
 								<input ng-model="productName" class="form-control" required type="text">
 							</div>
@@ -110,7 +119,8 @@
 								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Buyings
 								Per Day</label>
 							<div class="col-lg-9">
-								<input ng-model="buyingsPerDay" class="form-control" required type="number" step="0.01">
+								<input ng-model="buyingsPerDay" class="form-control" required
+									type="number" step="0.01">
 							</div>
 						</div>
 						<div class="form-group row">
@@ -118,7 +128,8 @@
 								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Item
 								Price</label>
 							<div class="col-lg-9">
-								<input ng-model="itemPrice" class="form-control" required type="number" step="0.01">
+								<input ng-model="itemPrice" class="form-control" required type="number"
+									step="0.01">
 							</div>
 						</div>
 						<div class="form-group row">
@@ -126,7 +137,8 @@
 								class="col-lg-3 font-weight-bold text-dark col-form-label form-control-label text-2 required">Total
 								Buying Summary</label>
 							<div class="col-lg-9">
-								<input ng-model="totalBuyingSummary" class="form-control" type="number" step="0.01">
+								<input ng-model="totalBuyingSummary" class="form-control" type="number"
+									step="0.01">
 							</div>
 						</div>
 						<div class="form-group row">
@@ -152,16 +164,19 @@
 							<div class="col-lg-9">
 								<div class="radio">
 									<label>
-										<input ng-model="transferRadio.option" type="radio" name="transferRadios" ng-click="openEmail = false"
-											id="optionsRadios1" value="Tranfer money now" checked="">
-										Tranfer money now
+										<input ng-model="transferRadio.option" type="radio"
+											name="transferRadios" ng-click="openEmail = false"
+											id="optionsRadios1" value="Paying all amount"
+											checked="">
+										Paying all amount
 									</label>
 								</div>
-								<div class="radio" >
-									<label >
-										<input ng-model="transferRadio.option" type="radio" name="transferRadios" ng-click="openEmail = true"
-											id="optionsRadios2" value="I will buy myself" > 
-										I will buy myself
+								<div class="radio">
+									<label>
+										<input ng-model="transferRadio.option" type="radio"
+											name="transferRadios" ng-click="openEmail = true"
+											id="optionsRadios2" value="Paying for items myself">
+										Paying for items myself
 									</label>
 								</div>
 
@@ -173,7 +188,8 @@
 								<p>{{ orderError ? orderError : success}}</p>
 							</div>
 							<div class="form-group col-lg-3">
-								<input  type="submit" value="Save" class="btn btn-primary btn-modern float-right"
+								<input type="submit" value="Save"
+									class="btn btn-primary btn-modern float-right"
 									data-loading-text="Loading...">
 
 							</div>
